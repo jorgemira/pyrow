@@ -11,6 +11,59 @@ from ui.workout_editor import WorkoutEditorDialog
 from workout_store import load_workouts, save_workouts
 
 _TOOLTIP_DELAY_MS = 1000
+_SCROLL_STEP = 0.06  # fraction of view to scroll per wheel tick
+_SCROLL_EASE = 0.18  # lerp factor per animation frame (0-1, higher = snappier)
+_SCROLL_INTERVAL_MS = 12  # animation frame interval
+
+
+class _SmoothScroller:
+    """Smooth-scroll overlay for a CTkScrollableFrame's internal canvas."""
+
+    def __init__(self, scrollable_frame: ctk.CTkScrollableFrame):
+        self._canvas = scrollable_frame._parent_canvas
+        self._target: float = 0.0
+        self._current: float = 0.0
+        self._animating = False
+
+        # Unbind default scroll, bind our handler
+        self._canvas.unbind_all("<Button-4>")
+        self._canvas.unbind_all("<Button-5>")
+        self._canvas.unbind_all("<MouseWheel>")
+        self._canvas.bind_all("<Button-4>", self._on_scroll_up)
+        self._canvas.bind_all("<Button-5>", self._on_scroll_down)
+        self._canvas.bind_all("<MouseWheel>", self._on_mousewheel)
+
+    def _on_scroll_up(self, _event):
+        self._scroll(-_SCROLL_STEP)
+
+    def _on_scroll_down(self, _event):
+        self._scroll(_SCROLL_STEP)
+
+    def _on_mousewheel(self, event):
+        # Windows/macOS: event.delta is positive for up, negative for down
+        if event.delta > 0:
+            self._scroll(-_SCROLL_STEP)
+        elif event.delta < 0:
+            self._scroll(_SCROLL_STEP)
+
+    def _scroll(self, delta: float):
+        self._target = max(0.0, min(1.0, self._target + delta))
+        if not self._animating:
+            # Sync current position from canvas
+            self._current = float(self._canvas.yview()[0])
+            self._animating = True
+            self._animate()
+
+    def _animate(self):
+        diff = self._target - self._current
+        if abs(diff) < 0.001:
+            self._current = self._target
+            self._canvas.yview_moveto(self._current)
+            self._animating = False
+            return
+        self._current += diff * _SCROLL_EASE
+        self._canvas.yview_moveto(self._current)
+        self._canvas.after(_SCROLL_INTERVAL_MS, self._animate)
 
 
 class _Tooltip:
@@ -73,6 +126,7 @@ class MenuScene(Scene):
         ctk.CTkLabel(root, text="Workouts", font=("", 14)).pack(anchor="w", padx=16)
         self._list_frame = ctk.CTkScrollableFrame(root, height=280)
         self._list_frame.pack(fill="x", padx=16, pady=(0, 8))
+        self._scroller = _SmoothScroller(self._list_frame)
 
         # Button row
         btn_row = ctk.CTkFrame(root, fg_color="transparent")
