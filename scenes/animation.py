@@ -5,7 +5,7 @@ import math
 
 import pygame
 
-from animations.base import DRILL_PROFILES, BaseAnimation, get_position, is_in_pause
+from animations.base import DRILL_PROFILES, BaseAnimation, DrillProfile, get_position, is_in_pause
 from animations.styles import ANIMATION_STYLES
 from models.workout import SectionType, Workout
 from scenes.base import Scene
@@ -21,6 +21,7 @@ WARNING_BG = (50, 40, 20)
 WARNING_BORDER = (255, 200, 60)
 
 _FIGURE_STYLES = {"Rowing Figure", "Rowing Figure V2"}
+_REST_PROFILE = DrillProfile(1.0, 0.0, None, (70, 70, 70))
 
 
 def _make_beep(freq: float, duration_ms: int, volume: float = 0.25) -> pygame.mixer.Sound:
@@ -132,6 +133,9 @@ class AnimationScene(Scene):
         self._buttons: list[_Button] = []
         self._build_buttons()
 
+        # Reset clock so the first frame doesn't carry stale time from the menu scene
+        self.manager.clock.tick(60)
+
     def exit(self):
         if self.window:
             self.window.destroy()
@@ -242,7 +246,7 @@ class AnimationScene(Scene):
     # ── Update ───────────────────────────────────────────────────
 
     def update(self):
-        dt = self.manager.clock.get_time() / 1000.0
+        dt = min(self.manager.clock.get_time() / 1000.0, 0.1)
         self._player.update(dt)
 
         # Update button labels
@@ -253,10 +257,15 @@ class AnimationScene(Scene):
         self._btn_mute.label = "Unmute" if self._player.muted else "Mute"
 
         # Update animation (cache drill/position for draw)
-        self._drill = self._player.current_drill_type
-        self._profile = DRILL_PROFILES[self._drill]
-        transition = self._compute_offset_transition()
-        self._position = get_position(self._player.stroke_phase, self._profile, transition=transition)
+        if self._player.is_rest_section:
+            self._drill = self._player.current_drill_type
+            self._profile = _REST_PROFILE
+            self._position = 0.0
+        else:
+            self._drill = self._player.current_drill_type
+            self._profile = DRILL_PROFILES[self._drill]
+            transition = self._compute_offset_transition()
+            self._position = get_position(self._player.stroke_phase, self._profile, transition=transition)
         self._animation.update(dt, self._position, self._profile)
 
     # ── Draw ─────────────────────────────────────────────────────
