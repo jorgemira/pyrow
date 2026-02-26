@@ -36,12 +36,21 @@ _DWELL = 0.22  # fraction of stroke cycle spent holding at the pause
 _DRIVE = 0.34  # fraction of stroke cycle for the drive (0 → 1)
 
 
-def get_position(phase: float, profile: DrillProfile) -> float:
+def get_position(phase: float, profile: DrillProfile, transition: tuple[float, float] | None = None) -> float:
     """Convert a stroke phase (0.0-1.0) to a position within the drill's range.
 
     Phase 0.0 = catch (start), drives to finish, recovers back.
+    *transition* is ``(start_offset, end_offset)`` for blending on transition strokes.
+    When provided and offsets differ, the effective offset is cosine-eased from start
+    to end over the stroke cycle, producing a smooth positional shift.
     """
     raw = _paused_motion(phase, profile.pause_position) if profile.pause_position is not None else _smooth_motion(phase)
+    if transition is not None:
+        start_off, end_off = transition
+        if start_off != end_off:
+            blend = 0.5 * (1.0 - math.cos(phase * math.pi))
+            offset = start_off + blend * (end_off - start_off)
+            return offset + profile.range_factor * raw
     return profile.offset + profile.range_factor * raw
 
 
