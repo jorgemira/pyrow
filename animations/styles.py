@@ -5,13 +5,13 @@ import random
 
 import pygame
 
-from animations.base import BaseAnimation, DrillProfile
+from animations.base import BaseAnimation
 from models.workout import DrillType
-
 
 # ═════════════════════════════════════════════════════════════════════
 # 1. Sliding Bar
 # ═════════════════════════════════════════════════════════════════════
+
 
 class SlidingBarAnimation(BaseAnimation):
     name = "Sliding Bar"
@@ -59,6 +59,7 @@ class SlidingBarAnimation(BaseAnimation):
 # 2. Breathing Ring
 # ═════════════════════════════════════════════════════════════════════
 
+
 class BreathingRingAnimation(BaseAnimation):
     name = "Breathing Ring"
 
@@ -91,6 +92,7 @@ class BreathingRingAnimation(BaseAnimation):
 # ═════════════════════════════════════════════════════════════════════
 # 3. Wave
 # ═════════════════════════════════════════════════════════════════════
+
 
 class WaveAnimation(BaseAnimation):
     name = "Wave"
@@ -136,6 +138,7 @@ class WaveAnimation(BaseAnimation):
 # ═════════════════════════════════════════════════════════════════════
 # 4. Rowing Figure
 # ═════════════════════════════════════════════════════════════════════
+
 
 class RowingFigureAnimation(BaseAnimation):
     name = "Rowing Figure"
@@ -183,42 +186,37 @@ class RowingFigureAnimation(BaseAnimation):
         knee_y = foot_y - (leg_pos * 0.15 + 0.15) * scale
 
         # Seat rail
-        pygame.draw.line(surface, (55, 55, 55),
-                         (int(foot_x + scale * 0.1), int(seat_y + 6)),
-                         (int(foot_x + scale * 1.0), int(seat_y + 6)), 2)
+        pygame.draw.line(
+            surface,
+            (55, 55, 55),
+            (int(foot_x + scale * 0.1), int(seat_y + 6)),
+            (int(foot_x + scale * 1.0), int(seat_y + 6)),
+            2,
+        )
 
         # Oar handle line
         oar_end_x = handle_x - scale * 0.25
         oar_end_y = handle_y - scale * 0.04
-        pygame.draw.line(surface, (120, 120, 120),
-                         (int(handle_x), int(handle_y)),
-                         (int(oar_end_x), int(oar_end_y)), 2)
+        pygame.draw.line(surface, (120, 120, 120), (int(handle_x), int(handle_y)), (int(oar_end_x), int(oar_end_y)), 2)
 
         lw = 3  # line width
 
         # Legs
-        pygame.draw.line(surface, color, (int(foot_x), int(foot_y)),
-                         (int(knee_x), int(knee_y)), lw)
-        pygame.draw.line(surface, color, (int(knee_x), int(knee_y)),
-                         (int(seat_x), int(seat_y)), lw)
+        pygame.draw.line(surface, color, (int(foot_x), int(foot_y)), (int(knee_x), int(knee_y)), lw)
+        pygame.draw.line(surface, color, (int(knee_x), int(knee_y)), (int(seat_x), int(seat_y)), lw)
 
         # Body
-        pygame.draw.line(surface, color, (int(seat_x), int(seat_y)),
-                         (int(shoulder_x), int(shoulder_y)), lw)
+        pygame.draw.line(surface, color, (int(seat_x), int(seat_y)), (int(shoulder_x), int(shoulder_y)), lw)
 
         # Arms
-        pygame.draw.line(surface, color, (int(shoulder_x), int(shoulder_y)),
-                         (int(elbow_x), int(elbow_y)), lw)
-        pygame.draw.line(surface, color, (int(elbow_x), int(elbow_y)),
-                         (int(handle_x), int(handle_y)), lw)
+        pygame.draw.line(surface, color, (int(shoulder_x), int(shoulder_y)), (int(elbow_x), int(elbow_y)), lw)
+        pygame.draw.line(surface, color, (int(elbow_x), int(elbow_y)), (int(handle_x), int(handle_y)), lw)
 
         # Head
-        pygame.draw.circle(surface, color, (int(head_x), int(head_y)),
-                           max(int(scale * 0.07), 3))
+        pygame.draw.circle(surface, color, (int(head_x), int(head_y)), max(int(scale * 0.07), 3))
 
         # Seat
-        pygame.draw.rect(surface, (140, 140, 140),
-                         (int(seat_x - 5), int(seat_y + 1), 10, 5), border_radius=2)
+        pygame.draw.rect(surface, (140, 140, 140), (int(seat_x - 5), int(seat_y + 1), 10, 5), border_radius=2)
 
     @staticmethod
     def _body_positions(position, drill_type):
@@ -331,9 +329,13 @@ class RowingFigureV2Animation(BaseAnimation):
         flywheel_cy = cy - scale * 0.05
 
         # Rail
-        pygame.draw.line(surface, _MACHINE_DARK,
-                         (int(rail_left), int(seat_y + scale * 0.08)),
-                         (int(rail_right), int(seat_y + scale * 0.08)), 3)
+        pygame.draw.line(
+            surface,
+            _MACHINE_DARK,
+            (int(rail_left), int(seat_y + scale * 0.08)),
+            (int(rail_right), int(seat_y + scale * 0.08)),
+            3,
+        )
 
         # Foot plate (angled)
         fp_x = int(foot[0] - scale * 0.02)
@@ -343,25 +345,21 @@ class RowingFigureV2Animation(BaseAnimation):
 
         # Flywheel housing
         fw_size = int(scale * 0.18)
-        fw_rect = pygame.Rect(int(flywheel_cx - fw_size), int(flywheel_cy - fw_size),
-                              fw_size * 2, fw_size * 2)
+        fw_rect = pygame.Rect(int(flywheel_cx - fw_size), int(flywheel_cy - fw_size), fw_size * 2, fw_size * 2)
         pygame.draw.rect(surface, _MACHINE_DARK, fw_rect, border_radius=4)
         pygame.draw.rect(surface, _MACHINE_MID, fw_rect, 2, border_radius=4)
         # Flywheel circle
-        pygame.draw.circle(surface, _MACHINE_LIGHT,
-                           (int(flywheel_cx), int(flywheel_cy)), int(scale * 0.1), 2)
+        pygame.draw.circle(surface, _MACHINE_LIGHT, (int(flywheel_cx), int(flywheel_cy)), int(scale * 0.1), 2)
 
         # Chain from flywheel to handle
-        pygame.draw.line(surface, _CHAIN_COLOR,
-                         (int(flywheel_cx), int(flywheel_cy)),
-                         (int(hand[0]), int(hand[1])), 2)
+        pygame.draw.line(surface, _CHAIN_COLOR, (int(flywheel_cx), int(flywheel_cy)), (int(hand[0]), int(hand[1])), 2)
 
         # Seat (on rail)
         seat_w = max(int(scale * 0.12), 6)
         seat_h = max(int(scale * 0.05), 3)
-        pygame.draw.rect(surface, _MACHINE_LIGHT,
-                         (int(seat_x - seat_w // 2), int(seat_y + 1),
-                          seat_w, seat_h), border_radius=2)
+        pygame.draw.rect(
+            surface, _MACHINE_LIGHT, (int(seat_x - seat_w // 2), int(seat_y + 1), seat_w, seat_h), border_radius=2
+        )
 
         # ── Seat trail (motion ghost) ────────────────────────────
         for i, trail_pos in enumerate(self._trail):
@@ -402,16 +400,18 @@ class RowingFigureV2Animation(BaseAnimation):
         # Handle grip
         grip_w = max(int(scale * 0.06), 3)
         grip_h = max(int(scale * 0.03), 2)
-        pygame.draw.rect(surface, _MACHINE_LIGHT,
-                         (int(hand[0] - grip_w // 2), int(hand[1] - grip_h // 2),
-                          grip_w, grip_h), border_radius=1)
+        pygame.draw.rect(
+            surface,
+            _MACHINE_LIGHT,
+            (int(hand[0] - grip_w // 2), int(hand[1] - grip_h // 2), grip_w, grip_h),
+            border_radius=1,
+        )
 
         # Head
         head_r = max(int(scale * 0.075), 4)
         pygame.draw.circle(surface, colors["body"], (int(head[0]), int(head[1])), head_r)
         # Head highlight
-        pygame.draw.circle(surface, _bright(colors["body"], 50),
-                           (int(head[0]), int(head[1])), head_r, 1)
+        pygame.draw.circle(surface, _bright(colors["body"], 50), (int(head[0]), int(head[1])), head_r, 1)
 
     @staticmethod
     def _part_colors(color, drill_type):
@@ -432,6 +432,7 @@ class RowingFigureV2Animation(BaseAnimation):
 # 6. Color Pulse
 # ═════════════════════════════════════════════════════════════════════
 
+
 class ColorPulseAnimation(BaseAnimation):
     name = "Color Pulse"
 
@@ -440,15 +441,16 @@ class ColorPulseAnimation(BaseAnimation):
 
     def update(self, dt, position, profile):
         # Spawn sparks during drive phase
-        if position > 0.25 and len(self._particles) < 30:
-            if random.random() < 0.4:
-                self._particles.append({
+        if position > 0.25 and len(self._particles) < 30 and random.random() < 0.4:
+            self._particles.append(
+                {
                     "x": 0.4 + random.random() * 0.2,
                     "y": 0.2 + random.random() * 0.6,
                     "vx": random.uniform(-0.2, 0.2),
                     "vy": random.uniform(-0.6, -0.1),
                     "life": 1.0,
-                })
+                }
+            )
 
         for p in self._particles:
             p["x"] += p["vx"] * dt
@@ -474,8 +476,7 @@ class ColorPulseAnimation(BaseAnimation):
         # Horizontal accent line
         line_w = int(rect.width * 0.6 * intensity)
         line_x = rect.centerx - line_w // 2
-        pygame.draw.line(surface, (r, g, b), (line_x, rect.centery),
-                         (line_x + line_w, rect.centery), 2)
+        pygame.draw.line(surface, (r, g, b), (line_x, rect.centery), (line_x + line_w, rect.centery), 2)
 
         # Particles
         for p in self._particles:

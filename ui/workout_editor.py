@@ -56,10 +56,27 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
 
         btn_row = ctk.CTkFrame(self, fg_color="transparent")
         btn_row.pack(fill="x", **pad)
-        ctk.CTkButton(btn_row, text="Add Section", width=100, command=self._add_section).pack(side="left", padx=(0, 4))
-        self._remove_sec_btn = ctk.CTkButton(btn_row, text="Remove", width=80, command=self._remove_section, state="disabled")
+        ctk.CTkButton(
+            btn_row,
+            text="Add Section",
+            width=100,
+            command=self._add_section,
+        ).pack(side="left", padx=(0, 4))
+        self._remove_sec_btn = ctk.CTkButton(
+            btn_row,
+            text="Remove",
+            width=80,
+            command=self._remove_section,
+            state="disabled",
+        )
         self._remove_sec_btn.pack(side="left", padx=(0, 4))
-        self._up_btn = ctk.CTkButton(btn_row, text="▲", width=36, command=self._move_section_up, state="disabled")
+        self._up_btn = ctk.CTkButton(
+            btn_row,
+            text="▲",
+            width=36,
+            command=self._move_section_up,
+            state="disabled",
+        )
         self._up_btn.pack(side="left", padx=(0, 4))
         self._down_btn = ctk.CTkButton(btn_row, text="▼", width=36, command=self._move_section_down, state="disabled")
         self._down_btn.pack(side="left")
@@ -98,8 +115,19 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
 
         drill_btn_row = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
         drill_btn_row.pack(fill="x", padx=6, pady=(4, 0))
-        ctk.CTkButton(drill_btn_row, text="Add Drill", width=90, command=self._add_drill).pack(side="left", padx=(0, 4))
-        self._remove_drill_btn = ctk.CTkButton(drill_btn_row, text="Remove Drill", width=100, command=self._remove_drill, state="disabled")
+        ctk.CTkButton(
+            drill_btn_row,
+            text="Add Drill",
+            width=90,
+            command=self._add_drill,
+        ).pack(side="left", padx=(0, 4))
+        self._remove_drill_btn = ctk.CTkButton(
+            drill_btn_row,
+            text="Remove Drill",
+            width=100,
+            command=self._remove_drill,
+            state="disabled",
+        )
         self._remove_drill_btn.pack(side="left")
 
         drill_edit_row = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
@@ -114,7 +142,14 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         # ── Save / Cancel ────────────────────────────────────────
         bottom = ctk.CTkFrame(self, fg_color="transparent")
         bottom.pack(fill="x", padx=10, pady=10)
-        ctk.CTkButton(bottom, text="Cancel", fg_color="#555", hover_color="#666", width=100, command=self._on_cancel).pack(side="right", padx=(4, 0))
+        ctk.CTkButton(
+            bottom,
+            text="Cancel",
+            fg_color="#555",
+            hover_color="#666",
+            width=100,
+            command=self._on_cancel,
+        ).pack(side="right", padx=(4, 0))
         ctk.CTkButton(bottom, text="Save", width=100, command=self._on_save).pack(side="right")
 
         self._set_detail_state("disabled")
@@ -187,11 +222,11 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         self._refresh_section_list()
 
     def _update_section_buttons(self):
-        has_sel = self._selected_section_idx is not None
-        self._remove_sec_btn.configure(state="normal" if has_sel else "disabled")
-        self._up_btn.configure(state="normal" if has_sel and self._selected_section_idx > 0 else "disabled")
+        idx = self._selected_section_idx
+        self._remove_sec_btn.configure(state="normal" if idx is not None else "disabled")
+        self._up_btn.configure(state="normal" if idx is not None and idx > 0 else "disabled")
         self._down_btn.configure(
-            state="normal" if has_sel and self._selected_section_idx < len(self.workout.sections) - 1 else "disabled"
+            state="normal" if idx is not None and idx < len(self.workout.sections) - 1 else "disabled"
         )
 
     # ── Section detail ───────────────────────────────────────────
@@ -255,7 +290,15 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         self._drill_count_entry.configure(state=state)
 
     def _clear_detail_fields(self):
-        for entry in (self._dur_entry, self._sr_entry, self._tension_entry, self._rep_entry, self._rest_after_entry, self._drill_count_entry):
+        entries = (
+            self._dur_entry,
+            self._sr_entry,
+            self._tension_entry,
+            self._rep_entry,
+            self._rest_after_entry,
+            self._drill_count_entry,
+        )
+        for entry in entries:
             entry.configure(state="normal")
             entry.delete(0, "end")
             entry.configure(state="disabled")
@@ -287,6 +330,7 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
     def _select_drill(self, idx: int):
         self._commit_drill_edits()
         self._selected_drill_idx = idx
+        assert self._selected_section_idx is not None
         sec = self.workout.sections[self._selected_section_idx]
         drill = sec.drills[idx]
         self._drill_type_menu.set(drill.drill_type.label)

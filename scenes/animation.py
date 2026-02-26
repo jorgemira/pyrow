@@ -50,9 +50,8 @@ class _Button:
     def handle_event(self, event: pygame.event.Event):
         if event.type == pygame.MOUSEMOTION:
             self.hovered = self.rect.collidepoint(event.pos)
-        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            if self.rect.collidepoint(event.pos):
-                self.callback()
+        elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and self.rect.collidepoint(event.pos):
+            self.callback()
 
     def draw(self, surface: pygame.Surface):
         color = BTN_HOVER if self.hovered else BTN_COLOR
@@ -62,8 +61,7 @@ class _Button:
 
 
 class AnimationScene(Scene):
-    def __init__(self, manager, workout: Workout | None = None,
-                 animation_style: str = "Rowing Figure V2"):
+    def __init__(self, manager, workout: Workout | None = None, animation_style: str = "Rowing Figure V2"):
         super().__init__(manager)
         self.workout = workout
         self._style_name = animation_style
@@ -78,14 +76,17 @@ class AnimationScene(Scene):
             self.sw = min(820, monitor_w)
             self.sh = min(400, monitor_h - 60)
             self.window = pygame.window.Window(
-                "PyRow", size=(self.sw, self.sh),
+                "PyRow",
+                size=(self.sw, self.sh),
             )
             self.window.position = ((monitor_w - self.sw) // 2, 30)
         else:
             self.sw = monitor_w
             self.sh = monitor_h // 10
             self.window = pygame.window.Window(
-                "PyRow", size=(self.sw, self.sh), borderless=True,
+                "PyRow",
+                size=(self.sw, self.sh),
+                borderless=True,
             )
             try:
                 self.window.position = (0, 0)
@@ -112,6 +113,7 @@ class AnimationScene(Scene):
         self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh)
 
         # Player
+        assert self.workout is not None
         self._player = WorkoutPlayer(self.workout)
         self._player.on_warning = self._on_warning
         self._player.on_transition = self._on_transition
@@ -151,8 +153,11 @@ class AnimationScene(Scene):
         self._btn_mute = make(4, "Mute", self._toggle_mute)
 
         self._buttons = [
-            self._btn_prev, self._btn_play, self._btn_stop,
-            self._btn_next, self._btn_mute,
+            self._btn_prev,
+            self._btn_play,
+            self._btn_stop,
+            self._btn_next,
+            self._btn_mute,
         ]
 
     def _toggle_play(self):
@@ -160,6 +165,7 @@ class AnimationScene(Scene):
 
     def _do_stop(self):
         from scenes.menu import MenuScene
+
         self.manager.switch_to(MenuScene(self.manager))
 
     def _toggle_mute(self):
@@ -226,9 +232,7 @@ class AnimationScene(Scene):
         self._draw_warning(surface)
 
         # Separator
-        pygame.draw.line(surface, (55, 55, 55),
-                         (self._panel_rect.right, 0),
-                         (self._panel_rect.right, self.sh), 1)
+        pygame.draw.line(surface, (55, 55, 55), (self._panel_rect.right, 0), (self._panel_rect.right, self.sh), 1)
 
     def _draw_panel(self, surface, profile):
         r = self._panel_rect
@@ -254,18 +258,17 @@ class AnimationScene(Scene):
 
         # Section / SR / Tension
         sec = self._player.current_section
-        surface.blit(self._font_stats.render(
-            f"{sec.stroke_rate} spm  Tension: {sec.tension}", True, TEXT_COLOR), (x, y))
+        surface.blit(
+            self._font_stats.render(f"{sec.stroke_rate} spm  Tension: {sec.tension}", True, TEXT_COLOR), (x, y)
+        )
         y += 40
-        surface.blit(self._font_stats.render(
-            self._player.section_label, True, DIM_TEXT), (x, y))
+        surface.blit(self._font_stats.render(self._player.section_label, True, DIM_TEXT), (x, y))
         y += 44
 
         # Section time + progress bar
         se = self._player.section_elapsed
         sd = sec.duration
-        surface.blit(self._font_time.render(
-            f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
+        surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
         y += 34
 
         bar_w = r.width - 28
@@ -281,8 +284,7 @@ class AnimationScene(Scene):
         # Total time + progress bar
         te = self._player.total_elapsed
         td = self._player.total_duration
-        surface.blit(self._font_time.render(
-            f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
+        surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
         y += 34
 
         total_progress = min(te / td, 1.0) if td > 0 else 0
@@ -294,8 +296,7 @@ class AnimationScene(Scene):
         y += 20
 
         # Stop sign (between progress bars and buttons)
-        if (self._player.state == "playing"
-                and is_in_pause(self._player.stroke_phase, profile)):
+        if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
             self._draw_stop_sign(surface, r.centerx, y + 36)
 
         # Buttons (at bottom of panel)

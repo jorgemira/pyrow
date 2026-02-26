@@ -41,10 +41,7 @@ def get_position(phase: float, profile: DrillProfile) -> float:
 
     Phase 0.0 = catch (start), drives to finish, recovers back.
     """
-    if profile.pause_position is not None:
-        raw = _paused_motion(phase, profile.pause_position)
-    else:
-        raw = _smooth_motion(phase)
+    raw = _paused_motion(phase, profile.pause_position) if profile.pause_position is not None else _smooth_motion(phase)
     return profile.offset + profile.range_factor * raw
 
 
@@ -116,7 +113,7 @@ class BaseAnimation(ABC):
 
     name: str = ""
 
-    def update(self, dt: float, position: float, profile: DrillProfile) -> None:
+    def update(self, dt: float, position: float, profile: DrillProfile) -> None:  # noqa: B027
         """Update internal animation state. Override if the style has trailing/particles."""
 
     @abstractmethod
