@@ -221,9 +221,15 @@ class RowingFigureAnimation(BaseAnimation):
     @staticmethod
     def _body_positions(position, drill_type):
         if drill_type == DrillType.arms_only:
-            return {"legs": 1.0, "body": 0.85, "arms": position}
+            # 0.0-0.75: setup (slide from catch to finish), 0.75-1.0: arms work
+            setup = min(position / 0.75, 1.0)
+            arm_t = max(0.0, (position - 0.75) / 0.25)
+            return {"legs": setup, "body": setup * 0.85, "arms": arm_t}
         if drill_type == DrillType.arms_and_hips:
-            return {"legs": 1.0, "body": 0.3 + position * 0.55, "arms": position}
+            # 0.0-0.50: setup (slide from catch to legs-extended), 0.50-1.0: arms+hips work
+            setup = min(position / 0.5, 1.0)
+            active = max(0.0, (position - 0.5) / 0.5)
+            return {"legs": setup, "body": setup * 0.3 + active * 0.55, "arms": active}
         if drill_type == DrillType.hips_and_legs:
             return {"legs": position, "body": position, "arms": 0.0}
         if drill_type == DrillType.legs_only:
