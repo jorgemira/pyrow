@@ -119,6 +119,11 @@ class AnimationScene(Scene):
         self._player.on_transition = self._on_transition
         self._player.play()
 
+        # Cached per-frame state (computed in update, reused in draw)
+        self._drill = self._player.current_drill_type
+        self._profile = DRILL_PROFILES[self._drill]
+        self._position = get_position(0.0, self._profile)
+
         # Animation style
         style_cls = ANIMATION_STYLES.get(self._style_name, list(ANIMATION_STYLES.values())[0])
         self._animation: BaseAnimation = style_cls()
@@ -181,6 +186,41 @@ class AnimationScene(Scene):
         if not self._player.muted:
             self._beep_trans.play()
 
+    def _compute_offset_transition(self) -> tuple[float, float] | None:
+        """Determine offset blending for the current stroke.
+
+        Returns ``(start_offset, end_offset)`` when the drill offset changes
+        (section boundary or drill pattern cycling), or ``None`` for normal strokes.
+        """
+        player = self._player
+        stroke_count = player.section_stroke_count
+        if stroke_count <= 0:
+            return None
+
+        stroke_num = player.current_stroke_num
+        current_offset = DRILL_PROFILES[player.current_drill_type].offset
+
+        start_offset = current_offset
+        end_offset = current_offset
+
+        is_first = stroke_num == 0
+        is_last = stroke_num >= stroke_count - 1
+
+        if is_first:
+            start_offset = 0.0
+        else:
+            prev_offset = DRILL_PROFILES[player.drill_at_stroke(stroke_num - 1)].offset
+            if prev_offset != current_offset:
+                start_offset = prev_offset
+
+        if is_last:
+            end_offset = 0.0
+
+        if start_offset == current_offset and end_offset == current_offset:
+            return None
+
+        return (start_offset, end_offset)
+
     # ── Events ───────────────────────────────────────────────────
 
     def handle_event(self, event):
@@ -212,23 +252,20 @@ class AnimationScene(Scene):
             self._btn_play.label = ">"
         self._btn_mute.label = "Unmute" if self._player.muted else "Mute"
 
-        # Update animation
-        drill = self._player.current_drill_type
-        profile = DRILL_PROFILES[drill]
-        position = get_position(self._player.stroke_phase, profile)
-        self._animation.update(dt, position, profile)
+        # Update animation (cache drill/position for draw)
+        self._drill = self._player.current_drill_type
+        self._profile = DRILL_PROFILES[self._drill]
+        transition = self._compute_offset_transition()
+        self._position = get_position(self._player.stroke_phase, self._profile, transition=transition)
+        self._animation.update(dt, self._position, self._profile)
 
     # ── Draw ─────────────────────────────────────────────────────
 
     def draw(self, surface):
         surface.fill(BG_COLOR)
 
-        drill = self._player.current_drill_type
-        profile = DRILL_PROFILES[drill]
-        position = get_position(self._player.stroke_phase, profile)
-
-        self._draw_panel(surface, profile)
-        self._draw_animation(surface, position, profile, drill)
+        self._draw_panel(surface, self._profile)
+        self._draw_animation(surface, self._position, self._profile, self._drill)
         self._draw_warning(surface)
 
         # Separator
