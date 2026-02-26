@@ -106,12 +106,14 @@ class Workout:
             for i in range(sec.repeats):
                 flat.append(sec)
                 if sec.rest_after > 0 and (i < sec.repeats - 1 or sec.repeats == 1):
-                    flat.append(Section(
-                        duration=sec.rest_after,
-                        stroke_rate=16,
-                        tension=sec.tension,
-                        section_type=SectionType.rest,
-                    ))
+                    flat.append(
+                        Section(
+                            duration=sec.rest_after,
+                            stroke_rate=16,
+                            tension=sec.tension,
+                            section_type=SectionType.rest,
+                        )
+                    )
         return flat
 
     @property

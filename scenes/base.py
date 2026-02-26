@@ -14,11 +14,11 @@ class Scene(ABC):
     def exit(self):
         """Called when leaving this scene. Destroy window here."""
 
-    def handle_event(self, event):
+    def handle_event(self, event):  # noqa: B027
         """Handle a single pygame event. Override for pygame scenes."""
 
-    def update(self):
+    def update(self):  # noqa: B027
         """Update scene state (called once per frame). Override for pygame scenes."""
 
-    def draw(self, surface):
+    def draw(self, surface):  # noqa: B027
         """Draw the scene onto the given surface. Override for pygame scenes."""

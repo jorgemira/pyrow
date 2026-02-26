@@ -6,7 +6,6 @@ from tkinter import messagebox
 import customtkinter as ctk
 
 from animations import ANIMATION_STYLES
-from models.workout import Workout
 from scenes.base import Scene
 from ui.workout_editor import WorkoutEditorDialog
 from workout_store import load_workouts, save_workouts
@@ -41,8 +40,9 @@ class MenuScene(Scene):
         style_row.pack(fill="x", padx=16, pady=(0, 6))
         ctk.CTkLabel(style_row, text="Animation Style:", font=("", 13)).pack(side="left")
         self._style_var = ctk.StringVar(value="Rowing Figure V2")
-        ctk.CTkOptionMenu(style_row, variable=self._style_var,
-                          values=_STYLE_NAMES, width=180).pack(side="left", padx=(8, 0))
+        ctk.CTkOptionMenu(style_row, variable=self._style_var, values=_STYLE_NAMES, width=180).pack(
+            side="left", padx=(8, 0)
+        )
 
         # Button row
         btn_row = ctk.CTkFrame(root, fg_color="transparent")
@@ -52,17 +52,24 @@ class MenuScene(Scene):
         self._edit_btn = ctk.CTkButton(btn_row, text="Edit", width=90, command=self._on_edit, state="disabled")
         self._edit_btn.pack(side="left", padx=(0, 6))
         self._del_btn = ctk.CTkButton(
-            btn_row, text="Delete", width=90,
-            fg_color="#a03030", hover_color="#c04040",
-            command=self._on_delete, state="disabled",
+            btn_row,
+            text="Delete",
+            width=90,
+            fg_color="#a03030",
+            hover_color="#c04040",
+            command=self._on_delete,
+            state="disabled",
         )
         self._del_btn.pack(side="left", padx=(0, 6))
 
         self._play_btn = ctk.CTkButton(btn_row, text="Play", width=90, command=self._on_play, state="disabled")
         self._play_btn.pack(side="right", padx=(6, 0))
         ctk.CTkButton(
-            btn_row, text="Exit", width=90,
-            fg_color="#555555", hover_color="#666666",
+            btn_row,
+            text="Exit",
+            width=90,
+            fg_color="#555555",
+            hover_color="#666666",
             command=lambda: self._on_exit(root),
         ).pack(side="right")
 
@@ -141,8 +148,8 @@ class MenuScene(Scene):
         style = self._style_var.get()
         self._root.destroy()
         from scenes.animation import AnimationScene
-        self.manager.switch_to(AnimationScene(self.manager, workout=workout,
-                                              animation_style=style))
+
+        self.manager.switch_to(AnimationScene(self.manager, workout=workout, animation_style=style))
 
     def _on_exit(self, root):
         root.destroy()

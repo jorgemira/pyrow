@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Callable
+
 from models.workout import DrillType, Section, SectionType, Workout
 
 
@@ -22,8 +24,8 @@ class WorkoutPlayer:
         self._warning_triggered: bool = False
 
         # Sound callbacks (set by the scene)
-        self.on_warning: callable = lambda: None
-        self.on_transition: callable = lambda: None
+        self.on_warning: Callable[[], None] = lambda: None
+        self.on_transition: Callable[[], None] = lambda: None
 
     # ── Properties ───────────────────────────────────────────────
 
@@ -169,10 +171,7 @@ class WorkoutPlayer:
                 self.warning_text = f"Rest: {ns.duration}s"
             else:
                 prefix = f"{ns.section_type.label}: " if ns.section_type != SectionType.work else ""
-                if ns.drills:
-                    drill_name = ns.drills[0].drill_type.value.replace("_", " ").title()
-                else:
-                    drill_name = "Full Stroke"
+                drill_name = ns.drills[0].drill_type.value.replace("_", " ").title() if ns.drills else "Full Stroke"
                 self.warning_text = f"Next: {prefix}{drill_name} @ {ns.stroke_rate}spm T{ns.tension}"
         else:
             self.warning_text = "Workout ending!"
