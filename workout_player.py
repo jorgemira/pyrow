@@ -11,6 +11,20 @@ class WorkoutPlayer:
     def __init__(self, workout: Workout):
         self.workout = workout
         self._sections: list[Section] = workout.flatten_sections()
+
+        # Pre-compute adjusted cycle times so each section has whole strokes.
+        # This ensures the figure is always at catch (phase 0.0) at section boundaries.
+        self._section_cycle_times: list[float] = []
+        self._section_stroke_counts: list[int] = []
+        for sec in self._sections:
+            if sec.stroke_rate <= 0 or sec.duration <= 0:
+                self._section_stroke_counts.append(0)
+                self._section_cycle_times.append(0.0)
+            else:
+                count = max(1, round(sec.duration * sec.stroke_rate / 60))
+                self._section_stroke_counts.append(count)
+                self._section_cycle_times.append(sec.duration / count)
+
         self.state: str = "stopped"  # stopped | playing | paused | finished
         self.section_idx: int = 0
         self.section_elapsed: float = 0.0
@@ -46,27 +60,34 @@ class WorkoutPlayer:
         return self.current_section.section_type == SectionType.rest
 
     @property
-    def stroke_phase(self) -> float:
-        """0.0-1.0 representing position within one stroke cycle."""
-        sr = self.current_section.stroke_rate
-        if sr <= 0:
-            return 0.0
-        cycle_time = 60.0 / sr
-        return (self.section_elapsed % cycle_time) / cycle_time
+    def section_stroke_count(self) -> int:
+        """Number of whole strokes in the current section."""
+        return self._section_stroke_counts[self.section_idx]
 
     @property
-    def current_drill_type(self) -> DrillType:
+    def current_stroke_num(self) -> int:
+        """Which stroke (0-based) we're on within the current section."""
+        ct = self._section_cycle_times[self.section_idx]
+        if ct <= 0:
+            return 0
+        return min(int(self.section_elapsed / ct), self.section_stroke_count - 1)
+
+    @property
+    def stroke_phase(self) -> float:
+        """0.0-1.0 representing position within one stroke cycle."""
+        ct = self._section_cycle_times[self.section_idx]
+        if ct <= 0:
+            return 0.0
+        return (self.section_elapsed % ct) / ct
+
+    def drill_at_stroke(self, stroke_num: int) -> DrillType:
+        """Return the drill type active at a given stroke number in the current section."""
         sec = self.current_section
         if not sec.drills:
             return DrillType.none
         pattern_len = sum(d.count for d in sec.drills)
         if pattern_len == 0:
             return DrillType.none
-        sr = sec.stroke_rate
-        if sr <= 0:
-            return sec.drills[0].drill_type
-        cycle_time = 60.0 / sr
-        stroke_num = int(self.section_elapsed / cycle_time)
         pos = stroke_num % pattern_len
         cumulative = 0
         for drill in sec.drills:
@@ -74,6 +95,10 @@ class WorkoutPlayer:
             if pos < cumulative:
                 return drill.drill_type
         return sec.drills[-1].drill_type
+
+    @property
+    def current_drill_type(self) -> DrillType:
+        return self.drill_at_stroke(self.current_stroke_num)
 
     @property
     def section_label(self) -> str:
