@@ -1,0 +1,2733 @@
+[
+  {
+    "name": "DEV TEST \u2014 All Drills (3min)",
+    "sections": [
+      {
+        "duration": 15,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "none",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "legs_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_at_back",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_at_front",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_arms_away",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_body_over",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 30,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 2
+          },
+          {
+            "type": "arms_and_hips",
+            "count": 2
+          },
+          {
+            "type": "hips_and_legs",
+            "count": 2
+          },
+          {
+            "type": "none",
+            "count": 2
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 15,
+        "stroke_rate": 30,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 15,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 15,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 20min (26min) \u2014 Steady State",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 1200,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 20min (26min) \u2014 Drill Focus",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 20min (26min) \u2014 Easy Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 30min (36min) \u2014 Steady State",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 1800,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 30min (36min) \u2014 Drill Focus",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "legs_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 30min (36min) \u2014 Easy Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 30min (36min) \u2014 Mixed Drills & Rowing",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          },
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_at_back",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 40min (46min) \u2014 Steady State",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 2400,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 40min (46min) \u2014 Drill Focus",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "legs_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 40min (46min) \u2014 Endurance Build",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 900,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 900,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Beginner 40min (46min) \u2014 Easy Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 20min (26min) \u2014 Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 20min (26min) \u2014 Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 20min (26min) \u2014 Drill Focus",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          },
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          },
+          {
+            "type": "pause_at_back",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 30min (36min) \u2014 Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 30min (36min) \u2014 Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 30min (36min) \u2014 Steady State",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 1800,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 30min (36min) \u2014 Mixed Drills & Power",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          },
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          },
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 2
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "pause_at_back",
+            "count": 1
+          },
+          {
+            "type": "pause_at_front",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 40min (46min) \u2014 Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 40min (46min) \u2014 Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 40min (46min) \u2014 Endurance",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Intermediate 40min (46min) \u2014 Drill Endurance",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          },
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "pause_at_back",
+            "count": 1
+          },
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 3
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [
+          {
+            "type": "legs_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 20min (26min) \u2014 Power Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 20min (26min) \u2014 Sprint Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 20min (26min) \u2014 High-Intensity Drills",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          },
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          },
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 2
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [
+          {
+            "type": "pause_at_back",
+            "count": 1
+          },
+          {
+            "type": "pause_at_front",
+            "count": 1
+          },
+          {
+            "type": "mid_slide",
+            "count": 1
+          }
+        ],
+        "repeats": 2
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 30min (36min) \u2014 Power Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 30min (36min) \u2014 Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 30min (36min) \u2014 Race Pace",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 1800,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 30min (36min) \u2014 Tabata Style",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 40min (46min) \u2014 Power Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 40min (46min) \u2014 Endurance",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 26,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 26,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 40min (46min) \u2014 Race Simulation",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Advanced 40min (46min) \u2014 Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 26,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1
+      }
+    ]
+  },
+  {
+    "name": "Interval 6x2min (23min)",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 6,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Tabata 4min (10min)",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 30,
+        "tension": 5,
+        "drills": [],
+        "repeats": 8,
+        "rest_after": 10
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Pyramid with Rest (28min)",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 28,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  }
+]
