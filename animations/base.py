@@ -18,7 +18,7 @@ class DrillProfile:
 
 
 DRILL_PROFILES: dict[DrillType, DrillProfile] = {
-    DrillType.none: DrillProfile(1.0, 0.0, None, (100, 180, 255)),
+    DrillType.none: DrillProfile(1.0, 0.0, None, (60, 120, 215)),
     DrillType.arms_only: DrillProfile(0.25, 0.75, None, (255, 160, 80)),
     DrillType.arms_and_hips: DrillProfile(0.5, 0.50, None, (255, 210, 80)),
     DrillType.hips_and_legs: DrillProfile(0.7, 0.3, None, (80, 230, 160)),

@@ -21,7 +21,7 @@ WARNING_BG = (50, 40, 20)
 WARNING_BORDER = (255, 200, 60)
 
 _FIGURE_STYLES = {"Rowing Figure", "Rowing Figure V2"}
-_REST_PROFILE = DrillProfile(1.0, 0.0, None, (70, 70, 70))
+_REST_PROFILE = DrillProfile(1.0, 0.0, None, (140, 200, 255))
 
 
 def _make_beep(freq: float, duration_ms: int, volume: float = 0.25) -> pygame.mixer.Sound:
@@ -257,15 +257,10 @@ class AnimationScene(Scene):
         self._btn_mute.label = "Unmute" if self._player.muted else "Mute"
 
         # Update animation (cache drill/position for draw)
-        if self._player.is_rest_section:
-            self._drill = self._player.current_drill_type
-            self._profile = _REST_PROFILE
-            self._position = 0.0
-        else:
-            self._drill = self._player.current_drill_type
-            self._profile = DRILL_PROFILES[self._drill]
-            transition = self._compute_offset_transition()
-            self._position = get_position(self._player.stroke_phase, self._profile, transition=transition)
+        self._drill = self._player.current_drill_type
+        self._profile = _REST_PROFILE if self._player.is_rest_section else DRILL_PROFILES[self._drill]
+        transition = self._compute_offset_transition()
+        self._position = get_position(self._player.stroke_phase, self._profile, transition=transition)
         self._animation.update(dt, self._position, self._profile)
 
     # ── Draw ─────────────────────────────────────────────────────
@@ -286,11 +281,11 @@ class AnimationScene(Scene):
         x = r.x + 14
         y = r.y + 14
 
-        # Drill type name (big, colored) — or "REST" in grey
+        # Drill type name (big, colored) — "REST" in light blue
         sec_type = self._player.current_section.section_type
         if sec_type == SectionType.rest:
             drill_name = "REST"
-            drill_color = DIM_TEXT
+            drill_color = _REST_PROFILE.color
         else:
             drill_name = self._player.current_drill_type.value.replace("_", " ").title()
             if self._player.current_drill_type == self._player.current_drill_type.none:
@@ -323,7 +318,7 @@ class AnimationScene(Scene):
         pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=4)
         fill_w = int(bar_w * progress)
         if fill_w > 0:
-            bar_color = (80, 80, 80) if sec_type == SectionType.rest else profile.color
+            bar_color = profile.color
             pygame.draw.rect(surface, bar_color, (x, y, fill_w, bar_h), border_radius=4)
         y += 20
 
