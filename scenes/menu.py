@@ -6,12 +6,10 @@ from tkinter import messagebox
 
 import customtkinter as ctk
 
-from animations import ANIMATION_STYLES
 from scenes.base import Scene
 from ui.workout_editor import WorkoutEditorDialog
 from workout_store import load_workouts, save_workouts
 
-_STYLE_NAMES = list(ANIMATION_STYLES.keys())
 _TOOLTIP_DELAY_MS = 1000
 
 
@@ -75,15 +73,6 @@ class MenuScene(Scene):
         ctk.CTkLabel(root, text="Workouts", font=("", 14)).pack(anchor="w", padx=16)
         self._list_frame = ctk.CTkScrollableFrame(root, height=280)
         self._list_frame.pack(fill="x", padx=16, pady=(0, 8))
-
-        # Animation style selector
-        style_row = ctk.CTkFrame(root, fg_color="transparent")
-        style_row.pack(fill="x", padx=16, pady=(0, 6))
-        ctk.CTkLabel(style_row, text="Animation Style:", font=("", 13)).pack(side="left")
-        self._style_var = ctk.StringVar(value="Rowing Figure V2")
-        ctk.CTkOptionMenu(style_row, variable=self._style_var, values=_STYLE_NAMES, width=180).pack(
-            side="left", padx=(8, 0)
-        )
 
         # Button row
         btn_row = ctk.CTkFrame(root, fg_color="transparent")
@@ -190,11 +179,10 @@ class MenuScene(Scene):
         if self._selected_idx is None:
             return
         workout = self.workouts[self._selected_idx]
-        style = self._style_var.get()
         self._root.destroy()
         from scenes.animation import AnimationScene
 
-        self.manager.switch_to(AnimationScene(self.manager, workout=workout, animation_style=style))
+        self.manager.switch_to(AnimationScene(self.manager, workout=workout))
 
     def _on_exit(self, root):
         root.destroy()

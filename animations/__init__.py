@@ -1,3 +1,3 @@
-from animations.styles import ANIMATION_STYLES
+from animations.styles import RowingFigureV2Animation
 
-__all__ = ["ANIMATION_STYLES"]
+__all__ = ["RowingFigureV2Animation"]
