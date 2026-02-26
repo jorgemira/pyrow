@@ -5,8 +5,8 @@ import math
 
 import pygame
 
-from animations.base import DRILL_PROFILES, BaseAnimation, DrillProfile, get_position, is_in_pause
-from animations.styles import ANIMATION_STYLES
+from animations.base import DRILL_PROFILES, DrillProfile, get_position, is_in_pause
+from animations.styles import RowingFigureV2Animation
 from models.workout import SectionType, Workout
 from scenes.base import Scene
 from workout_player import WorkoutPlayer
@@ -20,7 +20,6 @@ DIM_TEXT = (150, 150, 150)
 WARNING_BG = (50, 40, 20)
 WARNING_BORDER = (255, 200, 60)
 
-_FIGURE_STYLES = {"Rowing Figure", "Rowing Figure V2"}
 _REST_PROFILE = DrillProfile(1.0, 0.0, None, (140, 200, 255))
 
 
@@ -62,37 +61,21 @@ class _Button:
 
 
 class AnimationScene(Scene):
-    def __init__(self, manager, workout: Workout | None = None, animation_style: str = "Rowing Figure V2"):
+    def __init__(self, manager, workout: Workout | None = None):
         super().__init__(manager)
         self.workout = workout
-        self._style_name = animation_style
 
     # ── Lifecycle ────────────────────────────────────────────────
 
     def enter(self):
         monitor_w, monitor_h = pygame.display.get_desktop_sizes()[0]
-        self._is_figure = self._style_name in _FIGURE_STYLES
-
-        if self._is_figure:
-            self.sw = min(820, monitor_w)
-            self.sh = min(400, monitor_h - 60)
-            self.window = pygame.window.Window(
-                "PyRow",
-                size=(self.sw, self.sh),
-            )
-            self.window.position = ((monitor_w - self.sw) // 2, 30)
-        else:
-            self.sw = monitor_w
-            self.sh = monitor_h // 10
-            self.window = pygame.window.Window(
-                "PyRow",
-                size=(self.sw, self.sh),
-                borderless=True,
-            )
-            try:
-                self.window.position = (0, 0)
-            except pygame.error:
-                pass
+        self.sw = min(820, monitor_w)
+        self.sh = min(400, monitor_h - 60)
+        self.window = pygame.window.Window(
+            "PyRow",
+            size=(self.sw, self.sh),
+        )
+        self.window.position = ((monitor_w - self.sw) // 2, 30)
         self.window.always_on_top = True
 
         # Fonts — large enough to read from the rowing machine
@@ -125,9 +108,8 @@ class AnimationScene(Scene):
         self._profile = DRILL_PROFILES[self._drill]
         self._position = get_position(0.0, self._profile)
 
-        # Animation style
-        style_cls = ANIMATION_STYLES.get(self._style_name, list(ANIMATION_STYLES.values())[0])
-        self._animation: BaseAnimation = style_cls()
+        # Animation
+        self._animation = RowingFigureV2Animation()
 
         # Buttons
         self._buttons: list[_Button] = []
