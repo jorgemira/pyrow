@@ -32,3 +32,5 @@ Thumbs.db
 
 # Project-specific
 .worktrees/
+.claude/
+docs/plans/
