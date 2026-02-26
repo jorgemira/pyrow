@@ -17,14 +17,14 @@ Clone the repository and install dependencies::
     uv sync
 
 This installs both runtime dependencies (``pygame-ce``, ``customtkinter``) and
-development tools (``ruff``, ``ty``, ``pre-commit``, ``sphinx``).
+development tools (``ruff``, ``ty``, ``prek``, ``sphinx``).
 
 Development Setup
 -----------------
 
-Install pre-commit hooks to enforce code quality on every commit::
+Install prek hooks to enforce code quality on every commit::
 
-    uv run pre-commit install
+    prek install
 
 The hooks run automatically on ``git commit`` and will:
 

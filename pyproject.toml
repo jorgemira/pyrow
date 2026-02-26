@@ -13,7 +13,7 @@ pyrow = "main:main"
 
 [dependency-groups]
 dev = [
-    "pre-commit>=4.2.0",
+    "prek>=0.3.0",
     "ruff>=0.15.0",
     "sphinx>=8.0.0",
     "ty>=0.0.1a0",

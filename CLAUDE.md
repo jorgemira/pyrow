@@ -13,7 +13,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Lint**: `uv run ruff check --fix .`
 - **Format**: `uv run ruff format .`
 - **Type check**: `uv run ty check`
-- **All checks** (what pre-commit runs): `uv run pre-commit run --all-files`
+- **All checks** (what prek runs): `prek run --all-files`
 - **Build docs**: `cd docs && uv run sphinx-build . _build`
 
 ## Architecture
@@ -39,12 +39,13 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - Python 3.14+, managed with `uv`
 - Formatting and linting via `ruff` (config in pyproject.toml)
 - Type checking via `ty`
-- Pre-commit hooks enforce all checks on commit
+- prek hooks enforce all checks on commit
 - Line length: 120 characters
 - Use `from __future__ import annotations` in all modules
 
 ## Working with Workouts
 
+- `description` field on `Workout` — optional, shown as tooltip on hover in menu
 - `section_type` and `rest_after` are only serialized when non-default (backward compat)
 - `rest_after` inserts rest between repeats (not after last) for multi-repeat sections
 - `rest_after` inserts rest after the section for single-repeat sections

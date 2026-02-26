@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import tkinter as tk
 from tkinter import messagebox
 
 import customtkinter as ctk
@@ -11,6 +12,45 @@ from ui.workout_editor import WorkoutEditorDialog
 from workout_store import load_workouts, save_workouts
 
 _STYLE_NAMES = list(ANIMATION_STYLES.keys())
+_TOOLTIP_DELAY_MS = 1000
+
+
+class _Tooltip:
+    """Hover tooltip that appears after a delay."""
+
+    def __init__(self, root: ctk.CTk):
+        self._root = root
+        self._tip: tk.Toplevel | None = None
+        self._after_id: str | None = None
+
+    def schedule(self, widget: ctk.CTkBaseClass, text: str):
+        self.cancel()
+        if not text:
+            return
+        self._after_id = self._root.after(_TOOLTIP_DELAY_MS, lambda: self._show(widget, text))
+
+    def cancel(self):
+        if self._after_id is not None:
+            self._root.after_cancel(self._after_id)
+            self._after_id = None
+        self._hide()
+
+    def _show(self, widget: ctk.CTkBaseClass, text: str):
+        self._after_id = None
+        self._hide()
+        x = widget.winfo_rootx()
+        y = widget.winfo_rooty() + widget.winfo_height() + 4
+        tip = tk.Toplevel(self._root)
+        tip.wm_overrideredirect(True)
+        tip.wm_geometry(f"+{x}+{y}")
+        label = tk.Label(tip, text=text, background="#333333", foreground="#dddddd", padx=8, pady=4, wraplength=400)
+        label.pack()
+        self._tip = tip
+
+    def _hide(self):
+        if self._tip is not None:
+            self._tip.destroy()
+            self._tip = None
 
 
 class MenuScene(Scene):
@@ -26,6 +66,7 @@ class MenuScene(Scene):
         root.geometry("600x500")
         root.resizable(False, False)
         self._root = root
+        self._tooltip = _Tooltip(root)
 
         # Title
         ctk.CTkLabel(root, text="PyRow", font=("", 36, "bold")).pack(pady=(18, 10))
@@ -80,6 +121,7 @@ class MenuScene(Scene):
     # ── List management ──────────────────────────────────────────
 
     def _refresh_list(self):
+        self._tooltip.cancel()
         for w in self._list_frame.winfo_children():
             w.destroy()
         self._row_buttons = []
@@ -93,6 +135,9 @@ class MenuScene(Scene):
                 command=lambda idx=i: self._select(idx),
             )
             btn.pack(fill="x", pady=1)
+            desc = wo.description
+            btn.bind("<Enter>", lambda e, b=btn, d=desc: self._tooltip.schedule(b, d))
+            btn.bind("<Leave>", lambda e: self._tooltip.cancel())
             self._row_buttons.append(btn)
         self._update_buttons()
 
