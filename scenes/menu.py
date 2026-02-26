@@ -6,6 +6,7 @@ from tkinter import messagebox
 
 import customtkinter as ctk
 
+from models.workout import Level, Workout
 from scenes.base import Scene
 from ui.workout_editor import WorkoutEditorDialog
 from workout_store import load_workouts, save_workouts
@@ -14,6 +15,22 @@ _TOOLTIP_DELAY_MS = 1000
 _SCROLL_STEP = 0.06  # fraction of view to scroll per wheel tick
 _SCROLL_EASE = 0.18  # lerp factor per animation frame (0-1, higher = snappier)
 _SCROLL_INTERVAL_MS = 12  # animation frame interval
+
+_LEVEL_FILTERS = ["All"] + [lv.label for lv in Level]
+_DURATION_FILTERS = ["All", "< 20min", "20-30min", "30-45min", "> 45min"]
+
+
+def _duration_matches(workout: Workout, filt: str) -> bool:
+    mins = workout.total_duration / 60
+    if filt == "< 20min":
+        return mins < 20
+    if filt == "20-30min":
+        return 20 <= mins <= 30
+    if filt == "30-45min":
+        return 30 < mins <= 45
+    if filt == "> 45min":
+        return mins > 45
+    return True
 
 
 class _SmoothScroller:
@@ -110,11 +127,12 @@ class MenuScene(Scene):
         ctk.set_default_color_theme("blue")
 
         self.workouts = load_workouts()
-        self._selected_idx: int | None = None
+        self._selected_idx: int | None = None  # index into self._filtered
+        self._filtered: list[int] = []  # indices into self.workouts
 
         root = ctk.CTk()
         root.title("PyRow")
-        root.geometry("600x500")
+        root.geometry("600x520")
         root.resizable(False, False)
         self._root = root
         self._tooltip = _Tooltip(root)
@@ -122,9 +140,24 @@ class MenuScene(Scene):
         # Title
         ctk.CTkLabel(root, text="PyRow", font=("", 36, "bold")).pack(pady=(18, 10))
 
+        # Filter row
+        filter_row = ctk.CTkFrame(root, fg_color="transparent")
+        filter_row.pack(fill="x", padx=16, pady=(0, 6))
+        ctk.CTkLabel(filter_row, text="Level:", font=("", 13)).pack(side="left")
+        self._level_var = ctk.StringVar(value="All")
+        ctk.CTkOptionMenu(
+            filter_row, variable=self._level_var, values=_LEVEL_FILTERS, width=130, command=self._on_filter_change
+        ).pack(side="left", padx=(4, 12))
+        ctk.CTkLabel(filter_row, text="Duration:", font=("", 13)).pack(side="left")
+        self._duration_var = ctk.StringVar(value="All")
+        ctk.CTkOptionMenu(
+            filter_row, variable=self._duration_var, values=_DURATION_FILTERS, width=130, command=self._on_filter_change
+        ).pack(side="left", padx=(4, 0))
+
         # Workout list
-        ctk.CTkLabel(root, text="Workouts", font=("", 14)).pack(anchor="w", padx=16)
-        self._list_frame = ctk.CTkScrollableFrame(root, height=280)
+        self._list_label = ctk.CTkLabel(root, text="Workouts", font=("", 14))
+        self._list_label.pack(anchor="w", padx=16)
+        self._list_frame = ctk.CTkScrollableFrame(root, height=260)
         self._list_frame.pack(fill="x", padx=16, pady=(0, 8))
         self._scroller = _SmoothScroller(self._list_frame)
 
@@ -161,27 +194,47 @@ class MenuScene(Scene):
         root.protocol("WM_DELETE_WINDOW", lambda: self._on_exit(root))
         root.mainloop()
 
+    # ── Filtering ─────────────────────────────────────────────
+
+    def _apply_filters(self):
+        level_filt = self._level_var.get()
+        dur_filt = self._duration_var.get()
+        self._filtered = []
+        for i, wo in enumerate(self.workouts):
+            if level_filt != "All" and wo.level.label != level_filt:
+                continue
+            if not _duration_matches(wo, dur_filt):
+                continue
+            self._filtered.append(i)
+
+    def _on_filter_change(self, _value=None):
+        self._selected_idx = None
+        self._refresh_list()
+
     # ── List management ──────────────────────────────────────────
 
     def _refresh_list(self):
         self._tooltip.cancel()
+        self._apply_filters()
         for w in self._list_frame.winfo_children():
             w.destroy()
         self._row_buttons = []
-        for i, wo in enumerate(self.workouts):
+        for list_pos, real_idx in enumerate(self._filtered):
+            wo = self.workouts[real_idx]
             btn = ctk.CTkButton(
                 self._list_frame,
-                text=wo.name,
+                text=f"{wo.name}  ({wo.total_duration_str})",
                 anchor="w",
-                fg_color="#1f6aa5" if i == self._selected_idx else "#3b3b3b",
+                fg_color="#1f6aa5" if list_pos == self._selected_idx else "#3b3b3b",
                 hover_color="#4a4a4a",
-                command=lambda idx=i: self._select(idx),
+                command=lambda idx=list_pos: self._select(idx),
             )
             btn.pack(fill="x", pady=1)
             desc = wo.description
             btn.bind("<Enter>", lambda e, b=btn, d=desc: self._tooltip.schedule(b, d))
             btn.bind("<Leave>", lambda e: self._tooltip.cancel())
             self._row_buttons.append(btn)
+        self._list_label.configure(text=f"Workouts ({len(self._filtered)}/{len(self.workouts)})")
         self._update_buttons()
 
     def _select(self, idx: int):
@@ -197,6 +250,12 @@ class MenuScene(Scene):
         self._del_btn.configure(state=state)
         self._play_btn.configure(state=state)
 
+    def _real_idx(self) -> int | None:
+        """Map filtered list selection to real workout index."""
+        if self._selected_idx is None:
+            return None
+        return self._filtered[self._selected_idx]
+
     # ── Button actions ───────────────────────────────────────────
 
     def _on_add(self):
@@ -205,34 +264,37 @@ class MenuScene(Scene):
         if result:
             self.workouts.append(result)
             save_workouts(self.workouts)
-            self._selected_idx = len(self.workouts) - 1
+            self._selected_idx = None
             self._refresh_list()
 
     def _on_edit(self):
-        if self._selected_idx is None:
+        real = self._real_idx()
+        if real is None:
             return
-        workout = self.workouts[self._selected_idx]
+        workout = self.workouts[real]
         dialog = WorkoutEditorDialog(self._root, copy.deepcopy(workout))
         result = dialog.show()
         if result:
-            self.workouts[self._selected_idx] = result
+            self.workouts[real] = result
             save_workouts(self.workouts)
             self._refresh_list()
 
     def _on_delete(self):
-        if self._selected_idx is None:
+        real = self._real_idx()
+        if real is None:
             return
-        name = self.workouts[self._selected_idx].name
+        name = self.workouts[real].name
         if messagebox.askyesno("Delete Workout", f'Delete "{name}"?', parent=self._root):
-            self.workouts.pop(self._selected_idx)
+            self.workouts.pop(real)
             self._selected_idx = None
             save_workouts(self.workouts)
             self._refresh_list()
 
     def _on_play(self, root=None):
-        if self._selected_idx is None:
+        real = self._real_idx()
+        if real is None:
             return
-        workout = self.workouts[self._selected_idx]
+        workout = self.workouts[real]
         self._root.destroy()
         from scenes.animation import AnimationScene
 

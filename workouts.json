@@ -953,7 +953,8 @@
         "repeats": 1
       }
     ],
-    "description": "Work/rest intervals with higher stroke rates and tension. Develops power and cardiovascular fitness efficiently."
+    "description": "Work/rest intervals with higher stroke rates and tension. Develops power and cardiovascular fitness efficiently.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 20min (26min) \u2014 Pyramid",
@@ -1015,7 +1016,8 @@
         "repeats": 1
       }
     ],
-    "description": "Rate pyramid climbing and descending through stroke rates. Challenges pace discipline and power output control."
+    "description": "Rate pyramid climbing and descending through stroke rates. Challenges pace discipline and power output control.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 20min (26min) \u2014 Drill Focus",
@@ -1093,7 +1095,8 @@
         "repeats": 1
       }
     ],
-    "description": "Advanced drill combinations with higher stroke rates. Reinforces technique under greater intensity."
+    "description": "Advanced drill combinations with higher stroke rates. Reinforces technique under greater intensity.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 30min (36min) \u2014 Intervals",
@@ -1197,7 +1200,8 @@
         "repeats": 1
       }
     ],
-    "description": "Sustained work intervals at race-adjacent stroke rates with structured rest. Builds interval fitness and mental toughness."
+    "description": "Sustained work intervals at race-adjacent stroke rates with structured rest. Builds interval fitness and mental toughness.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 30min (36min) \u2014 Pyramid",
@@ -1259,7 +1263,8 @@
         "repeats": 1
       }
     ],
-    "description": "Extended rate pyramid with longer steps. Tests ability to hold technique across a wide range of stroke rates."
+    "description": "Extended rate pyramid with longer steps. Tests ability to hold technique across a wide range of stroke rates.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 30min (36min) \u2014 Steady State",
@@ -1286,7 +1291,8 @@
         "repeats": 1
       }
     ],
-    "description": "Moderate-intensity steady row at 22 spm. Builds aerobic power while maintaining good form."
+    "description": "Moderate-intensity steady row at 22 spm. Builds aerobic power while maintaining good form.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 30min (36min) \u2014 Mixed Drills & Power",
@@ -1375,7 +1381,8 @@
         "repeats": 1
       }
     ],
-    "description": "Alternates drill segments with high-power rowing. Applies technique focus directly into powerful strokes."
+    "description": "Alternates drill segments with high-power rowing. Applies technique focus directly into powerful strokes.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 40min (46min) \u2014 Intervals",
@@ -1507,7 +1514,8 @@
         "repeats": 1
       }
     ],
-    "description": "Longer interval session with progressive intensity. Develops sustained power output and recovery capacity."
+    "description": "Longer interval session with progressive intensity. Develops sustained power output and recovery capacity.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 40min (46min) \u2014 Pyramid",
@@ -1576,7 +1584,8 @@
         "repeats": 1
       }
     ],
-    "description": "Full ascending/descending pyramid across a wide stroke rate range. A thorough pace control challenge."
+    "description": "Full ascending/descending pyramid across a wide stroke rate range. A thorough pace control challenge.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 40min (46min) \u2014 Endurance",
@@ -1624,7 +1633,8 @@
         "repeats": 1
       }
     ],
-    "description": "Extended moderate-intensity row building deep aerobic fitness. Focus on efficiency and relaxation at pace."
+    "description": "Extended moderate-intensity row building deep aerobic fitness. Focus on efficiency and relaxation at pace.",
+    "level": "intermediate"
   },
   {
     "name": "Intermediate 40min (46min) \u2014 Drill Endurance",
@@ -1728,7 +1738,8 @@
         "repeats": 1
       }
     ],
-    "description": "Long drill-focused session mixing technique work with sustained rowing. Embeds good habits over distance."
+    "description": "Long drill-focused session mixing technique work with sustained rowing. Embeds good habits over distance.",
+    "level": "intermediate"
   },
   {
     "name": "Advanced 20min (26min) \u2014 Power Intervals",
@@ -1818,7 +1829,8 @@
         "repeats": 1
       }
     ],
-    "description": "High-intensity intervals at elevated stroke rates and tension. Targets maximal power output in short bursts."
+    "description": "High-intensity intervals at elevated stroke rates and tension. Targets maximal power output in short bursts.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 20min (26min) \u2014 Sprint Pyramid",
@@ -1887,7 +1899,8 @@
         "repeats": 1
       }
     ],
-    "description": "Aggressive rate pyramid peaking at 30+ spm. Develops top-end speed and rapid rate changes."
+    "description": "Aggressive rate pyramid peaking at 30+ spm. Develops top-end speed and rapid rate changes.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 20min (26min) \u2014 High-Intensity Drills",
@@ -1968,7 +1981,8 @@
         "repeats": 1
       }
     ],
-    "description": "Drill work at high stroke rates and tension. Forces technical precision under race-like conditions."
+    "description": "Drill work at high stroke rates and tension. Forces technical precision under race-like conditions.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 30min (36min) \u2014 Power Intervals",
@@ -2072,7 +2086,8 @@
         "repeats": 1
       }
     ],
-    "description": "Extended high-power interval session with structured rest. Builds sustained power and lactate tolerance."
+    "description": "Extended high-power interval session with structured rest. Builds sustained power and lactate tolerance.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 30min (36min) \u2014 Pyramid",
@@ -2134,7 +2149,8 @@
         "repeats": 1
       }
     ],
-    "description": "Steep rate pyramid with tight transitions. Challenges cardiovascular capacity and stroke rate agility."
+    "description": "Steep rate pyramid with tight transitions. Challenges cardiovascular capacity and stroke rate agility.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 30min (36min) \u2014 Race Pace",
@@ -2161,7 +2177,8 @@
         "repeats": 1
       }
     ],
-    "description": "Sustained race-pace rowing at 26-28 spm. Simulates competitive intensity for mental and physical preparation."
+    "description": "Sustained race-pace rowing at 26-28 spm. Simulates competitive intensity for mental and physical preparation.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 30min (36min) \u2014 Tabata Style",
@@ -2321,7 +2338,8 @@
         "repeats": 1
       }
     ],
-    "description": "Tabata-inspired 20s on / 10s off bursts. Pushes anaerobic capacity with minimal recovery windows."
+    "description": "Tabata-inspired 20s on / 10s off bursts. Pushes anaerobic capacity with minimal recovery windows.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 40min (46min) \u2014 Power Intervals",
@@ -2453,7 +2471,8 @@
         "repeats": 1
       }
     ],
-    "description": "Long high-intensity interval session. Demands sustained effort across many work bouts with disciplined recovery."
+    "description": "Long high-intensity interval session. Demands sustained effort across many work bouts with disciplined recovery.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 40min (46min) \u2014 Endurance",
@@ -2501,7 +2520,8 @@
         "repeats": 1
       }
     ],
-    "description": "Demanding steady-state row at elevated pace. Tests ability to hold technique and power over extended time."
+    "description": "Demanding steady-state row at elevated pace. Tests ability to hold technique and power over extended time.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 40min (46min) \u2014 Race Simulation",
@@ -2556,7 +2576,8 @@
         "repeats": 1
       }
     ],
-    "description": "Full race simulation with progressive pace increases. Mimics the strategic pacing of a competitive 2k/5k race."
+    "description": "Full race simulation with progressive pace increases. Mimics the strategic pacing of a competitive 2k/5k race.",
+    "level": "advanced"
   },
   {
     "name": "Advanced 40min (46min) \u2014 Pyramid",
@@ -2625,7 +2646,8 @@
         "repeats": 1
       }
     ],
-    "description": "Grand pyramid covering the full stroke rate spectrum. The ultimate pace control and endurance challenge."
+    "description": "Grand pyramid covering the full stroke rate spectrum. The ultimate pace control and endurance challenge.",
+    "level": "advanced"
   },
   {
     "name": "Interval 6x2min (23min)",
@@ -2655,7 +2677,8 @@
         "section_type": "cooldown"
       }
     ],
-    "description": "Classic 6x2-minute interval workout with 60-second rest. A staple Concept2 format for building speed and power."
+    "description": "Classic 6x2-minute interval workout with 60-second rest. A staple Concept2 format for building speed and power.",
+    "level": "intermediate"
   },
   {
     "name": "Tabata 4min (10min)",
@@ -2685,7 +2708,8 @@
         "section_type": "cooldown"
       }
     ],
-    "description": "True Tabata protocol: 8 rounds of 20s max effort / 10s rest. Short but brutally effective for anaerobic fitness."
+    "description": "True Tabata protocol: 8 rounds of 20s max effort / 10s rest. Short but brutally effective for anaerobic fitness.",
+    "level": "advanced"
   },
   {
     "name": "Pyramid with Rest (28min)",
@@ -2762,7 +2786,8 @@
         "section_type": "cooldown"
       }
     ],
-    "description": "Ascending duration pyramid (1-5 minutes) with 90-second rest between steps. Combines endurance and interval training."
+    "description": "Ascending duration pyramid (1-5 minutes) with 90-second rest between steps. Combines endurance and interval training.",
+    "level": "intermediate"
   },
   {
     "name": "30/30 Sprint Intervals (12min)",
@@ -2792,7 +2817,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   },
   {
     "name": "5x5min Threshold (36min)",
@@ -2822,7 +2848,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Ratings Ladder (34min)",
@@ -2930,7 +2957,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Speed Pyramid 5-4-3-2-1 (26min)",
@@ -2991,7 +3019,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   },
   {
     "name": "12x30s Max Effort (33min)",
@@ -3021,7 +3050,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   },
   {
     "name": "10x90s On/Off (36min)",
@@ -3051,7 +3081,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Balanced 10x2:30 (36min)",
@@ -3081,7 +3112,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Stroke Rate Wave (36min)",
@@ -3173,7 +3205,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "4x4min Aerobic (26min)",
@@ -3203,7 +3236,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Marathon Prep 60min",
@@ -3232,7 +3266,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   },
   {
     "name": "Concept2 First Strokes (15min)",
@@ -3567,7 +3602,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "3-2-1 Stroke Rate Pyramid (30min)",
@@ -3610,7 +3646,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "Ascending Ladder 1-2-3-4-3-2-1 (29min)",
@@ -3687,7 +3724,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "8x1min Speed Intervals (23min)",
@@ -3717,7 +3755,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   },
   {
     "name": "3x12min Aerobic Build (46min)",
@@ -3762,7 +3801,8 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "intermediate"
   },
   {
     "name": "HIIT 30/30 Sprint Blitz (22min)",
@@ -3807,6 +3847,7 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "level": "advanced"
   }
 ]

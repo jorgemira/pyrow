@@ -5,12 +5,14 @@ from tkinter import messagebox
 
 import customtkinter as ctk
 
-from models.workout import DrillEntry, DrillType, Section, SectionType, Workout
+from models.workout import DrillEntry, DrillType, Level, Section, SectionType, Workout
 
 _DRILL_OPTIONS = [d.label for d in DrillType]
 _DRILL_BY_LABEL = {d.label: d for d in DrillType}
 _SECTION_TYPE_OPTIONS = [t.label for t in SectionType]
 _SECTION_TYPE_BY_LABEL = {t.label: t for t in SectionType}
+_LEVEL_OPTIONS = [lv.label for lv in Level]
+_LEVEL_BY_LABEL = {lv.label: lv for lv in Level}
 
 
 class WorkoutEditorDialog(ctk.CTkToplevel):
@@ -54,6 +56,14 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         self._desc_entry = ctk.CTkEntry(self, width=520, placeholder_text="Optional short description")
         self._desc_entry.insert(0, self.workout.description)
         self._desc_entry.pack(**pad)
+
+        # Level
+        level_row = ctk.CTkFrame(self, fg_color="transparent")
+        level_row.pack(fill="x", **pad)
+        ctk.CTkLabel(level_row, text="Level").pack(side="left")
+        self._level_menu = ctk.CTkOptionMenu(level_row, values=_LEVEL_OPTIONS, width=140)
+        self._level_menu.set(self.workout.level.label)
+        self._level_menu.pack(side="left", padx=(8, 0))
 
         # ── Section list ─────────────────────────────────────────
         ctk.CTkLabel(self, text="Sections").pack(anchor="w", **pad)
@@ -391,6 +401,9 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
             return
         self.workout.name = name
         self.workout.description = self._desc_entry.get().strip()
+        level_label = self._level_menu.get()
+        if level_label in _LEVEL_BY_LABEL:
+            self.workout.level = _LEVEL_BY_LABEL[level_label]
         self.result = self.workout
         self.grab_release()
         self.destroy()
