@@ -33,6 +33,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Flat playback**: `Workout.flatten_sections()` expands repeats/rest for the player
 - **Section types**: work, rest, warmup, cooldown — affect visual presentation only
 - **Drill cycling**: sections contain drill entries that rotate on each stroke
+- **Smooth transitions**: `WorkoutPlayer` adjusts cycle time per section for whole-stroke boundaries; `get_position()` cosine-blends offsets on transition strokes
 
 ## Code Style
 
