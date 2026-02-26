@@ -19,7 +19,7 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
     def __init__(self, parent: ctk.CTk, workout: Workout | None = None):
         super().__init__(parent)
         self.title("Edit Workout" if workout else "New Workout")
-        self.geometry("550x650")
+        self.geometry("550x690")
         self.resizable(False, False)
 
         self.workout = copy.deepcopy(workout) if workout else Workout(name="")
@@ -48,6 +48,12 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         self._name_entry = ctk.CTkEntry(self, width=520)
         self._name_entry.insert(0, self.workout.name)
         self._name_entry.pack(**pad)
+
+        # Description
+        ctk.CTkLabel(self, text="Description").pack(anchor="w", **pad)
+        self._desc_entry = ctk.CTkEntry(self, width=520, placeholder_text="Optional short description")
+        self._desc_entry.insert(0, self.workout.description)
+        self._desc_entry.pack(**pad)
 
         # ── Section list ─────────────────────────────────────────
         ctk.CTkLabel(self, text="Sections").pack(anchor="w", **pad)
@@ -384,6 +390,7 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
             messagebox.showwarning("Validation", "Workout name cannot be empty.", parent=self)
             return
         self.workout.name = name
+        self.workout.description = self._desc_entry.get().strip()
         self.result = self.workout
         self.grab_release()
         self.destroy()

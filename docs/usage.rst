@@ -18,7 +18,8 @@ Menu Screen
 The application opens with a customtkinter menu that lists all available
 workouts loaded from ``workouts.json``. From the menu you can:
 
-- **Select a workout** from the scrollable list
+- **Select a workout** from the scrollable list — hover for ~1 second to see a
+  description tooltip
 - **Choose an animation style** — "Rowing Figure V2" (windowed) is the default;
   other styles render as a thin borderless strip at the top of the screen
 - **Play** the selected workout to launch the animation scene

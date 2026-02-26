@@ -98,6 +98,7 @@ class Section:
 class Workout:
     name: str
     sections: list[Section] = field(default_factory=list)
+    description: str = ""
 
     def flatten_sections(self) -> list[Section]:
         """Expand repeats and insert rest sections for playback."""
@@ -129,14 +130,18 @@ class Workout:
         return f"{mins}min"
 
     def to_dict(self) -> dict:
-        return {
+        d: dict = {
             "name": self.name,
             "sections": [s.to_dict() for s in self.sections],
         }
+        if self.description:
+            d["description"] = self.description
+        return d
 
     @classmethod
     def from_dict(cls, data: dict) -> Workout:
         return cls(
             name=data["name"],
             sections=[Section.from_dict(s) for s in data.get("sections", [])],
+            description=data.get("description", ""),
         )

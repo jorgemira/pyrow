@@ -11,6 +11,7 @@ JSON Schema
 
     {
       "name": "Interval 6x2min (23min)",
+      "description": "Classic 6x2-minute interval workout with 60-second rest.",
       "sections": [
         {
           "duration": 180,
@@ -38,6 +39,17 @@ JSON Schema
         }
       ]
     }
+
+Workout Fields
+--------------
+
+==================  ========  =======  ================================================
+Field               Type      Default  Description
+==================  ========  =======  ================================================
+``name``            string    —        Display name of the workout
+``description``     string    ""       Optional short description (shown as hover tooltip)
+``sections``        array     []       List of section objects (see below)
+==================  ========  =======  ================================================
 
 Section Fields
 --------------
