@@ -3233,5 +3233,580 @@
         "section_type": "cooldown"
       }
     ]
+  },
+  {
+    "name": "Concept2 First Strokes (15min)",
+    "description": "Very first rowing session from Concept2. Short 3-minute intervals with breaks to stretch and reset form between sets.",
+    "sections": [
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 3,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Concept2 Stroke Rate Explorer (20min)",
+    "description": "Learn to change stroke rates deliberately while keeping consistent form. Progressive rate increases from 20 to 24 spm with rest between.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "British Rowing Go Row \u2014 Week 1 (14min)",
+    "description": "Official British Rowing beginner program entry. Very short 1-minute intervals with equal rest, designed for absolute beginners.",
+    "sections": [
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 5,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "British Rowing Go Row \u2014 Week 4 (18min)",
+    "description": "Progressed version from British Rowing with longer 5-minute work blocks. Builds aerobic base and confidence for sustained rowing.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 2,
+        "rest_after": 120
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Concept2 Two Tens (29min)",
+    "description": "First sustained rowing effort from Concept2. Two 10-minute pieces build endurance and pacing awareness with a rest break between.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 22,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Technique Drills Circuit (18min)",
+    "description": "Isolate parts of the rowing stroke using drills. Arms-only through full stroke, then pause drills for timing. Based on Concept2 drill recommendations.",
+    "sections": [
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_only",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "arms_and_hips",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "hips_and_legs",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_arms_away",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [
+          {
+            "type": "pause_body_over",
+            "count": 1
+          }
+        ],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Pete Plan \u2014 Beginner Week 1 (26min)",
+    "description": "Entry point for the famous Pete Plan program. 20 minutes of steady state at low rate to build aerobic base. Focus on consistent split and pacing.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 1200,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Concept2 1min On/Off (24min)",
+    "description": "Classic Concept2 interval session. Alternating 1 minute hard and 1 minute easy for 10 rounds builds both aerobic and anaerobic capacity.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 28,
+        "tension": 5,
+        "drills": [],
+        "repeats": 10,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "3-2-1 Stroke Rate Pyramid (30min)",
+    "description": "Pyramid cycling through 3-2-1 minute blocks at increasing stroke rates, repeated 4 times. Teaches rate changes and pacing discipline.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 3,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 25,
+        "tension": 4,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 28,
+        "tension": 5,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "Ascending Ladder 1-2-3-4-3-2-1 (29min)",
+    "description": "Classic pyramid ladder where work intervals ascend then descend. Rest is half the preceding work interval. Builds pacing awareness and mental toughness.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 30
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 90
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 90
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 28,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "8x1min Speed Intervals (23min)",
+    "description": "Short high-intensity 1-minute intervals with generous 90-second rest. Builds speed and power with near-full recovery between efforts. Based on CrossFit rowing.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 5,
+        "drills": [],
+        "repeats": 8,
+        "rest_after": 90
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "3x12min Aerobic Build (46min)",
+    "description": "Three 12-minute blocks at progressively increasing stroke rates. Develops aerobic endurance at threshold effort, simulating race-build strategy.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
+  },
+  {
+    "name": "HIIT 30/30 Sprint Blitz (22min)",
+    "description": "Two rounds of 30-second max sprints with equal rest. 10 sprints then a break then 5 more. Builds explosive power and anaerobic capacity.",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 30,
+        "stroke_rate": 32,
+        "tension": 6,
+        "drills": [],
+        "repeats": 10,
+        "rest_after": 30
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 30,
+        "stroke_rate": 32,
+        "tension": 6,
+        "drills": [],
+        "repeats": 5,
+        "rest_after": 30
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ]
   }
 ]
