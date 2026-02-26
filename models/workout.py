@@ -4,6 +4,16 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 
+class Level(Enum):
+    beginner = "beginner"
+    intermediate = "intermediate"
+    advanced = "advanced"
+
+    @property
+    def label(self) -> str:
+        return self.value.capitalize()
+
+
 class SectionType(Enum):
     work = "work"
     rest = "rest"
@@ -99,6 +109,7 @@ class Workout:
     name: str
     sections: list[Section] = field(default_factory=list)
     description: str = ""
+    level: Level = Level.beginner
 
     def flatten_sections(self) -> list[Section]:
         """Expand repeats and insert rest sections for playback."""
@@ -136,6 +147,8 @@ class Workout:
         }
         if self.description:
             d["description"] = self.description
+        if self.level != Level.beginner:
+            d["level"] = self.level.value
         return d
 
     @classmethod
@@ -144,4 +157,5 @@ class Workout:
             name=data["name"],
             sections=[Section.from_dict(s) for s in data.get("sections", [])],
             description=data.get("description", ""),
+            level=Level(data.get("level", "beginner")),
         )
