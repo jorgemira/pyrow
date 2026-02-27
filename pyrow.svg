@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a6fb5"/>
+      <stop offset="100%" stop-color="#0d4a7a"/>
+    </linearGradient>
+    <linearGradient id="boat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B4513"/>
+      <stop offset="100%" stop-color="#5C2D06"/>
+    </linearGradient>
+    <linearGradient id="snakeBody" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3B7A2B"/>
+      <stop offset="50%" stop-color="#4CAF50"/>
+      <stop offset="100%" stop-color="#3B7A2B"/>
+    </linearGradient>
+    <linearGradient id="snakeBelly" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7BC67E"/>
+      <stop offset="50%" stop-color="#A5D6A7"/>
+      <stop offset="100%" stop-color="#7BC67E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="124" fill="#1E1E1E"/>
+  <circle cx="128" cy="128" r="118" fill="#2A2A2A" stroke="#3C8BDB" stroke-width="3"/>
+
+  <!-- Water waves -->
+  <path d="M20 175 Q50 165, 80 175 Q110 185, 140 175 Q170 165, 200 175 Q230 185, 246 175 L246 246 L20 246 Z" fill="url(#water)" opacity="0.6"/>
+  <path d="M20 185 Q55 175, 90 185 Q125 195, 160 185 Q195 175, 230 185 Q245 190, 246 188 L246 246 L20 246 Z" fill="url(#water)" opacity="0.4"/>
+  <path d="M20 195 Q60 188, 100 195 Q140 202, 180 195 Q220 188, 246 195 L246 246 L20 246 Z" fill="#0d4a7a" opacity="0.3"/>
+
+  <!-- Rowing shell (boat) -->
+  <path d="M42 168 Q48 158, 80 156 L200 156 Q232 158, 238 168 Q230 172, 200 174 L80 174 Q50 172, 42 168 Z" fill="url(#boat)"/>
+  <path d="M42 168 Q48 162, 80 160 L200 160 Q232 162, 238 168" fill="none" stroke="#A0622E" stroke-width="1.5"/>
+  <!-- Boat trim line -->
+  <line x1="55" y1="165" x2="225" y2="165" stroke="#D4A574" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Slide rail -->
+  <line x1="90" y1="155" x2="190" y2="155" stroke="#888" stroke-width="2" stroke-linecap="round"/>
+  <!-- Seat on rail -->
+  <rect x="130" y="148" width="20" height="8" rx="3" fill="#D4A574"/>
+
+  <!-- Snake body - coiled on seat, reaching forward -->
+  <!-- Tail coil on seat -->
+  <path d="M155 148 C160 130, 170 125, 165 140 C160 150, 155 135, 160 128"
+        fill="none" stroke="url(#snakeBody)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M155 148 C160 130, 170 125, 165 140 C160 150, 155 135, 160 128"
+        fill="none" stroke="url(#snakeBelly)" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Snake body reaching to oar -->
+  <path d="M160 128 C150 115, 130 108, 115 112 C100 116, 95 125, 100 130"
+        fill="none" stroke="url(#snakeBody)" stroke-width="9" stroke-linecap="round"/>
+  <path d="M160 128 C150 115, 130 108, 115 112 C100 116, 95 125, 100 130"
+        fill="none" stroke="url(#snakeBelly)" stroke-width="4.5" stroke-linecap="round"/>
+
+  <!-- Snake head -->
+  <ellipse cx="96" cy="128" rx="12" ry="9" fill="#4CAF50"/>
+  <ellipse cx="96" cy="128" rx="10" ry="7" fill="#66BB6A"/>
+  <!-- Eyes -->
+  <circle cx="91" cy="124" r="3.5" fill="#FFF"/>
+  <circle cx="101" cy="124" r="3.5" fill="#FFF"/>
+  <circle cx="91" cy="124" r="2" fill="#1A1A1A"/>
+  <circle cx="101" cy="124" r="2" fill="#1A1A1A"/>
+  <!-- Determined eyebrows -->
+  <line x1="88" y1="120" x2="93" y2="121" stroke="#2E7D32" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="104" y1="121" x2="99" y2="120" stroke="#2E7D32" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Tongue -->
+  <path d="M86 130 L80 132 M80 132 L78 130 M80 132 L78 134" fill="none" stroke="#E53935" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Python diamond pattern on body -->
+  <path d="M140 115 L143 112 L146 115 L143 118 Z" fill="#2E7D32" opacity="0.5"/>
+  <path d="M125 112 L128 109 L131 112 L128 115 Z" fill="#2E7D32" opacity="0.5"/>
+  <path d="M157 135 L160 132 L163 135 L160 138 Z" fill="#2E7D32" opacity="0.5"/>
+
+  <!-- Left oar -->
+  <line x1="95" y1="133" x2="38" y2="185" stroke="#C4A882" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Oar blade -->
+  <path d="M38 185 L28 195 L35 200 L45 190 Z" fill="#D4A574" stroke="#A0622E" stroke-width="1"/>
+
+  <!-- Right oar -->
+  <line x1="95" y1="133" x2="45" y2="100" stroke="#C4A882" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Oar blade -->
+  <path d="M45 100 L35 90 L28 95 L38 105 Z" fill="#D4A574" stroke="#A0622E" stroke-width="1"/>
+
+  <!-- Splash effects -->
+  <circle cx="32" cy="190" r="3" fill="#87CEEB" opacity="0.5"/>
+  <circle cx="25" cy="188" r="2" fill="#87CEEB" opacity="0.4"/>
+  <circle cx="38" cy="195" r="2" fill="#87CEEB" opacity="0.3"/>
+
+  <!-- "PyRow" text at bottom -->
+  <text x="128" y="228" font-family="Arial, sans-serif" font-size="26" font-weight="bold"
+        fill="#3C8BDB" text-anchor="middle" letter-spacing="2">PyRow</text>
+
+  <!-- Subtle ring highlight -->
+  <circle cx="128" cy="128" r="118" fill="none" stroke="#4A9FE8" stroke-width="0.5" opacity="0.3"/>
+</svg>

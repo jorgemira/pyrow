@@ -19,6 +19,10 @@ _SCROLL_INTERVAL_MS = 12  # animation frame interval
 _LEVEL_FILTERS = ["All"] + [lv.label for lv in Level]
 _DURATION_FILTERS = ["All", "< 20min", "20-30min", "30-45min", "> 45min"]
 
+# Reference size — font scaling is relative to this
+_REF_W = 600
+_REF_H = 520
+
 
 def _duration_matches(workout: Workout, filt: str) -> bool:
     mins = workout.total_duration / 60
@@ -129,49 +133,74 @@ class MenuScene(Scene):
         self.workouts = load_workouts()
         self._selected_idx: int | None = None  # index into self._filtered
         self._filtered: list[int] = []  # indices into self.workouts
+        self._resize_after_id: str | None = None
 
         root = ctk.CTk()
         root.title("PyRow")
-        root.geometry("600x520")
-        root.resizable(False, False)
+        screen_w = root.winfo_screenwidth()
+        screen_h = root.winfo_screenheight()
+        win_w = min(900, max(_REF_W, int(screen_w * 0.35)))
+        win_h = min(850, max(_REF_H, int(screen_h * 0.55)))
+        self._ui_scale = min(win_w / _REF_W, win_h / _REF_H)
+        root.geometry(f"{win_w}x{win_h}")
+        root.minsize(_REF_W, _REF_H)
         self._root = root
         self._tooltip = _Tooltip(root)
 
         # Title
-        ctk.CTkLabel(root, text="PyRow", font=("", 36, "bold")).pack(pady=(18, 10))
+        self._title_label = ctk.CTkLabel(root, text="PyRow", font=self._font(36, bold=True))
+        self._title_label.pack(pady=(18, 10))
 
         # Filter row
         filter_row = ctk.CTkFrame(root, fg_color="transparent")
         filter_row.pack(fill="x", padx=16, pady=(0, 6))
-        ctk.CTkLabel(filter_row, text="Level:", font=("", 13)).pack(side="left")
+        self._lv_label = ctk.CTkLabel(filter_row, text="Level:", font=self._font(13))
+        self._lv_label.pack(side="left")
         self._level_var = ctk.StringVar(value="All")
-        ctk.CTkOptionMenu(
-            filter_row, variable=self._level_var, values=_LEVEL_FILTERS, width=130, command=self._on_filter_change
-        ).pack(side="left", padx=(4, 12))
-        ctk.CTkLabel(filter_row, text="Duration:", font=("", 13)).pack(side="left")
+        self._lv_menu = ctk.CTkOptionMenu(
+            filter_row,
+            variable=self._level_var,
+            values=_LEVEL_FILTERS,
+            width=130,
+            font=self._font(13),
+            command=self._on_filter_change,
+        )
+        self._lv_menu.pack(side="left", padx=(4, 12))
+        self._dur_label = ctk.CTkLabel(filter_row, text="Duration:", font=self._font(13))
+        self._dur_label.pack(side="left")
         self._duration_var = ctk.StringVar(value="All")
-        ctk.CTkOptionMenu(
-            filter_row, variable=self._duration_var, values=_DURATION_FILTERS, width=130, command=self._on_filter_change
-        ).pack(side="left", padx=(4, 0))
+        self._dur_menu = ctk.CTkOptionMenu(
+            filter_row,
+            variable=self._duration_var,
+            values=_DURATION_FILTERS,
+            width=130,
+            font=self._font(13),
+            command=self._on_filter_change,
+        )
+        self._dur_menu.pack(side="left", padx=(4, 0))
 
         # Workout list
-        self._list_label = ctk.CTkLabel(root, text="Workouts", font=("", 14))
+        self._list_label = ctk.CTkLabel(root, text="Workouts", font=self._font(14))
         self._list_label.pack(anchor="w", padx=16)
-        self._list_frame = ctk.CTkScrollableFrame(root, height=260)
-        self._list_frame.pack(fill="x", padx=16, pady=(0, 8))
+        self._list_frame = ctk.CTkScrollableFrame(root, height=200)
+        self._list_frame.pack(fill="both", expand=True, padx=16, pady=(0, 8))
         self._scroller = _SmoothScroller(self._list_frame)
 
         # Button row
         btn_row = ctk.CTkFrame(root, fg_color="transparent")
         btn_row.pack(fill="x", padx=16, pady=(0, 12))
 
-        ctk.CTkButton(btn_row, text="Add", width=90, command=self._on_add).pack(side="left", padx=(0, 6))
-        self._edit_btn = ctk.CTkButton(btn_row, text="Edit", width=90, command=self._on_edit, state="disabled")
+        self._add_btn = ctk.CTkButton(btn_row, text="Add", width=90, font=self._font(13), command=self._on_add)
+        self._add_btn.pack(side="left", padx=(0, 6))
+        self._edit_btn = ctk.CTkButton(
+            btn_row, text="Edit", width=90, font=self._font(13), command=self._on_edit, state="disabled"
+        )
         self._edit_btn.pack(side="left", padx=(0, 6))
         self._del_btn = ctk.CTkButton(
             btn_row,
             text="Delete",
             width=90,
+            font=self._font(13),
             fg_color="#a03030",
             hover_color="#c04040",
             command=self._on_delete,
@@ -179,20 +208,67 @@ class MenuScene(Scene):
         )
         self._del_btn.pack(side="left", padx=(0, 6))
 
-        self._play_btn = ctk.CTkButton(btn_row, text="Play", width=90, command=self._on_play, state="disabled")
+        self._play_btn = ctk.CTkButton(
+            btn_row, text="Play", width=90, font=self._font(13), command=self._on_play, state="disabled"
+        )
         self._play_btn.pack(side="right", padx=(6, 0))
-        ctk.CTkButton(
+        self._exit_btn = ctk.CTkButton(
             btn_row,
             text="Exit",
             width=90,
+            font=self._font(13),
             fg_color="#555555",
             hover_color="#666666",
             command=lambda: self._on_exit(root),
-        ).pack(side="right")
+        )
+        self._exit_btn.pack(side="right")
 
         self._refresh_list()
+        root.bind("<Configure>", self._on_configure)
         root.protocol("WM_DELETE_WINDOW", lambda: self._on_exit(root))
         root.mainloop()
+
+    # ── Font scaling ──────────────────────────────────────────────
+
+    def _font(self, size: int, bold: bool = False) -> tuple:
+        scaled = max(10, int(size * self._ui_scale))
+        return ("", scaled, "bold") if bold else ("", scaled)
+
+    def _on_configure(self, event):
+        if event.widget != self._root:
+            return
+        if self._resize_after_id is not None:
+            self._root.after_cancel(self._resize_after_id)
+        self._resize_after_id = self._root.after(150, self._do_resize)
+
+    def _do_resize(self):
+        self._resize_after_id = None
+        w = self._root.winfo_width()
+        h = self._root.winfo_height()
+        new_scale = min(w / _REF_W, h / _REF_H)
+        new_scale = max(0.7, min(3.0, new_scale))
+        if abs(new_scale - self._ui_scale) < 0.03:
+            return
+        self._ui_scale = new_scale
+        self._apply_fonts()
+
+    def _apply_fonts(self):
+        self._title_label.configure(font=self._font(36, bold=True))
+        self._list_label.configure(font=self._font(14))
+        f13 = self._font(13)
+        for w in (
+            self._lv_label,
+            self._dur_label,
+            self._lv_menu,
+            self._dur_menu,
+            self._add_btn,
+            self._edit_btn,
+            self._del_btn,
+            self._play_btn,
+            self._exit_btn,
+        ):
+            w.configure(font=f13)
+        self._refresh_list()
 
     # ── Filtering ─────────────────────────────────────────────
 
@@ -219,12 +295,14 @@ class MenuScene(Scene):
         for w in self._list_frame.winfo_children():
             w.destroy()
         self._row_buttons = []
+        btn_font = self._font(13)
         for list_pos, real_idx in enumerate(self._filtered):
             wo = self.workouts[real_idx]
             btn = ctk.CTkButton(
                 self._list_frame,
                 text=f"{wo.name}  ({wo.total_duration_str})",
                 anchor="w",
+                font=btn_font,
                 fg_color="#1f6aa5" if list_pos == self._selected_idx else "#3b3b3b",
                 hover_color="#4a4a4a",
                 command=lambda idx=list_pos: self._select(idx),

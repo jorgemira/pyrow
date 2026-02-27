@@ -22,6 +22,10 @@ WARNING_BORDER = (255, 200, 60)
 
 _REST_PROFILE = DrillProfile(1.0, 0.0, None, (140, 200, 255))
 
+# Reference size — all pixel values in draw methods are authored for this size
+_REF_W = 820
+_REF_H = 400
+
 
 def _make_beep(freq: float, duration_ms: int, volume: float = 0.25) -> pygame.mixer.Sound:
     sample_rate, _, channels = pygame.mixer.get_init() or (44100, -16, 2)
@@ -69,32 +73,17 @@ class AnimationScene(Scene):
 
     def enter(self):
         monitor_w, monitor_h = pygame.display.get_desktop_sizes()[0]
-        self.sw = min(820, monitor_w)
-        self.sh = min(400, monitor_h - 60)
-        self.window = pygame.window.Window(
-            "PyRow",
-            size=(self.sw, self.sh),
-        )
+        self.sw = min(1200, max(_REF_W, int(monitor_w * 0.55)))
+        self.sh = min(700, max(_REF_H, int(monitor_h * 0.55)))
+        self.window = pygame.window.Window("PyRow", size=(self.sw, self.sh))
+        self.window.resizable = True
+        self.window.minimum_size = (_REF_W // 2, _REF_H // 2)
         self.window.position = ((monitor_w - self.sw) // 2, 30)
         self.window.always_on_top = True
-
-        # Fonts — large enough to read from the rowing machine
-        self._font_drill = pygame.font.SysFont("", 52, bold=True)
-        self._font_stats = pygame.font.SysFont("", 36)
-        self._font_time = pygame.font.SysFont("", 30)
-        self._font_warn = pygame.font.SysFont("", 32, bold=True)
-        self._font_btn = pygame.font.SysFont("", 20)
-        self._font_stop = pygame.font.SysFont("", 24, bold=True)
-        self._font_hint = pygame.font.SysFont("", 16)
 
         # Sounds
         self._beep_warn = _make_beep(660, 150, 0.2)
         self._beep_trans = _make_beep(880, 200, 0.25)
-
-        # Layout: left panel (info + controls) | right (animation)
-        panel_w = 240
-        self._panel_rect = pygame.Rect(0, 0, panel_w, self.sh)
-        self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh)
 
         # Player
         assert self.workout is not None
@@ -111,9 +100,9 @@ class AnimationScene(Scene):
         # Animation
         self._animation = RowingFigureV2Animation()
 
-        # Buttons
+        # Build size-dependent resources
         self._buttons: list[_Button] = []
-        self._build_buttons()
+        self._rebuild_layout()
 
         # Reset clock so the first frame doesn't carry stale time from the menu scene
         self.manager.clock.tick(60)
@@ -123,15 +112,39 @@ class AnimationScene(Scene):
             self.window.destroy()
             self.window = None
 
+    # ── Scaling ───────────────────────────────────────────────────
+
+    def _s(self, px: int) -> int:
+        """Scale a reference pixel value to current window size."""
+        return max(1, int(px * self._scale))
+
+    def _rebuild_layout(self):
+        """Recompute all size-dependent resources (fonts, rects, buttons)."""
+        self._scale = min(self.sh / _REF_H, self.sw / _REF_W)
+
+        self._font_drill = pygame.font.SysFont("", max(12, self._s(52)), bold=True)
+        self._font_stats = pygame.font.SysFont("", max(12, self._s(36)))
+        self._font_time = pygame.font.SysFont("", max(12, self._s(30)))
+        self._font_warn = pygame.font.SysFont("", max(12, self._s(32)), bold=True)
+        self._font_btn = pygame.font.SysFont("", max(12, self._s(20)))
+        self._font_stop = pygame.font.SysFont("", max(12, self._s(24)), bold=True)
+        self._font_hint = pygame.font.SysFont("", max(12, self._s(16)))
+
+        panel_w = self._s(240)
+        self._panel_rect = pygame.Rect(0, 0, panel_w, self.sh)
+        self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh)
+
+        self._build_buttons()
+
     # ── Buttons ──────────────────────────────────────────────────
 
     def _build_buttons(self):
         r = self._panel_rect
-        bw, bh = 42, 36
-        gap = 4
+        bw, bh = self._s(42), self._s(36)
+        gap = self._s(4)
         total_w = bw * 5 + gap * 4
         sx = r.x + (r.width - total_w) // 2
-        sy = r.bottom - bh - 28
+        sy = r.bottom - bh - self._s(28)
 
         def make(i, label, cb):
             rect = pygame.Rect(sx + i * (bw + gap), sy, bw, bh)
@@ -213,7 +226,10 @@ class AnimationScene(Scene):
         for btn in self._buttons:
             btn.handle_event(event)
 
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.WINDOWRESIZED and self.window:
+            self.sw, self.sh = self.window.size
+            self._rebuild_layout()
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self._do_stop()
             elif event.key == pygame.K_SPACE:
@@ -259,9 +275,10 @@ class AnimationScene(Scene):
 
     def _draw_panel(self, surface, profile):
         r = self._panel_rect
+        s = self._s
         pygame.draw.rect(surface, PANEL_COLOR, r)
-        x = r.x + 14
-        y = r.y + 14
+        x = r.x + s(14)
+        y = r.y + s(14)
 
         # Drill type name (big, colored) — "REST" in light blue
         sec_type = self._player.current_section.section_type
@@ -277,50 +294,49 @@ class AnimationScene(Scene):
             drill_color = profile.color
         txt = self._font_drill.render(drill_name, True, drill_color)
         surface.blit(txt, (x, y))
-        y += 58
+        y += s(58)
 
         # Section / SR / Tension
         sec = self._player.current_section
         surface.blit(
             self._font_stats.render(f"{sec.stroke_rate} spm  Tension: {sec.tension}", True, TEXT_COLOR), (x, y)
         )
-        y += 40
+        y += s(40)
         surface.blit(self._font_stats.render(self._player.section_label, True, DIM_TEXT), (x, y))
-        y += 44
+        y += s(44)
 
         # Section time + progress bar
         se = self._player.section_elapsed
         sd = sec.duration
         surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
-        y += 34
+        y += s(34)
 
-        bar_w = r.width - 28
-        bar_h = 8
+        bar_w = r.width - s(28)
+        bar_h = s(8)
+        br = max(1, s(4))
         progress = min(se / sd, 1.0) if sd > 0 else 0
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=4)
+        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
         fill_w = int(bar_w * progress)
         if fill_w > 0:
-            bar_color = profile.color
-            pygame.draw.rect(surface, bar_color, (x, y, fill_w, bar_h), border_radius=4)
-        y += 20
+            pygame.draw.rect(surface, profile.color, (x, y, fill_w, bar_h), border_radius=br)
+        y += s(20)
 
         # Total time + progress bar
         te = self._player.total_elapsed
         td = self._player.total_duration
         surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
-        y += 34
+        y += s(34)
 
         total_progress = min(te / td, 1.0) if td > 0 else 0
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=4)
+        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
         total_fill_w = int(bar_w * total_progress)
         if total_fill_w > 0:
-            total_color = (80, 160, 80)
-            pygame.draw.rect(surface, total_color, (x, y, total_fill_w, bar_h), border_radius=4)
-        y += 20
+            pygame.draw.rect(surface, (80, 160, 80), (x, y, total_fill_w, bar_h), border_radius=br)
+        y += s(20)
 
         # Stop sign (between progress bars and buttons)
         if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
-            self._draw_stop_sign(surface, r.centerx, y + 36)
+            self._draw_stop_sign(surface, r.centerx, y + s(36))
 
         # Buttons (at bottom of panel)
         for btn in self._buttons:
@@ -329,7 +345,7 @@ class AnimationScene(Scene):
         # Keyboard hints
         hints = "Space  Esc  ←→  M"
         txt = self._font_hint.render(hints, True, (70, 70, 70))
-        surface.blit(txt, txt.get_rect(centerx=r.centerx, bottom=r.bottom - 8))
+        surface.blit(txt, txt.get_rect(centerx=r.centerx, bottom=r.bottom - s(8)))
 
     def _draw_animation(self, surface, position, profile, drill_type):
         self._animation.draw(surface, self._anim_rect, position, profile, drill_type)
@@ -345,7 +361,7 @@ class AnimationScene(Scene):
         surface.blit(txt, txt.get_rect(center=r.center))
 
     def _draw_stop_sign(self, surface, cx, cy):
-        size = 30
+        size = self._s(30)
 
         # Red octagon
         points = []
@@ -367,7 +383,7 @@ class AnimationScene(Scene):
             return
 
         r = self._anim_rect
-        bar_h = 32
+        bar_h = self._s(32)
         bar_rect = pygame.Rect(r.x, r.y, r.width, bar_h)
 
         bg = pygame.Surface((bar_rect.width, bar_rect.height), pygame.SRCALPHA)
