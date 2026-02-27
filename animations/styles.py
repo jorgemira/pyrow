@@ -75,6 +75,7 @@ class RowingFigureV2Animation(BaseAnimation):
         colors = self._part_colors(profile.color, drill_type)
         scale = rect.height * 0.7
         lw = max(int(scale * 0.065), 3)  # limb width
+        mlw = max(int(scale * 0.013), 2)  # machine line width
         jw = max(lw // 2 + 1, 2)  # joint radius
         cx = rect.centerx + scale * 0.12
         cy = rect.centery
@@ -125,25 +126,25 @@ class RowingFigureV2Animation(BaseAnimation):
             _MACHINE_DARK,
             (int(rail_left), int(seat_y + scale * 0.08)),
             (int(rail_right), int(seat_y + scale * 0.08)),
-            3,
+            mlw,
         )
 
         # Foot plate (angled)
         fp_x = int(foot[0] - scale * 0.02)
         fp_top = int(foot[1] - scale * 0.35)
         fp_bot = int(foot[1] + scale * 0.04)
-        pygame.draw.line(surface, _MACHINE_MID, (fp_x, fp_top), (fp_x, fp_bot), 3)
+        pygame.draw.line(surface, _MACHINE_MID, (fp_x, fp_top), (fp_x, fp_bot), mlw)
 
         # Flywheel housing
         fw_size = int(scale * 0.18)
         fw_rect = pygame.Rect(int(flywheel_cx - fw_size), int(flywheel_cy - fw_size), fw_size * 2, fw_size * 2)
         pygame.draw.rect(surface, _MACHINE_DARK, fw_rect, border_radius=4)
-        pygame.draw.rect(surface, _MACHINE_MID, fw_rect, 2, border_radius=4)
+        pygame.draw.rect(surface, _MACHINE_MID, fw_rect, mlw, border_radius=4)
         # Flywheel circle
-        pygame.draw.circle(surface, _MACHINE_LIGHT, (int(flywheel_cx), int(flywheel_cy)), int(scale * 0.1), 2)
+        pygame.draw.circle(surface, _MACHINE_LIGHT, (int(flywheel_cx), int(flywheel_cy)), int(scale * 0.1), mlw)
 
         # Chain from flywheel to handle
-        pygame.draw.line(surface, _CHAIN_COLOR, (int(flywheel_cx), int(flywheel_cy)), (int(hand[0]), int(hand[1])), 2)
+        pygame.draw.line(surface, _CHAIN_COLOR, (int(flywheel_cx), int(flywheel_cy)), (int(hand[0]), int(hand[1])), mlw)
 
         # Seat (on rail)
         seat_w = max(int(scale * 0.12), 6)
