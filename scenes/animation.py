@@ -135,8 +135,10 @@ class AnimationScene(Scene):
         self._font_hint = pygame.font.SysFont("", max(12, self._s(16)))
 
         panel_w = self._s(240)
+        bar_area_h = self._s(90)
         self._panel_rect = pygame.Rect(0, 0, panel_w, self.sh)
-        self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh)
+        self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh - bar_area_h)
+        self._bar_rect = pygame.Rect(panel_w, self.sh - bar_area_h, self.sw - panel_w, bar_area_h)
 
         self._build_buttons()
         self._build_confirm_dialog()
@@ -312,6 +314,7 @@ class AnimationScene(Scene):
 
         self._draw_panel(surface, self._profile)
         self._draw_animation(surface, self._position, self._profile, self._drill)
+        self._draw_progress_bars(surface, self._profile)
         self._draw_warning(surface)
 
         # Separator
@@ -352,36 +355,7 @@ class AnimationScene(Scene):
         surface.blit(self._font_stats.render(self._player.section_label, True, DIM_TEXT), (x, y))
         y += s(44)
 
-        # Section time + progress bar
-        se = self._player.section_elapsed
-        sd = sec.duration
-        surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
-        y += s(34)
-
-        bar_w = r.width - s(28)
-        bar_h = s(8)
-        br = max(1, s(4))
-        progress = min(se / sd, 1.0) if sd > 0 else 0
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
-        fill_w = int(bar_w * progress)
-        if fill_w > 0:
-            pygame.draw.rect(surface, profile.color, (x, y, fill_w, bar_h), border_radius=br)
-        y += s(20)
-
-        # Total time + progress bar
-        te = self._player.total_elapsed
-        td = self._player.total_duration
-        surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
-        y += s(34)
-
-        total_progress = min(te / td, 1.0) if td > 0 else 0
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
-        total_fill_w = int(bar_w * total_progress)
-        if total_fill_w > 0:
-            pygame.draw.rect(surface, (80, 160, 80), (x, y, total_fill_w, bar_h), border_radius=br)
-        y += s(20)
-
-        # Stop sign (between progress bars and buttons)
+        # Stop sign (between info and buttons)
         if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
             self._draw_stop_sign(surface, r.centerx, y + s(36))
 
@@ -401,6 +375,44 @@ class AnimationScene(Scene):
             self._draw_center_text(surface, "Workout Complete!", (100, 255, 100))
         elif self._player.state == "paused":
             self._draw_center_text(surface, "Paused", DIM_TEXT)
+
+    def _draw_progress_bars(self, surface, profile):
+        r = self._bar_rect
+        s = self._s
+        pygame.draw.rect(surface, PANEL_COLOR, r)
+        pygame.draw.line(surface, (55, 55, 55), r.topleft, r.topright, 1)
+
+        bar_h = s(6)
+        br = max(1, s(3))
+        pad_x = s(14)
+        bar_w = r.width - pad_x * 2
+        x = r.x + pad_x
+
+        # Section bar (top)
+        se = self._player.section_elapsed
+        sd = self._player.current_section.duration
+        sec_progress = min(se / sd, 1.0) if sd > 0 else 0
+
+        y = r.y + s(6)
+        surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
+        y += s(22)
+        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
+        fill_w = int(bar_w * sec_progress)
+        if fill_w > 0:
+            pygame.draw.rect(surface, profile.color, (x, y, fill_w, bar_h), border_radius=br)
+
+        # Total bar (bottom)
+        te = self._player.total_elapsed
+        td = self._player.total_duration
+        total_progress = min(te / td, 1.0) if td > 0 else 0
+
+        y += s(14)
+        surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
+        y += s(22)
+        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
+        total_fill_w = int(bar_w * total_progress)
+        if total_fill_w > 0:
+            pygame.draw.rect(surface, (80, 160, 80), (x, y, total_fill_w, bar_h), border_radius=br)
 
     def _draw_center_text(self, surface, text, color):
         txt = self._font_warn.render(text, True, color)
