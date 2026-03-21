@@ -43,6 +43,10 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Smooth scrolling**: `_SmoothScroller` lerp-eases mouse wheel on the workout list
 - **Resizable windows**: both menu and animation scenes scale proportionally; `_s()` scales reference pixel values, `_font()` scales text sizes, debounced via `after()` timer
 - **Tooltip on hover**: `_Tooltip` class in menu shows `workout.description` after 1s delay
+- **Stop confirmation**: clicking Stop/Escape pauses the workout and shows a modal confirmation dialog; Yes confirms, No dismisses but keeps paused
+- **Progress bars below figure**: section and total progress bars are stacked below the animation area in `_bar_rect`, separate from the side panel
+- **Seekable progress bars**: click-and-drag on either bar to scrub; `WorkoutPlayer.seek_section()` and `seek_total()` handle positioning; tooltip shows target time (total bar also shows section label)
+- **Upcoming section preview**: side panel shows next section's drill, stroke rate, and duration below current section info via `WorkoutPlayer.upcoming_section`
 
 ## Code Style
 
