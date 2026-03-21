@@ -7,7 +7,7 @@ import pygame
 
 from animations.base import DRILL_PROFILES, DrillProfile, get_position, is_in_pause
 from animations.styles import RowingFigureV2Animation
-from models.workout import SectionType, Workout
+from models.workout import DrillType, SectionType, Workout
 from scenes.base import Scene
 from workout_player import WorkoutPlayer
 
@@ -431,7 +431,24 @@ class AnimationScene(Scene):
         )
         y += s(40)
         surface.blit(self._font_stats.render(self._player.section_label, True, DIM_TEXT), (x, y))
-        y += s(44)
+        y += s(38)
+
+        # Next section preview
+        nxt = self._player.upcoming_section
+        if nxt is not None:
+            if nxt.section_type == SectionType.rest:
+                nxt_name = "Rest"
+            else:
+                nxt_drills = nxt.drills
+                first_drill = nxt_drills[0].drill_type if nxt_drills else DrillType.none
+                nxt_drill_name = "Full Stroke" if first_drill == DrillType.none else first_drill.label
+                prefix = f"{nxt.section_type.label}: " if nxt.section_type != SectionType.work else ""
+                nxt_name = f"{prefix}{nxt_drill_name}"
+            nxt_detail = f"{nxt_name}  {nxt.stroke_rate} spm  {nxt.duration}s"
+            surface.blit(self._font_btn.render("Next:", True, (100, 100, 100)), (x, y))
+            y += s(20)
+            surface.blit(self._font_btn.render(nxt_detail, True, (100, 100, 100)), (x, y))
+        y += s(24)
 
         # Stop sign (between info and buttons)
         if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
