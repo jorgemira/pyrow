@@ -109,6 +109,14 @@ class WorkoutPlayer:
             label += f" ({st.label})"
         return label
 
+    @property
+    def upcoming_section(self) -> Section | None:
+        """Return the next section, or None if this is the last."""
+        nxt = self.section_idx + 1
+        if nxt < len(self._sections):
+            return self._sections[nxt]
+        return None
+
     def section_label_at(self, total_time: float) -> str:
         """Return the section label for an absolute time in the workout."""
         total_time = max(0.0, min(total_time, self.total_duration))
