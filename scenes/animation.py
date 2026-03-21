@@ -100,8 +100,12 @@ class AnimationScene(Scene):
         # Animation
         self._animation = RowingFigureV2Animation()
 
+        # Confirmation dialog state
+        self._confirm_stop_active = False
+
         # Build size-dependent resources
         self._buttons: list[_Button] = []
+        self._confirm_buttons: list[_Button] = []
         self._rebuild_layout()
 
         # Reset clock so the first frame doesn't carry stale time from the menu scene
@@ -135,6 +139,7 @@ class AnimationScene(Scene):
         self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh)
 
         self._build_buttons()
+        self._build_confirm_dialog()
 
     # ── Buttons ──────────────────────────────────────────────────
 
@@ -164,13 +169,40 @@ class AnimationScene(Scene):
             self._btn_mute,
         ]
 
+    def _build_confirm_dialog(self):
+        s = self._s
+        dw, dh = s(260), s(120)
+        dx = (self.sw - dw) // 2
+        dy = (self.sh - dh) // 2
+        self._confirm_rect = pygame.Rect(dx, dy, dw, dh)
+
+        bw, bh = s(80), s(32)
+        gap = s(20)
+        bx = dx + (dw - bw * 2 - gap) // 2
+        by = dy + dh - bh - s(16)
+
+        self._confirm_buttons = [
+            _Button(pygame.Rect(bx, by, bw, bh), "Yes", self._confirm_stop_yes, self._font_btn),
+            _Button(pygame.Rect(bx + bw + gap, by, bw, bh), "No", self._confirm_stop_no, self._font_btn),
+        ]
+
     def _toggle_play(self):
         self._player.toggle_play_pause()
 
     def _do_stop(self):
+        if self._confirm_stop_active:
+            return
+        self._player.pause()
+        self._confirm_stop_active = True
+
+    def _confirm_stop_yes(self):
         from scenes.menu import MenuScene
 
+        self._confirm_stop_active = False
         self.manager.switch_to(MenuScene(self.manager))
+
+    def _confirm_stop_no(self):
+        self._confirm_stop_active = False
 
     def _toggle_mute(self):
         self._player.muted = not self._player.muted
@@ -223,13 +255,25 @@ class AnimationScene(Scene):
     # ── Events ───────────────────────────────────────────────────
 
     def handle_event(self, event):
-        for btn in self._buttons:
-            btn.handle_event(event)
-
         if event.type == pygame.WINDOWRESIZED and self.window:
             self.sw, self.sh = self.window.size
             self._rebuild_layout()
-        elif event.type == pygame.KEYDOWN:
+            return
+
+        if self._confirm_stop_active:
+            for btn in self._confirm_buttons:
+                btn.handle_event(event)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN or event.key == pygame.K_y:
+                    self._confirm_stop_yes()
+                elif event.key == pygame.K_ESCAPE or event.key == pygame.K_n:
+                    self._confirm_stop_no()
+            return
+
+        for btn in self._buttons:
+            btn.handle_event(event)
+
+        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 self._do_stop()
             elif event.key == pygame.K_SPACE:
@@ -272,6 +316,9 @@ class AnimationScene(Scene):
 
         # Separator
         pygame.draw.line(surface, (55, 55, 55), (self._panel_rect.right, 0), (self._panel_rect.right, self.sh), 1)
+
+        if self._confirm_stop_active:
+            self._draw_confirm_dialog(surface)
 
     def _draw_panel(self, surface, profile):
         r = self._panel_rect
@@ -359,6 +406,25 @@ class AnimationScene(Scene):
         txt = self._font_warn.render(text, True, color)
         r = self._anim_rect
         surface.blit(txt, txt.get_rect(center=r.center))
+
+    def _draw_confirm_dialog(self, surface):
+        # Dim overlay
+        overlay = pygame.Surface((self.sw, self.sh), pygame.SRCALPHA)
+        overlay.fill((0, 0, 0, 140))
+        surface.blit(overlay, (0, 0))
+
+        # Dialog box
+        r = self._confirm_rect
+        pygame.draw.rect(surface, PANEL_COLOR, r, border_radius=self._s(8))
+        pygame.draw.rect(surface, (100, 100, 100), r, width=1, border_radius=self._s(8))
+
+        # Question text
+        txt = self._font_warn.render("Stop workout?", True, TEXT_COLOR)
+        surface.blit(txt, txt.get_rect(centerx=r.centerx, top=r.top + self._s(20)))
+
+        # Buttons
+        for btn in self._confirm_buttons:
+            btn.draw(surface)
 
     def _draw_stop_sign(self, surface, cx, cy):
         size = self._s(30)
