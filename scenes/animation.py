@@ -103,6 +103,11 @@ class AnimationScene(Scene):
         # Confirmation dialog state
         self._confirm_stop_active = False
 
+        # Progress bar drag state: None | "section" | "total"
+        self._dragging_bar: str | None = None
+        self._was_playing_before_drag = False
+        self._drag_time: float = 0.0
+
         # Build size-dependent resources
         self._buttons: list[_Button] = []
         self._confirm_buttons: list[_Button] = []
@@ -140,8 +145,70 @@ class AnimationScene(Scene):
         self._anim_rect = pygame.Rect(panel_w, 0, self.sw - panel_w, self.sh - bar_area_h)
         self._bar_rect = pygame.Rect(panel_w, self.sh - bar_area_h, self.sw - panel_w, bar_area_h)
 
+        self._build_bar_hit_rects()
         self._build_buttons()
         self._build_confirm_dialog()
+
+    # ── Progress bar interaction ─────────────────────────────────
+
+    def _build_bar_hit_rects(self):
+        """Compute clickable rects for section and total progress bars."""
+        r = self._bar_rect
+        s = self._s
+        pad_x = s(14)
+        bar_w = r.width - pad_x * 2
+        x = r.x + pad_x
+        hit_h = s(26)
+
+        self._section_bar_rect = pygame.Rect(x, r.y + s(6), bar_w, hit_h)
+        self._total_bar_rect = pygame.Rect(x, r.y + s(6) + s(22) + s(14), bar_w, hit_h)
+
+    def _bar_progress_from_mouse(self, mx: int) -> float:
+        """Convert mouse X to 0.0–1.0 progress within a bar."""
+        r = self._bar_rect
+        pad_x = self._s(14)
+        bar_x = r.x + pad_x
+        bar_w = r.width - pad_x * 2
+        return max(0.0, min(1.0, (mx - bar_x) / bar_w))
+
+    def _handle_bar_mousedown(self, event: pygame.event.Event):
+        if event.button != 1:
+            return
+        pos = event.pos
+        if self._section_bar_rect.collidepoint(pos):
+            target = "section"
+        elif self._total_bar_rect.collidepoint(pos):
+            target = "total"
+        else:
+            return
+
+        self._was_playing_before_drag = self._player.state == "playing"
+        self._player.pause()
+        self._dragging_bar = target
+        self._update_drag_time(event.pos[0])
+
+    def _handle_bar_mousemotion(self, event: pygame.event.Event):
+        if self._dragging_bar:
+            self._update_drag_time(event.pos[0])
+
+    def _handle_bar_mouseup(self, event: pygame.event.Event):
+        if event.button != 1 or not self._dragging_bar:
+            return
+        self._apply_drag_seek()
+        self._dragging_bar = None
+
+    def _update_drag_time(self, mx: int):
+        progress = self._bar_progress_from_mouse(mx)
+        if self._dragging_bar == "section":
+            self._drag_time = progress * self._player.current_section.duration
+        else:
+            self._drag_time = progress * self._player.total_duration
+
+    def _apply_drag_seek(self):
+        if self._dragging_bar == "section":
+            self._player.seek_section(self._drag_time)
+        else:
+            self._player.seek_total(self._drag_time)
 
     # ── Buttons ──────────────────────────────────────────────────
 
@@ -272,6 +339,17 @@ class AnimationScene(Scene):
                     self._confirm_stop_no()
             return
 
+        if self._dragging_bar:
+            if event.type == pygame.MOUSEMOTION:
+                self._handle_bar_mousemotion(event)
+                return
+            if event.type == pygame.MOUSEBUTTONUP:
+                self._handle_bar_mouseup(event)
+                return
+
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            self._handle_bar_mousedown(event)
+
         for btn in self._buttons:
             btn.handle_event(event)
 
@@ -393,26 +471,56 @@ class AnimationScene(Scene):
         sd = self._player.current_section.duration
         sec_progress = min(se / sd, 1.0) if sd > 0 else 0
 
-        y = r.y + s(6)
-        surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, y))
-        y += s(22)
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
+        sec_label_y = r.y + s(6)
+        surface.blit(self._font_time.render(f"Section {_fmt(se)}/{_fmt(sd)}", True, DIM_TEXT), (x, sec_label_y))
+        sec_bar_y = sec_label_y + s(22)
+        pygame.draw.rect(surface, (55, 55, 55), (x, sec_bar_y, bar_w, bar_h), border_radius=br)
         fill_w = int(bar_w * sec_progress)
         if fill_w > 0:
-            pygame.draw.rect(surface, profile.color, (x, y, fill_w, bar_h), border_radius=br)
+            pygame.draw.rect(surface, profile.color, (x, sec_bar_y, fill_w, bar_h), border_radius=br)
 
         # Total bar (bottom)
         te = self._player.total_elapsed
         td = self._player.total_duration
         total_progress = min(te / td, 1.0) if td > 0 else 0
 
-        y += s(14)
-        surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, y))
-        y += s(22)
-        pygame.draw.rect(surface, (55, 55, 55), (x, y, bar_w, bar_h), border_radius=br)
+        total_label_y = sec_bar_y + s(14)
+        surface.blit(self._font_time.render(f"Total {_fmt(te)}/{_fmt(td)}", True, DIM_TEXT), (x, total_label_y))
+        total_bar_y = total_label_y + s(22)
+        pygame.draw.rect(surface, (55, 55, 55), (x, total_bar_y, bar_w, bar_h), border_radius=br)
         total_fill_w = int(bar_w * total_progress)
         if total_fill_w > 0:
-            pygame.draw.rect(surface, (80, 160, 80), (x, y, total_fill_w, bar_h), border_radius=br)
+            pygame.draw.rect(surface, (80, 160, 80), (x, total_bar_y, total_fill_w, bar_h), border_radius=br)
+
+        # Drag tooltip
+        if self._dragging_bar:
+            if self._dragging_bar == "section":
+                drag_progress = self._drag_time / sd if sd > 0 else 0
+                bar_y = sec_bar_y
+            else:
+                drag_progress = self._drag_time / td if td > 0 else 0
+                bar_y = total_bar_y
+
+            cursor_x = x + int(bar_w * max(0.0, min(1.0, drag_progress)))
+            pygame.draw.line(surface, TEXT_COLOR, (cursor_x, bar_y - s(4)), (cursor_x, bar_y + bar_h + s(4)), 2)
+
+            if self._dragging_bar == "total":
+                tip_label = f"{_fmt(self._drag_time)} — {self._player.section_label_at(self._drag_time)}"
+            else:
+                tip_label = _fmt(self._drag_time)
+            tip_txt = self._font_hint.render(tip_label, True, TEXT_COLOR)
+            tip_w, tip_h = tip_txt.get_size()
+            tip_pad = s(4)
+            tip_x = min(cursor_x - tip_w // 2, x + bar_w - tip_w - tip_pad)
+            tip_x = max(tip_x, x)
+            tip_y = bar_y - tip_h - s(8)
+            pygame.draw.rect(
+                surface,
+                (60, 60, 60),
+                (tip_x - tip_pad, tip_y - tip_pad // 2, tip_w + tip_pad * 2, tip_h + tip_pad),
+                border_radius=max(1, s(3)),
+            )
+            surface.blit(tip_txt, (tip_x, tip_y))
 
     def _draw_center_text(self, surface, text, color):
         txt = self._font_warn.render(text, True, color)

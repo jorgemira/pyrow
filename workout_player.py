@@ -109,6 +109,21 @@ class WorkoutPlayer:
             label += f" ({st.label})"
         return label
 
+    def section_label_at(self, total_time: float) -> str:
+        """Return the section label for an absolute time in the workout."""
+        total_time = max(0.0, min(total_time, self.total_duration))
+        accumulated = 0.0
+        n = len(self._sections)
+        for i, sec in enumerate(self._sections):
+            if accumulated + sec.duration > total_time or i == n - 1:
+                st = sec.section_type
+                label = f"Section {i + 1}/{n}"
+                if st != SectionType.work:
+                    label += f" ({st.label})"
+                return label
+            accumulated += sec.duration
+        return f"Section {n}/{n}"
+
     # ── Controls ─────────────────────────────────────────────────
 
     def play(self):
@@ -143,8 +158,7 @@ class WorkoutPlayer:
             self.section_idx += 1
             self.section_elapsed = 0.0
             self._sync_total_elapsed()
-            self.warning_active = False
-            self._warning_triggered = False
+            self._reset_warning()
             self.on_transition()
 
     def prev_section(self):
@@ -152,9 +166,31 @@ class WorkoutPlayer:
             self.section_idx -= 1
             self.section_elapsed = 0.0
             self._sync_total_elapsed()
-            self.warning_active = False
-            self._warning_triggered = False
+            self._reset_warning()
             self.on_transition()
+
+    def seek_section(self, elapsed: float):
+        """Seek within the current section to a specific elapsed time."""
+        self.section_elapsed = max(0.0, min(elapsed, self.current_section.duration))
+        self._sync_total_elapsed()
+        self._reset_warning()
+
+    def seek_total(self, total_time: float):
+        """Seek to an absolute time in the workout, switching sections as needed."""
+        total_time = max(0.0, min(total_time, self.total_duration))
+        accumulated = 0.0
+        for i, sec in enumerate(self._sections):
+            if accumulated + sec.duration > total_time or i == len(self._sections) - 1:
+                self.section_idx = i
+                self.section_elapsed = total_time - accumulated
+                break
+            accumulated += sec.duration
+        self._sync_total_elapsed()
+        self._reset_warning()
+
+    def _reset_warning(self):
+        self.warning_active = False
+        self._warning_triggered = False
 
     def _sync_total_elapsed(self):
         """Recompute total_elapsed from completed sections + current offset."""
