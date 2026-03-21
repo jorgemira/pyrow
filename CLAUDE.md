@@ -13,7 +13,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Lint**: `uv run ruff check --fix .`
 - **Format**: `uv run ruff format .`
 - **Type check**: `uv run ty check`
-- **All checks** (what pre-commit runs): `uv run pre-commit run --all-files`
+- **All checks** (what pre-commit runs): `prek run --all-files`
 - **Build docs**: `cd docs && uv run sphinx-build . _build`
 
 ## Architecture
@@ -38,16 +38,18 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Smooth transitions**: `WorkoutPlayer` adjusts cycle time per section for whole-stroke boundaries; `get_position()` cosine-blends offsets on transition strokes
 - **Catch position**: all drills map position 0.0 to catch (legs compressed, body forward, arms extended); drills with non-zero offsets use setup phases in `body_positions()`
 - **Rest sections**: animate at 16 spm in light blue `(140, 200, 255)`; regular full stroke uses dark blue `(60, 120, 215)`
-- **Pause drills**: `_DWELL = 0.44` (44% of stroke cycle) hold at the pause point; `_DRIVE = 0.34` for the drive phase
+- **Pause drills**: `_DWELL = 0.22` (22% of stroke cycle) hold at the pause point; `_DRIVE = 0.34` for the drive phase
 - **Level filtering**: menu filters by Level (beginner/intermediate/advanced) and duration range
 - **Smooth scrolling**: `_SmoothScroller` lerp-eases mouse wheel on the workout list
+- **Resizable windows**: both menu and animation scenes scale proportionally; `_s()` scales reference pixel values, `_font()` scales text sizes, debounced via `after()` timer
+- **Tooltip on hover**: `_Tooltip` class in menu shows `workout.description` after 1s delay
 
 ## Code Style
 
 - Python 3.14+, managed with `uv`
 - Formatting and linting via `ruff` (config in pyproject.toml)
 - Type checking via `ty`
-- Pre-commit hooks enforce all checks on commit
+- Pre-commit hooks via `prek` (Rust-based, reads `.pre-commit-config.yaml`)
 - Line length: 120 characters
 - Use `from __future__ import annotations` in all modules
 
