@@ -47,6 +47,8 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Progress bars below figure**: section and total progress bars are stacked below the animation area in `_bar_rect`, separate from the side panel
 - **Seekable progress bars**: click-and-drag on either bar to scrub; `WorkoutPlayer.seek_section()` and `seek_total()` handle positioning; tooltip shows target time (total bar also shows section label)
 - **Upcoming section preview**: side panel shows next section's drill, stroke rate, and duration below current section info via `WorkoutPlayer.upcoming_section`
+- **Ready prompt**: workout launches paused with a "Ready?" screen; user presses Space/Enter or clicks Start to begin; Escape returns to menu
+- **Double-click to play**: double-clicking a workout in the menu list selects and launches it
 
 ## Code Style
 

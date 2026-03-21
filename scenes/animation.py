@@ -90,7 +90,9 @@ class AnimationScene(Scene):
         self._player = WorkoutPlayer(self.workout)
         self._player.on_warning = self._on_warning
         self._player.on_transition = self._on_transition
-        self._player.play()
+
+        # Start in "ready" state — wait for user before playing
+        self._ready_prompt = True
 
         # Cached per-frame state (computed in update, reused in draw)
         self._drill = self._player.current_drill_type
@@ -147,6 +149,7 @@ class AnimationScene(Scene):
 
         self._build_bar_hit_rects()
         self._build_buttons()
+        self._build_ready_button()
         self._build_confirm_dialog()
 
     # ── Progress bar interaction ─────────────────────────────────
@@ -237,6 +240,20 @@ class AnimationScene(Scene):
             self._btn_next,
             self._btn_mute,
         ]
+
+    def _build_ready_button(self):
+        ar = self._anim_rect
+        bw, bh = self._s(140), self._s(40)
+        self._ready_btn = _Button(
+            pygame.Rect(ar.centerx - bw // 2, ar.centery + self._s(30), bw, bh),
+            "Start",
+            self._start_workout,
+            self._font_btn,
+        )
+
+    def _start_workout(self):
+        self._ready_prompt = False
+        self._player.play()
 
     def _build_confirm_dialog(self):
         s = self._s
@@ -329,6 +346,15 @@ class AnimationScene(Scene):
             self._rebuild_layout()
             return
 
+        if self._ready_prompt:
+            self._ready_btn.handle_event(event)
+            if event.type == pygame.KEYDOWN:
+                if event.key in (pygame.K_RETURN, pygame.K_SPACE):
+                    self._start_workout()
+                elif event.key == pygame.K_ESCAPE:
+                    self._do_stop()
+            return
+
         if self._confirm_stop_active:
             for btn in self._confirm_buttons:
                 btn.handle_event(event)
@@ -368,6 +394,8 @@ class AnimationScene(Scene):
     # ── Update ───────────────────────────────────────────────────
 
     def update(self):
+        if self._ready_prompt:
+            return
         dt = min(self.manager.clock.get_time() / 1000.0, 0.1)
         self._player.update(dt)
 
@@ -391,9 +419,12 @@ class AnimationScene(Scene):
         surface.fill(BG_COLOR)
 
         self._draw_panel(surface, self._profile)
-        self._draw_animation(surface, self._position, self._profile, self._drill)
+        if self._ready_prompt:
+            self._draw_ready_prompt(surface)
+        else:
+            self._draw_animation(surface, self._position, self._profile, self._drill)
+            self._draw_warning(surface)
         self._draw_progress_bars(surface, self._profile)
-        self._draw_warning(surface)
 
         # Separator
         pygame.draw.line(surface, (55, 55, 55), (self._panel_rect.right, 0), (self._panel_rect.right, self.sh), 1)
@@ -462,6 +493,14 @@ class AnimationScene(Scene):
         hints = "Space  Esc  ←→  M"
         txt = self._font_hint.render(hints, True, (70, 70, 70))
         surface.blit(txt, txt.get_rect(centerx=r.centerx, bottom=r.bottom - s(8)))
+
+    def _draw_ready_prompt(self, surface):
+        r = self._anim_rect
+        txt = self._font_drill.render("Ready?", True, TEXT_COLOR)
+        surface.blit(txt, txt.get_rect(centerx=r.centerx, centery=r.centery - self._s(10)))
+        self._ready_btn.draw(surface)
+        hint = self._font_hint.render("Space / Enter to start", True, (80, 80, 80))
+        surface.blit(hint, hint.get_rect(centerx=r.centerx, top=r.centery + self._s(55)))
 
     def _draw_animation(self, surface, position, profile, drill_type):
         self._animation.draw(surface, self._anim_rect, position, profile, drill_type)
