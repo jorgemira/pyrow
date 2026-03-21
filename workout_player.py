@@ -142,6 +142,7 @@ class WorkoutPlayer:
         if self.section_idx < len(self._sections) - 1:
             self.section_idx += 1
             self.section_elapsed = 0.0
+            self._sync_total_elapsed()
             self.warning_active = False
             self._warning_triggered = False
             self.on_transition()
@@ -150,9 +151,14 @@ class WorkoutPlayer:
         if self.section_idx > 0:
             self.section_idx -= 1
             self.section_elapsed = 0.0
+            self._sync_total_elapsed()
             self.warning_active = False
             self._warning_triggered = False
             self.on_transition()
+
+    def _sync_total_elapsed(self):
+        """Recompute total_elapsed from completed sections + current offset."""
+        self.total_elapsed = sum(s.duration for s in self._sections[: self.section_idx]) + self.section_elapsed
 
     # ── Update ───────────────────────────────────────────────────
 
