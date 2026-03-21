@@ -311,6 +311,7 @@ class MenuScene(Scene):
             desc = wo.description
             btn.bind("<Enter>", lambda e, b=btn, d=desc: self._tooltip.schedule(b, d))
             btn.bind("<Leave>", lambda e: self._tooltip.cancel())
+            btn.bind("<Double-Button-1>", lambda e, idx=list_pos: self._double_click_play(idx))
             self._row_buttons.append(btn)
         self._list_label.configure(text=f"Workouts ({len(self._filtered)}/{len(self.workouts)})")
         self._update_buttons()
@@ -367,6 +368,10 @@ class MenuScene(Scene):
             self._selected_idx = None
             save_workouts(self.workouts)
             self._refresh_list()
+
+    def _double_click_play(self, idx: int):
+        self._select(idx)
+        self._on_play()
 
     def _on_play(self, root=None):
         real = self._real_idx()
