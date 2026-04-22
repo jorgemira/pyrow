@@ -475,7 +475,7 @@ class AnimationScene(Scene):
                 nxt_drill_name = "Full Stroke" if first_drill == DrillType.none else first_drill.label
                 prefix = f"{nxt.section_type.label}: " if nxt.section_type != SectionType.work else ""
                 nxt_name = f"{prefix}{nxt_drill_name}"
-            nxt_detail = f"{nxt_name}  {nxt.stroke_rate} spm  {nxt.duration}s"
+            nxt_detail = f"{nxt_name}  {nxt.stroke_rate} spm  T{nxt.tension}  {nxt.duration}s"
             surface.blit(self._font_btn.render("Next:", True, (100, 100, 100)), (x, y))
             y += s(20)
             surface.blit(self._font_btn.render(nxt_detail, True, (100, 100, 100)), (x, y))
