@@ -110,6 +110,10 @@ class AnimationScene(Scene):
         self._was_playing_before_drag = False
         self._drag_time: float = 0.0
 
+        # Remaining-sections list scroll state
+        self._section_list_scroll: int = 0
+        self._prev_section_idx: int = -1
+
         # Build size-dependent resources
         self._buttons: list[_Button] = []
         self._confirm_buttons: list[_Button] = []
@@ -151,6 +155,16 @@ class AnimationScene(Scene):
         self._build_buttons()
         self._build_ready_button()
         self._build_confirm_dialog()
+
+        # Remaining-sections list rect — from below section label to above buttons
+        list_top = self._panel_rect.y + self._s(168)
+        list_bottom = self._panel_rect.bottom - self._s(70)
+        self._section_list_rect = pygame.Rect(
+            self._panel_rect.x + self._s(4),
+            list_top,
+            self._panel_rect.width - self._s(8),
+            max(0, list_bottom - list_top),
+        )
 
     # ── Progress bar interaction ─────────────────────────────────
 
@@ -373,6 +387,10 @@ class AnimationScene(Scene):
                 self._handle_bar_mouseup(event)
                 return
 
+        if event.type == pygame.MOUSEWHEEL and self._panel_rect.collidepoint(pygame.mouse.get_pos()):
+            self._section_list_scroll -= event.y * self._s(36)
+            self._section_list_scroll = max(0, min(self._section_list_scroll, self._section_list_max_scroll()))
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             self._handle_bar_mousedown(event)
 
@@ -398,6 +416,11 @@ class AnimationScene(Scene):
             return
         dt = min(self.manager.clock.get_time() / 1000.0, 0.1)
         self._player.update(dt)
+
+        # Reset section list scroll when section changes
+        if self._player.section_idx != self._prev_section_idx:
+            self._section_list_scroll = 0
+            self._prev_section_idx = self._player.section_idx
 
         # Update button labels
         if self._player.state == "playing":
@@ -464,26 +487,10 @@ class AnimationScene(Scene):
         surface.blit(self._font_stats.render(self._player.section_label, True, DIM_TEXT), (x, y))
         y += s(38)
 
-        # Next section preview
-        nxt = self._player.upcoming_section
-        if nxt is not None:
-            if nxt.section_type == SectionType.rest:
-                nxt_name = "Rest"
-            else:
-                nxt_drills = nxt.drills
-                first_drill = nxt_drills[0].drill_type if nxt_drills else DrillType.none
-                nxt_drill_name = "Full Stroke" if first_drill == DrillType.none else first_drill.label
-                prefix = f"{nxt.section_type.label}: " if nxt.section_type != SectionType.work else ""
-                nxt_name = f"{prefix}{nxt_drill_name}"
-            nxt_detail = f"{nxt_name}  {nxt.stroke_rate} spm  T{nxt.tension}  {nxt.duration}s"
-            surface.blit(self._font_btn.render("Next:", True, (100, 100, 100)), (x, y))
-            y += s(20)
-            surface.blit(self._font_btn.render(nxt_detail, True, (100, 100, 100)), (x, y))
-        y += s(24)
+        # Remaining sections header
+        surface.blit(self._font_hint.render("Remaining sections:", True, (90, 90, 90)), (x, y))
 
-        # Stop sign (between info and buttons)
-        if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
-            self._draw_stop_sign(surface, r.centerx, y + s(36))
+        self._draw_section_list(surface)
 
         # Buttons (at bottom of panel)
         for btn in self._buttons:
@@ -505,10 +512,66 @@ class AnimationScene(Scene):
     def _draw_animation(self, surface, position, profile, drill_type):
         self._animation.draw(surface, self._anim_rect, position, profile, drill_type)
 
+        if self._player.state == "playing" and is_in_pause(self._player.stroke_phase, profile):
+            r = self._anim_rect
+            self._draw_stop_sign(surface, r.right - self._s(44), r.y + self._s(44))
+
         if self._player.state == "finished":
             self._draw_center_text(surface, "Workout Complete!", (100, 255, 100))
         elif self._player.state == "paused":
             self._draw_center_text(surface, "Paused", DIM_TEXT)
+
+    def _section_list_max_scroll(self) -> int:
+        n = len(self._player._sections) - self._player.section_idx
+        return max(0, n * self._s(36) - self._section_list_rect.height)
+
+    def _draw_section_list(self, surface: pygame.Surface):
+        r = self._section_list_rect
+        if r.height <= 0:
+            return
+
+        player = self._player
+        sections = player._sections
+        start = player.section_idx
+        row_h = self._s(36)
+        s = self._s
+
+        old_clip = surface.get_clip()
+        surface.set_clip(r)
+
+        for i in range(start, len(sections)):
+            row_y = r.y + (i - start) * row_h - self._section_list_scroll
+            if row_y + row_h < r.y:
+                continue
+            if row_y >= r.bottom:
+                break
+
+            sec = sections[i]
+            is_current = i == start
+
+            if is_current:
+                pygame.draw.rect(surface, (50, 55, 70), pygame.Rect(r.x, row_y, r.width, row_h), border_radius=s(3))
+
+            # Section name
+            if sec.section_type == SectionType.rest:
+                name = "Rest"
+                name_color = _REST_PROFILE.color
+            else:
+                first_drill = sec.drills[0].drill_type if sec.drills else DrillType.none
+                name = "Full Stroke" if first_drill == DrillType.none else first_drill.label
+                if sec.section_type in (SectionType.warmup, SectionType.cooldown):
+                    name = f"{sec.section_type.label}: {name}"
+                name_color = TEXT_COLOR if is_current else (170, 170, 170)
+
+            surface.blit(self._font_hint.render(name, True, name_color), (r.x + s(6), row_y + s(3)))
+
+            # Stats line
+            mm, ss = divmod(sec.duration, 60)
+            stats = f"{sec.stroke_rate}spm  T{sec.tension}  {mm}:{ss:02d}"
+            stats_color = DIM_TEXT if is_current else (90, 90, 90)
+            surface.blit(self._font_hint.render(stats, True, stats_color), (r.x + s(6), row_y + s(19)))
+
+        surface.set_clip(old_clip)
 
     def _draw_progress_bars(self, surface, profile):
         r = self._bar_rect
