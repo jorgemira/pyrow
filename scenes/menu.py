@@ -227,6 +227,7 @@ class MenuScene(Scene):
         root.bind("<Configure>", self._on_configure)
         root.protocol("WM_DELETE_WINDOW", lambda: self._on_exit(root))
         root.mainloop()
+        root.destroy()
 
     # ── Font scaling ──────────────────────────────────────────────
 
@@ -378,14 +379,14 @@ class MenuScene(Scene):
         if real is None:
             return
         workout = self.workouts[real]
-        self._root.destroy()
         from scenes.animation import AnimationScene
 
         self.manager.switch_to(AnimationScene(self.manager, workout=workout))
+        self._root.quit()
 
     def _on_exit(self, root):
-        root.destroy()
         self.manager.quit()
+        root.quit()
 
     def exit(self):
         pass
