@@ -488,7 +488,9 @@ class AnimationScene(Scene):
         y += s(38)
 
         # Remaining sections header
-        surface.blit(self._font_hint.render("Remaining sections:", True, (90, 90, 90)), (x, y))
+        remaining = len(self._player._sections) - self._player.section_idx - 1
+        header = f"Up next ({remaining}):" if remaining else "Last section"
+        surface.blit(self._font_hint.render(header, True, (90, 90, 90)), (x, y))
 
         self._draw_section_list(surface)
 
@@ -522,7 +524,7 @@ class AnimationScene(Scene):
             self._draw_center_text(surface, "Paused", DIM_TEXT)
 
     def _section_list_max_scroll(self) -> int:
-        n = len(self._player._sections) - self._player.section_idx
+        n = len(self._player._sections) - self._player.section_idx - 1
         return max(0, n * self._s(36) - self._section_list_rect.height)
 
     def _draw_section_list(self, surface: pygame.Surface):
@@ -532,7 +534,7 @@ class AnimationScene(Scene):
 
         player = self._player
         sections = player._sections
-        start = player.section_idx
+        start = player.section_idx + 1
         row_h = self._s(36)
         s = self._s
 
@@ -547,10 +549,6 @@ class AnimationScene(Scene):
                 break
 
             sec = sections[i]
-            is_current = i == start
-
-            if is_current:
-                pygame.draw.rect(surface, (50, 55, 70), pygame.Rect(r.x, row_y, r.width, row_h), border_radius=s(3))
 
             # Section name
             if sec.section_type == SectionType.rest:
@@ -561,15 +559,14 @@ class AnimationScene(Scene):
                 name = "Full Stroke" if first_drill == DrillType.none else first_drill.label
                 if sec.section_type in (SectionType.warmup, SectionType.cooldown):
                     name = f"{sec.section_type.label}: {name}"
-                name_color = TEXT_COLOR if is_current else (170, 170, 170)
+                name_color = (170, 170, 170)
 
             surface.blit(self._font_hint.render(name, True, name_color), (r.x + s(6), row_y + s(3)))
 
             # Stats line
             mm, ss = divmod(sec.duration, 60)
             stats = f"{sec.stroke_rate}spm  T{sec.tension}  {mm}:{ss:02d}"
-            stats_color = DIM_TEXT if is_current else (90, 90, 90)
-            surface.blit(self._font_hint.render(stats, True, stats_color), (r.x + s(6), row_y + s(19)))
+            surface.blit(self._font_hint.render(stats, True, (90, 90, 90)), (r.x + s(6), row_y + s(19)))
 
         surface.set_clip(old_clip)
 
