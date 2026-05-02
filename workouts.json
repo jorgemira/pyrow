@@ -3849,5 +3849,168 @@
       }
     ],
     "level": "advanced"
+  },
+  {
+    "name": "Pyramid (36min) - Gemini recommended",
+    "level": "intermediate",
+    "description": "Selected from original file. Excellent for muscle maintenance through shifting tension.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 360, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 360, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
+      { "duration": 360, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
+      { "duration": 360, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
+      { "duration": 360, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Steady State (36min) - Gemini recommended",
+    "level": "intermediate",
+    "description": "Selected from original file. Pure aerobic base building, perfect for low-carb fat burn.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 1800, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Power Intervals (36min) - Gemini recommended",
+    "level": "advanced",
+    "description": "Selected from original file. High-intensity engine building.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 120, "stroke_rate": 26, "tension": 6, "drills": [], "repeats": 8, "rest_after": 60 },
+      { "duration": 180, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Interval 6x2 (23min) - Gemini recommended",
+    "level": "intermediate",
+    "description": "Selected from original file. Great high-intensity finisher.",
+    "sections": [
+      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 120, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 6, "rest_after": 60 },
+      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Quick Power 20 (24min) - created by Gemini",
+    "level": "advanced",
+    "description": "Maximum tension intervals for a fast metabolic boost during work breaks.",
+    "sections": [
+      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 60, "stroke_rate": 28, "tension": 7, "drills": [], "repeats": 10, "rest_after": 60 },
+      { "duration": 120, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "High-Low Split (25min) - created by Gemini",
+    "level": "advanced",
+    "description": "Alternating between very high tension (8) and moderate recovery to spike HR.",
+    "sections": [
+      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 24, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 24, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
+      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Lunch Break Tabata (16min) - created by Gemini",
+    "level": "advanced",
+    "description": "Extreme efficiency. 20s sprint / 10s rest format for max burn in minimal time.",
+    "sections": [
+      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 20, "stroke_rate": 32, "tension": 6, "drills": [], "repeats": 16, "rest_after": 10 },
+      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Fat-Oxidation (41min) - created by Gemini",
+    "level": "intermediate",
+    "description": "Optimized for fat burn on low-carb diets. Consistent, sustainable pressure.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 2100, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Power Endurance (35min) - created by Gemini",
+    "level": "advanced",
+    "description": "Heavy pulls at variable rates to force muscle recruitment.",
+    "sections": [
+      { "duration": 300, "stroke_rate": 18, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 480, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1, "rest_after": 60 },
+      { "duration": 480, "stroke_rate": 26, "tension": 5, "drills": [], "repeats": 1, "rest_after": 60 },
+      { "duration": 480, "stroke_rate": 22, "tension": 7, "drills": [], "repeats": 1, "rest_after": 60 },
+      { "duration": 300, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "The Step-Up 40 (46min) - created by Gemini",
+    "level": "advanced",
+    "description": "Increasing intensity every 10 minutes. A mental and physical grind.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 600, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 600, "stroke_rate": 22, "tension": 5, "drills": [], "repeats": 1 },
+      { "duration": 600, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
+      { "duration": 600, "stroke_rate": 26, "tension": 5, "drills": [], "repeats": 1 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Metabolic Wave (36min) - created by Gemini",
+    "level": "advanced",
+    "description": "Fluctuating between aerobic and anaerobic work. High HR variability.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 180, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 5, "rest_after": 180 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Endurance Hour (60min) - created by Gemini",
+    "level": "intermediate",
+    "description": "Ultimate fat burner. Low stroke rate but high power per stroke.",
+    "sections": [
+      { "duration": 300, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 3000, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 300, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "5000m Simulation (26min) - created by Gemini",
+    "level": "advanced",
+    "description": "Simulates a long-distance race pace with high resistance.",
+    "sections": [
+      { "duration": 300, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 1200, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
+      { "duration": 300, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "Threshold 45 (51min) - created by Gemini",
+    "level": "advanced",
+    "description": "Long intervals at your upper aerobic limit. High calorie output.",
+    "sections": [
+      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 900, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 3, "rest_after": 120 },
+      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
+  },
+  {
+    "name": "The Long Slow Burn (75min) - created by Gemini",
+    "level": "intermediate",
+    "description": "Ultimate fat-burning session for days when you have plenty of time.",
+    "sections": [
+      { "duration": 300, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
+      { "duration": 3900, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
+      { "duration": 300, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
+    ]
   }
 ]
