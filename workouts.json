@@ -1,7 +1,6 @@
 [
   {
-    "name": "DEV TEST \u2014 All Types (4min)",
-    "description": "Test workout covering every drill type, section type, rest_after, repeats, and multi-drill cycling.",
+    "name": "DEV TEST — All Types (4min)",
     "sections": [
       {
         "duration": 15,
@@ -172,10 +171,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Test workout covering every drill type, section type, rest_after, repeats, and multi-drill cycling."
   },
   {
-    "name": "Beginner 20min (26min) \u2014 Steady State",
+    "name": "Beginner 20min (26min) — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -202,7 +202,7 @@
     "description": "Steady-state endurance row at a comfortable pace. Focus on maintaining consistent technique and breathing throughout."
   },
   {
-    "name": "Beginner 20min (26min) \u2014 Drill Focus",
+    "name": "Beginner 20min (26min) — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -265,7 +265,7 @@
     "description": "Technique-building session progressing through fundamental drills. Each 5-minute block isolates a different part of the stroke."
   },
   {
-    "name": "Beginner 20min (26min) \u2014 Easy Intervals",
+    "name": "Beginner 20min (26min) — Easy Intervals",
     "sections": [
       {
         "duration": 180,
@@ -355,7 +355,7 @@
     "description": "Gentle 2-minute on/off intervals alternating between moderate and easy pace. A great introduction to interval training."
   },
   {
-    "name": "Beginner 30min (36min) \u2014 Steady State",
+    "name": "Beginner 30min (36min) — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -382,7 +382,7 @@
     "description": "Extended steady-state row building aerobic base at low intensity. Ideal for developing endurance and a consistent rhythm."
   },
   {
-    "name": "Beginner 30min (36min) \u2014 Drill Focus",
+    "name": "Beginner 30min (36min) — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -457,7 +457,7 @@
     "description": "Progressive drill session with 6-minute blocks for each stroke component. Longer segments allow deeper focus on each technique."
   },
   {
-    "name": "Beginner 30min (36min) \u2014 Easy Intervals",
+    "name": "Beginner 30min (36min) — Easy Intervals",
     "sections": [
       {
         "duration": 180,
@@ -561,7 +561,7 @@
     "description": "Alternating 3-minute work and 2-minute recovery intervals. Builds fitness without overwhelming effort."
   },
   {
-    "name": "Beginner 30min (36min) \u2014 Mixed Drills & Rowing",
+    "name": "Beginner 30min (36min) — Mixed Drills & Rowing",
     "sections": [
       {
         "duration": 180,
@@ -642,7 +642,7 @@
     "description": "Combines drill segments with free rowing to practice applying technique cues under normal conditions."
   },
   {
-    "name": "Beginner 40min (46min) \u2014 Steady State",
+    "name": "Beginner 40min (46min) — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -669,7 +669,7 @@
     "description": "Long steady-state session for building aerobic capacity. Maintain relaxed posture and consistent drive throughout."
   },
   {
-    "name": "Beginner 40min (46min) \u2014 Drill Focus",
+    "name": "Beginner 40min (46min) — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -756,7 +756,7 @@
     "description": "Comprehensive drill workout covering all fundamental stroke components in extended segments."
   },
   {
-    "name": "Beginner 40min (46min) \u2014 Endurance Build",
+    "name": "Beginner 40min (46min) — Endurance Build",
     "sections": [
       {
         "duration": 180,
@@ -797,7 +797,7 @@
     "description": "Gradually increasing stroke rate over longer segments. Builds stamina while keeping intensity manageable."
   },
   {
-    "name": "Beginner 40min (46min) \u2014 Easy Pyramid",
+    "name": "Beginner 40min (46min) — Easy Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -866,7 +866,7 @@
     "description": "Ascending and descending stroke rate pyramid. Teaches pace control and body awareness at different intensities."
   },
   {
-    "name": "Intermediate 20min (26min) \u2014 Intervals",
+    "name": "Intermediate 20min (26min) — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -957,7 +957,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 20min (26min) \u2014 Pyramid",
+    "name": "Intermediate 20min (26min) — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1020,7 +1020,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 20min (26min) \u2014 Drill Focus",
+    "name": "Intermediate 20min (26min) — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -1099,7 +1099,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) \u2014 Intervals",
+    "name": "Intermediate 30min (36min) — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1204,7 +1204,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) \u2014 Pyramid",
+    "name": "Intermediate 30min (36min) — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1267,7 +1267,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) \u2014 Steady State",
+    "name": "Intermediate 30min (36min) — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -1295,7 +1295,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) \u2014 Mixed Drills & Power",
+    "name": "Intermediate 30min (36min) — Mixed Drills & Power",
     "sections": [
       {
         "duration": 180,
@@ -1385,7 +1385,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) \u2014 Intervals",
+    "name": "Intermediate 40min (46min) — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1518,7 +1518,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) \u2014 Pyramid",
+    "name": "Intermediate 40min (46min) — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1588,7 +1588,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) \u2014 Endurance",
+    "name": "Intermediate 40min (46min) — Endurance",
     "sections": [
       {
         "duration": 180,
@@ -1637,7 +1637,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) \u2014 Drill Endurance",
+    "name": "Intermediate 40min (46min) — Drill Endurance",
     "sections": [
       {
         "duration": 180,
@@ -1742,7 +1742,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Advanced 20min (26min) \u2014 Power Intervals",
+    "name": "Advanced 20min (26min) — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1833,7 +1833,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 20min (26min) \u2014 Sprint Pyramid",
+    "name": "Advanced 20min (26min) — Sprint Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1903,7 +1903,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 20min (26min) \u2014 High-Intensity Drills",
+    "name": "Advanced 20min (26min) — High-Intensity Drills",
     "sections": [
       {
         "duration": 180,
@@ -1985,7 +1985,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) \u2014 Power Intervals",
+    "name": "Advanced 30min (36min) — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -2090,7 +2090,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) \u2014 Pyramid",
+    "name": "Advanced 30min (36min) — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -2153,7 +2153,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) \u2014 Race Pace",
+    "name": "Advanced 30min (36min) — Race Pace",
     "sections": [
       {
         "duration": 180,
@@ -2181,7 +2181,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) \u2014 Tabata Style",
+    "name": "Advanced 30min (36min) — Tabata Style",
     "sections": [
       {
         "duration": 180,
@@ -2342,7 +2342,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) \u2014 Power Intervals",
+    "name": "Advanced 40min (46min) — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -2475,7 +2475,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) \u2014 Endurance",
+    "name": "Advanced 40min (46min) — Endurance",
     "sections": [
       {
         "duration": 180,
@@ -2524,7 +2524,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) \u2014 Race Simulation",
+    "name": "Advanced 40min (46min) — Race Simulation",
     "sections": [
       {
         "duration": 180,
@@ -2580,7 +2580,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) \u2014 Pyramid",
+    "name": "Advanced 40min (46min) — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -2791,7 +2791,6 @@
   },
   {
     "name": "30/30 Sprint Intervals (12min)",
-    "description": "Short sprint intervals alternating 30 seconds of hard effort with 30 seconds of rest. Builds explosive power and anaerobic capacity.",
     "sections": [
       {
         "duration": 180,
@@ -2818,11 +2817,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Short sprint intervals alternating 30 seconds of hard effort with 30 seconds of rest. Builds explosive power and anaerobic capacity.",
     "level": "advanced"
   },
   {
     "name": "5x5min Threshold (36min)",
-    "description": "Five 5-minute pieces at threshold pace with 60-second rest. Develops lactate threshold and sustained power output.",
     "sections": [
       {
         "duration": 180,
@@ -2849,11 +2848,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Five 5-minute pieces at threshold pace with 60-second rest. Develops lactate threshold and sustained power output.",
     "level": "intermediate"
   },
   {
     "name": "Ratings Ladder (34min)",
-    "description": "Ascending stroke rate ladder stepping through 4, 3, 2, and 1-minute segments at increasing pace. Teaches rate control and smooth transitions.",
     "sections": [
       {
         "duration": 180,
@@ -2958,11 +2957,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Ascending stroke rate ladder stepping through 4, 3, 2, and 1-minute segments at increasing pace. Teaches rate control and smooth transitions.",
     "level": "intermediate"
   },
   {
     "name": "Speed Pyramid 5-4-3-2-1 (26min)",
-    "description": "Descending duration pyramid from 5 minutes down to 1 minute with increasing stroke rate. Builds speed as fatigue accumulates.",
     "sections": [
       {
         "duration": 180,
@@ -3020,11 +3019,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Descending duration pyramid from 5 minutes down to 1 minute with increasing stroke rate. Builds speed as fatigue accumulates.",
     "level": "advanced"
   },
   {
     "name": "12x30s Max Effort (33min)",
-    "description": "Twelve 30-second bursts at maximum effort with generous 2-minute rest. Develops peak power and sprint repeatability.",
     "sections": [
       {
         "duration": 180,
@@ -3051,11 +3050,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Twelve 30-second bursts at maximum effort with generous 2-minute rest. Develops peak power and sprint repeatability.",
     "level": "advanced"
   },
   {
     "name": "10x90s On/Off (36min)",
-    "description": "Ten 90-second work pieces alternating with 90-second rest. Equal work-to-rest ratio develops sustained high-intensity capacity.",
     "sections": [
       {
         "duration": 180,
@@ -3082,11 +3081,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Ten 90-second work pieces alternating with 90-second rest. Equal work-to-rest ratio develops sustained high-intensity capacity.",
     "level": "intermediate"
   },
   {
     "name": "Balanced 10x2:30 (36min)",
-    "description": "Ten 2:30 work intervals with short 30-second transitions. High volume with minimal rest builds aerobic power and mental endurance.",
     "sections": [
       {
         "duration": 180,
@@ -3113,11 +3112,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Ten 2:30 work intervals with short 30-second transitions. High volume with minimal rest builds aerobic power and mental endurance.",
     "level": "intermediate"
   },
   {
     "name": "Stroke Rate Wave (36min)",
-    "description": "Wave pattern alternating between low, medium, and high stroke rates across 10 three-minute segments. Develops smooth rate transitions.",
     "sections": [
       {
         "duration": 180,
@@ -3206,11 +3205,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Wave pattern alternating between low, medium, and high stroke rates across 10 three-minute segments. Develops smooth rate transitions.",
     "level": "intermediate"
   },
   {
     "name": "4x4min Aerobic (26min)",
-    "description": "Four 4-minute pieces at steady aerobic intensity with 2-minute rest. A classic Concept2 workout for building aerobic base.",
     "sections": [
       {
         "duration": 180,
@@ -3237,11 +3236,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Four 4-minute pieces at steady aerobic intensity with 2-minute rest. A classic Concept2 workout for building aerobic base.",
     "level": "intermediate"
   },
   {
     "name": "Marathon Prep 60min",
-    "description": "Long steady-state session simulating marathon rowing pace. Builds deep aerobic endurance and mental resilience for extended efforts.",
     "sections": [
       {
         "duration": 300,
@@ -3267,11 +3266,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Long steady-state session simulating marathon rowing pace. Builds deep aerobic endurance and mental resilience for extended efforts.",
     "level": "advanced"
   },
   {
     "name": "Concept2 First Strokes (15min)",
-    "description": "Very first rowing session from Concept2. Short 3-minute intervals with breaks to stretch and reset form between sets.",
     "sections": [
       {
         "duration": 120,
@@ -3297,11 +3296,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Very first rowing session from Concept2. Short 3-minute intervals with breaks to stretch and reset form between sets."
   },
   {
     "name": "Concept2 Stroke Rate Explorer (20min)",
-    "description": "Learn to change stroke rates deliberately while keeping consistent form. Progressive rate increases from 20 to 24 spm with rest between.",
     "sections": [
       {
         "duration": 180,
@@ -3350,11 +3349,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Learn to change stroke rates deliberately while keeping consistent form. Progressive rate increases from 20 to 24 spm with rest between."
   },
   {
-    "name": "British Rowing Go Row \u2014 Week 1 (14min)",
-    "description": "Official British Rowing beginner program entry. Very short 1-minute intervals with equal rest, designed for absolute beginners.",
+    "name": "British Rowing Go Row — Week 1 (14min)",
     "sections": [
       {
         "duration": 120,
@@ -3380,11 +3379,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Official British Rowing beginner program entry. Very short 1-minute intervals with equal rest, designed for absolute beginners."
   },
   {
-    "name": "British Rowing Go Row \u2014 Week 4 (18min)",
-    "description": "Progressed version from British Rowing with longer 5-minute work blocks. Builds aerobic base and confidence for sustained rowing.",
+    "name": "British Rowing Go Row — Week 4 (18min)",
     "sections": [
       {
         "duration": 180,
@@ -3410,11 +3409,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Progressed version from British Rowing with longer 5-minute work blocks. Builds aerobic base and confidence for sustained rowing."
   },
   {
     "name": "Concept2 Two Tens (29min)",
-    "description": "First sustained rowing effort from Concept2. Two 10-minute pieces build endurance and pacing awareness with a rest break between.",
     "sections": [
       {
         "duration": 180,
@@ -3447,11 +3446,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "First sustained rowing effort from Concept2. Two 10-minute pieces build endurance and pacing awareness with a rest break between."
   },
   {
     "name": "Technique Drills Circuit (18min)",
-    "description": "Isolate parts of the rowing stroke using drills. Arms-only through full stroke, then pause drills for timing. Based on Concept2 drill recommendations.",
     "sections": [
       {
         "duration": 120,
@@ -3543,11 +3542,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Isolate parts of the rowing stroke using drills. Arms-only through full stroke, then pause drills for timing. Based on Concept2 drill recommendations."
   },
   {
-    "name": "Pete Plan \u2014 Beginner Week 1 (26min)",
-    "description": "Entry point for the famous Pete Plan program. 20 minutes of steady state at low rate to build aerobic base. Focus on consistent split and pacing.",
+    "name": "Pete Plan — Beginner Week 1 (26min)",
     "sections": [
       {
         "duration": 180,
@@ -3572,11 +3571,11 @@
         "repeats": 1,
         "section_type": "cooldown"
       }
-    ]
+    ],
+    "description": "Entry point for the famous Pete Plan program. 20 minutes of steady state at low rate to build aerobic base. Focus on consistent split and pacing."
   },
   {
     "name": "Concept2 1min On/Off (24min)",
-    "description": "Classic Concept2 interval session. Alternating 1 minute hard and 1 minute easy for 10 rounds builds both aerobic and anaerobic capacity.",
     "sections": [
       {
         "duration": 180,
@@ -3603,11 +3602,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Classic Concept2 interval session. Alternating 1 minute hard and 1 minute easy for 10 rounds builds both aerobic and anaerobic capacity.",
     "level": "intermediate"
   },
   {
     "name": "3-2-1 Stroke Rate Pyramid (30min)",
-    "description": "Pyramid cycling through 3-2-1 minute blocks at increasing stroke rates, repeated 4 times. Teaches rate changes and pacing discipline.",
     "sections": [
       {
         "duration": 180,
@@ -3647,11 +3646,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Pyramid cycling through 3-2-1 minute blocks at increasing stroke rates, repeated 4 times. Teaches rate changes and pacing discipline.",
     "level": "intermediate"
   },
   {
     "name": "Ascending Ladder 1-2-3-4-3-2-1 (29min)",
-    "description": "Classic pyramid ladder where work intervals ascend then descend. Rest is half the preceding work interval. Builds pacing awareness and mental toughness.",
     "sections": [
       {
         "duration": 180,
@@ -3663,7 +3662,7 @@
       },
       {
         "duration": 60,
-        "stroke_rate": 26,
+        "stroke_rate": 22,
         "tension": 4,
         "drills": [],
         "repeats": 1,
@@ -3671,48 +3670,48 @@
       },
       {
         "duration": 120,
-        "stroke_rate": 26,
-        "tension": 4,
+        "stroke_rate": 24,
+        "tension": 5,
         "drills": [],
         "repeats": 1,
         "rest_after": 60
       },
       {
         "duration": 180,
-        "stroke_rate": 24,
-        "tension": 4,
+        "stroke_rate": 26,
+        "tension": 6,
         "drills": [],
         "repeats": 1,
         "rest_after": 90
       },
       {
         "duration": 240,
-        "stroke_rate": 24,
-        "tension": 4,
+        "stroke_rate": 28,
+        "tension": 7,
         "drills": [],
         "repeats": 1,
         "rest_after": 120
       },
       {
         "duration": 180,
-        "stroke_rate": 24,
-        "tension": 4,
+        "stroke_rate": 26,
+        "tension": 6,
         "drills": [],
         "repeats": 1,
         "rest_after": 90
       },
       {
         "duration": 120,
-        "stroke_rate": 26,
-        "tension": 4,
+        "stroke_rate": 24,
+        "tension": 5,
         "drills": [],
         "repeats": 1,
         "rest_after": 60
       },
       {
         "duration": 60,
-        "stroke_rate": 28,
-        "tension": 5,
+        "stroke_rate": 22,
+        "tension": 4,
         "drills": [],
         "repeats": 1
       },
@@ -3725,11 +3724,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Classic pyramid ladder where work intervals ascend then descend. Rest is half the preceding work interval. Builds pacing awareness and mental toughness.",
     "level": "intermediate"
   },
   {
     "name": "8x1min Speed Intervals (23min)",
-    "description": "Short high-intensity 1-minute intervals with generous 90-second rest. Builds speed and power with near-full recovery between efforts. Based on CrossFit rowing.",
     "sections": [
       {
         "duration": 180,
@@ -3756,11 +3755,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Short high-intensity 1-minute intervals with generous 90-second rest. Builds speed and power with near-full recovery between efforts. Based on CrossFit rowing.",
     "level": "advanced"
   },
   {
     "name": "3x12min Aerobic Build (46min)",
-    "description": "Three 12-minute blocks at progressively increasing stroke rates. Develops aerobic endurance at threshold effort, simulating race-build strategy.",
     "sections": [
       {
         "duration": 180,
@@ -3802,11 +3801,11 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Three 12-minute blocks at progressively increasing stroke rates. Develops aerobic endurance at threshold effort, simulating race-build strategy.",
     "level": "intermediate"
   },
   {
     "name": "HIIT 30/30 Sprint Blitz (22min)",
-    "description": "Two rounds of 30-second max sprints with equal rest. 10 sprints then a break then 5 more. Builds explosive power and anaerobic capacity.",
     "sections": [
       {
         "duration": 180,
@@ -3848,169 +3847,557 @@
         "section_type": "cooldown"
       }
     ],
+    "description": "Two rounds of 30-second max sprints with equal rest. 10 sprints then a break then 5 more. Builds explosive power and anaerobic capacity.",
     "level": "advanced"
   },
   {
     "name": "Pyramid (36min) - Gemini recommended",
-    "level": "intermediate",
-    "description": "Selected from original file. Excellent for muscle maintenance through shifting tension.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 360, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 360, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
-      { "duration": 360, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
-      { "duration": 360, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
-      { "duration": 360, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 360,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Selected from original file. Excellent for muscle maintenance through shifting tension.",
+    "level": "intermediate"
   },
   {
     "name": "Steady State (36min) - Gemini recommended",
-    "level": "intermediate",
-    "description": "Selected from original file. Pure aerobic base building, perfect for low-carb fat burn.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 1800, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 1800,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Selected from original file. Pure aerobic base building, perfect for low-carb fat burn.",
+    "level": "intermediate"
   },
   {
     "name": "Power Intervals (36min) - Gemini recommended",
-    "level": "advanced",
-    "description": "Selected from original file. High-intensity engine building.",
     "sections": [
-      { "duration": 180, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 120, "stroke_rate": 26, "tension": 6, "drills": [], "repeats": 8, "rest_after": 60 },
-      { "duration": 180, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 8,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Selected from original file. High-intensity engine building.",
+    "level": "advanced"
   },
   {
     "name": "Interval 6x2 (23min) - Gemini recommended",
-    "level": "intermediate",
-    "description": "Selected from original file. Great high-intensity finisher.",
     "sections": [
-      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 120, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 6, "rest_after": 60 },
-      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 6,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Selected from original file. Great high-intensity finisher.",
+    "level": "intermediate"
   },
   {
     "name": "Quick Power 20 (24min) - created by Gemini",
-    "level": "advanced",
-    "description": "Maximum tension intervals for a fast metabolic boost during work breaks.",
     "sections": [
-      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 60, "stroke_rate": 28, "tension": 7, "drills": [], "repeats": 10, "rest_after": 60 },
-      { "duration": 120, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 10,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Maximum tension intervals for a fast metabolic boost during work breaks.",
+    "level": "advanced"
   },
   {
     "name": "High-Low Split (25min) - created by Gemini",
-    "level": "advanced",
-    "description": "Alternating between very high tension (8) and moderate recovery to spike HR.",
     "sections": [
-      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 24, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 24, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 20, "tension": 8, "drills": [], "repeats": 1 },
-      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Alternating between very high tension (8) and moderate recovery to spike HR.",
+    "level": "advanced"
   },
   {
     "name": "Lunch Break Tabata (16min) - created by Gemini",
-    "level": "advanced",
-    "description": "Extreme efficiency. 20s sprint / 10s rest format for max burn in minimal time.",
     "sections": [
-      { "duration": 120, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 20, "stroke_rate": 32, "tension": 6, "drills": [], "repeats": 16, "rest_after": 10 },
-      { "duration": 120, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 120,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 20,
+        "stroke_rate": 32,
+        "tension": 6,
+        "drills": [],
+        "repeats": 16,
+        "rest_after": 10
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Extreme efficiency. 20s sprint / 10s rest format for max burn in minimal time.",
+    "level": "advanced"
   },
   {
     "name": "Fat-Oxidation (41min) - created by Gemini",
-    "level": "intermediate",
-    "description": "Optimized for fat burn on low-carb diets. Consistent, sustainable pressure.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 2100, "stroke_rate": 22, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 2100,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Optimized for fat burn on low-carb diets. Consistent, sustainable pressure.",
+    "level": "intermediate"
   },
   {
     "name": "Power Endurance (35min) - created by Gemini",
-    "level": "advanced",
-    "description": "Heavy pulls at variable rates to force muscle recruitment.",
     "sections": [
-      { "duration": 300, "stroke_rate": 18, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 480, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1, "rest_after": 60 },
-      { "duration": 480, "stroke_rate": 26, "tension": 5, "drills": [], "repeats": 1, "rest_after": 60 },
-      { "duration": 480, "stroke_rate": 22, "tension": 7, "drills": [], "repeats": 1, "rest_after": 60 },
-      { "duration": 300, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 22,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Heavy pulls at variable rates to force muscle recruitment.",
+    "level": "advanced"
   },
   {
     "name": "The Step-Up 40 (46min) - created by Gemini",
-    "level": "advanced",
-    "description": "Increasing intensity every 10 minutes. A mental and physical grind.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 600, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 600, "stroke_rate": 22, "tension": 5, "drills": [], "repeats": 1 },
-      { "duration": 600, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
-      { "duration": 600, "stroke_rate": 26, "tension": 5, "drills": [], "repeats": 1 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 22,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Increasing intensity every 10 minutes. A mental and physical grind.",
+    "level": "advanced"
   },
   {
     "name": "Metabolic Wave (36min) - created by Gemini",
-    "level": "advanced",
-    "description": "Fluctuating between aerobic and anaerobic work. High HR variability.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 180, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 5, "rest_after": 180 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 5,
+        "rest_after": 180
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Fluctuating between aerobic and anaerobic work. High HR variability.",
+    "level": "advanced"
   },
   {
     "name": "Endurance Hour (60min) - created by Gemini",
-    "level": "intermediate",
-    "description": "Ultimate fat burner. Low stroke rate but high power per stroke.",
     "sections": [
-      { "duration": 300, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 3000, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 300, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 3000,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Ultimate fat burner. Low stroke rate but high power per stroke.",
+    "level": "intermediate"
   },
   {
     "name": "5000m Simulation (26min) - created by Gemini",
-    "level": "advanced",
-    "description": "Simulates a long-distance race pace with high resistance.",
     "sections": [
-      { "duration": 300, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 1200, "stroke_rate": 24, "tension": 6, "drills": [], "repeats": 1 },
-      { "duration": 300, "stroke_rate": 16, "tension": 3, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 300,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 1200,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Simulates a long-distance race pace with high resistance.",
+    "level": "advanced"
   },
   {
     "name": "Threshold 45 (51min) - created by Gemini",
-    "level": "advanced",
-    "description": "Long intervals at your upper aerobic limit. High calorie output.",
     "sections": [
-      { "duration": 180, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 900, "stroke_rate": 24, "tension": 5, "drills": [], "repeats": 3, "rest_after": 120 },
-      { "duration": 180, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 900,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 3,
+        "rest_after": 120
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Long intervals at your upper aerobic limit. High calorie output.",
+    "level": "advanced"
   },
   {
     "name": "The Long Slow Burn (75min) - created by Gemini",
-    "level": "intermediate",
-    "description": "Ultimate fat-burning session for days when you have plenty of time.",
     "sections": [
-      { "duration": 300, "stroke_rate": 18, "tension": 3, "drills": [], "repeats": 1, "section_type": "warmup" },
-      { "duration": 3900, "stroke_rate": 20, "tension": 4, "drills": [], "repeats": 1 },
-      { "duration": 300, "stroke_rate": 16, "tension": 2, "drills": [], "repeats": 1, "section_type": "cooldown" }
-    ]
+      {
+        "duration": 300,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 3900,
+        "stroke_rate": 20,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Ultimate fat-burning session for days when you have plenty of time.",
+    "level": "intermediate"
   }
 ]
