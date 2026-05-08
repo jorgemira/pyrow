@@ -1,6 +1,6 @@
 [
   {
-    "name": "DEV TEST — All Types (4min)",
+    "name": "DEV TEST — All Types",
     "sections": [
       {
         "duration": 15,
@@ -175,7 +175,7 @@
     "description": "Test workout covering every drill type, section type, rest_after, repeats, and multi-drill cycling."
   },
   {
-    "name": "Beginner 20min (26min) — Steady State",
+    "name": "Beginner Short — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -202,7 +202,7 @@
     "description": "Steady-state endurance row at a comfortable pace. Focus on maintaining consistent technique and breathing throughout."
   },
   {
-    "name": "Beginner 20min (26min) — Drill Focus",
+    "name": "Beginner Short — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -265,7 +265,7 @@
     "description": "Technique-building session progressing through fundamental drills. Each 5-minute block isolates a different part of the stroke."
   },
   {
-    "name": "Beginner 20min (26min) — Easy Intervals",
+    "name": "Beginner Short — Easy Intervals",
     "sections": [
       {
         "duration": 180,
@@ -355,7 +355,7 @@
     "description": "Gentle 2-minute on/off intervals alternating between moderate and easy pace. A great introduction to interval training."
   },
   {
-    "name": "Beginner 30min (36min) — Steady State",
+    "name": "Beginner Medium — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -382,7 +382,7 @@
     "description": "Extended steady-state row building aerobic base at low intensity. Ideal for developing endurance and a consistent rhythm."
   },
   {
-    "name": "Beginner 30min (36min) — Drill Focus",
+    "name": "Beginner Medium — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -457,7 +457,7 @@
     "description": "Progressive drill session with 6-minute blocks for each stroke component. Longer segments allow deeper focus on each technique."
   },
   {
-    "name": "Beginner 30min (36min) — Easy Intervals",
+    "name": "Beginner Medium — Easy Intervals",
     "sections": [
       {
         "duration": 180,
@@ -561,7 +561,7 @@
     "description": "Alternating 3-minute work and 2-minute recovery intervals. Builds fitness without overwhelming effort."
   },
   {
-    "name": "Beginner 30min (36min) — Mixed Drills & Rowing",
+    "name": "Beginner Medium — Mixed Drills & Rowing",
     "sections": [
       {
         "duration": 180,
@@ -642,7 +642,7 @@
     "description": "Combines drill segments with free rowing to practice applying technique cues under normal conditions."
   },
   {
-    "name": "Beginner 40min (46min) — Steady State",
+    "name": "Beginner Long — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -669,7 +669,7 @@
     "description": "Long steady-state session for building aerobic capacity. Maintain relaxed posture and consistent drive throughout."
   },
   {
-    "name": "Beginner 40min (46min) — Drill Focus",
+    "name": "Beginner Long — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -756,7 +756,7 @@
     "description": "Comprehensive drill workout covering all fundamental stroke components in extended segments."
   },
   {
-    "name": "Beginner 40min (46min) — Endurance Build",
+    "name": "Beginner Long — Endurance Build",
     "sections": [
       {
         "duration": 180,
@@ -797,7 +797,7 @@
     "description": "Gradually increasing stroke rate over longer segments. Builds stamina while keeping intensity manageable."
   },
   {
-    "name": "Beginner 40min (46min) — Easy Pyramid",
+    "name": "Beginner Long — Easy Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -866,7 +866,7 @@
     "description": "Ascending and descending stroke rate pyramid. Teaches pace control and body awareness at different intensities."
   },
   {
-    "name": "Intermediate 20min (26min) — Intervals",
+    "name": "Intermediate Short — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -957,7 +957,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 20min (26min) — Pyramid",
+    "name": "Intermediate Short — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1020,7 +1020,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 20min (26min) — Drill Focus",
+    "name": "Intermediate Short — Drill Focus",
     "sections": [
       {
         "duration": 180,
@@ -1099,7 +1099,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) — Intervals",
+    "name": "Intermediate Medium — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1204,7 +1204,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) — Pyramid",
+    "name": "Intermediate Medium — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1267,7 +1267,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) — Steady State",
+    "name": "Intermediate Medium — Steady State",
     "sections": [
       {
         "duration": 180,
@@ -1295,7 +1295,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 30min (36min) — Mixed Drills & Power",
+    "name": "Intermediate Medium — Mixed Drills & Power",
     "sections": [
       {
         "duration": 180,
@@ -1385,7 +1385,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) — Intervals",
+    "name": "Intermediate Long — Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1518,7 +1518,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) — Pyramid",
+    "name": "Intermediate Long — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1588,7 +1588,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) — Endurance",
+    "name": "Intermediate Long — Endurance",
     "sections": [
       {
         "duration": 180,
@@ -1637,7 +1637,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Intermediate 40min (46min) — Drill Endurance",
+    "name": "Intermediate Long — Drill Endurance",
     "sections": [
       {
         "duration": 180,
@@ -1742,7 +1742,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Advanced 20min (26min) — Power Intervals",
+    "name": "Advanced Short — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -1833,7 +1833,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 20min (26min) — Sprint Pyramid",
+    "name": "Advanced Short — Sprint Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -1903,7 +1903,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 20min (26min) — High-Intensity Drills",
+    "name": "Advanced Short — High-Intensity Drills",
     "sections": [
       {
         "duration": 180,
@@ -1985,7 +1985,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) — Power Intervals",
+    "name": "Advanced Medium — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -2090,7 +2090,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) — Pyramid",
+    "name": "Advanced Medium — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -2153,7 +2153,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) — Race Pace",
+    "name": "Advanced Medium — Race Pace",
     "sections": [
       {
         "duration": 180,
@@ -2181,7 +2181,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 30min (36min) — Tabata Style",
+    "name": "Advanced Medium — Tabata Style",
     "sections": [
       {
         "duration": 180,
@@ -2342,7 +2342,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) — Power Intervals",
+    "name": "Advanced Long — Power Intervals",
     "sections": [
       {
         "duration": 180,
@@ -2475,7 +2475,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) — Endurance",
+    "name": "Advanced Long — Endurance",
     "sections": [
       {
         "duration": 180,
@@ -2524,7 +2524,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) — Race Simulation",
+    "name": "Advanced Long — Race Simulation",
     "sections": [
       {
         "duration": 180,
@@ -2580,7 +2580,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced 40min (46min) — Pyramid",
+    "name": "Advanced Long — Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -2650,7 +2650,7 @@
     "level": "advanced"
   },
   {
-    "name": "Interval 6x2min (23min)",
+    "name": "Interval 6x2min",
     "sections": [
       {
         "duration": 180,
@@ -2681,7 +2681,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Tabata 4min (10min)",
+    "name": "Tabata",
     "sections": [
       {
         "duration": 180,
@@ -2712,7 +2712,7 @@
     "level": "advanced"
   },
   {
-    "name": "Pyramid with Rest (28min)",
+    "name": "Pyramid with Rest",
     "sections": [
       {
         "duration": 180,
@@ -2790,7 +2790,7 @@
     "level": "intermediate"
   },
   {
-    "name": "30/30 Sprint Intervals (12min)",
+    "name": "30/30 Sprint Intervals",
     "sections": [
       {
         "duration": 180,
@@ -2821,7 +2821,7 @@
     "level": "advanced"
   },
   {
-    "name": "5x5min Threshold (36min)",
+    "name": "5x5min Threshold",
     "sections": [
       {
         "duration": 180,
@@ -2852,7 +2852,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Ratings Ladder (34min)",
+    "name": "Ratings Ladder",
     "sections": [
       {
         "duration": 180,
@@ -2961,7 +2961,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Speed Pyramid 5-4-3-2-1 (26min)",
+    "name": "Speed Pyramid 5-4-3-2-1",
     "sections": [
       {
         "duration": 180,
@@ -3023,7 +3023,7 @@
     "level": "advanced"
   },
   {
-    "name": "12x30s Max Effort (33min)",
+    "name": "12x30s Max Effort",
     "sections": [
       {
         "duration": 180,
@@ -3054,7 +3054,7 @@
     "level": "advanced"
   },
   {
-    "name": "10x90s On/Off (36min)",
+    "name": "10x90s On/Off",
     "sections": [
       {
         "duration": 180,
@@ -3085,7 +3085,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Balanced 10x2:30 (36min)",
+    "name": "Balanced 10x2:30",
     "sections": [
       {
         "duration": 180,
@@ -3116,7 +3116,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Stroke Rate Wave (36min)",
+    "name": "Stroke Rate Wave",
     "sections": [
       {
         "duration": 180,
@@ -3209,7 +3209,7 @@
     "level": "intermediate"
   },
   {
-    "name": "4x4min Aerobic (26min)",
+    "name": "4x4min Aerobic",
     "sections": [
       {
         "duration": 180,
@@ -3240,7 +3240,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Marathon Prep 60min",
+    "name": "Marathon Prep",
     "sections": [
       {
         "duration": 300,
@@ -3270,7 +3270,7 @@
     "level": "advanced"
   },
   {
-    "name": "Concept2 First Strokes (15min)",
+    "name": "Concept2 First Strokes",
     "sections": [
       {
         "duration": 120,
@@ -3300,7 +3300,7 @@
     "description": "Very first rowing session from Concept2. Short 3-minute intervals with breaks to stretch and reset form between sets."
   },
   {
-    "name": "Concept2 Stroke Rate Explorer (20min)",
+    "name": "Concept2 Stroke Rate Explorer",
     "sections": [
       {
         "duration": 180,
@@ -3353,7 +3353,7 @@
     "description": "Learn to change stroke rates deliberately while keeping consistent form. Progressive rate increases from 20 to 24 spm with rest between."
   },
   {
-    "name": "British Rowing Go Row — Week 1 (14min)",
+    "name": "British Rowing Go Row — Week 1",
     "sections": [
       {
         "duration": 120,
@@ -3383,7 +3383,7 @@
     "description": "Official British Rowing beginner program entry. Very short 1-minute intervals with equal rest, designed for absolute beginners."
   },
   {
-    "name": "British Rowing Go Row — Week 4 (18min)",
+    "name": "British Rowing Go Row — Week 4",
     "sections": [
       {
         "duration": 180,
@@ -3413,7 +3413,7 @@
     "description": "Progressed version from British Rowing with longer 5-minute work blocks. Builds aerobic base and confidence for sustained rowing."
   },
   {
-    "name": "Concept2 Two Tens (29min)",
+    "name": "Concept2 Two Tens",
     "sections": [
       {
         "duration": 180,
@@ -3450,7 +3450,7 @@
     "description": "First sustained rowing effort from Concept2. Two 10-minute pieces build endurance and pacing awareness with a rest break between."
   },
   {
-    "name": "Technique Drills Circuit (18min)",
+    "name": "Technique Drills Circuit",
     "sections": [
       {
         "duration": 120,
@@ -3546,7 +3546,7 @@
     "description": "Isolate parts of the rowing stroke using drills. Arms-only through full stroke, then pause drills for timing. Based on Concept2 drill recommendations."
   },
   {
-    "name": "Pete Plan — Beginner Week 1 (26min)",
+    "name": "Pete Plan — Beginner Week 1",
     "sections": [
       {
         "duration": 180,
@@ -3575,7 +3575,7 @@
     "description": "Entry point for the famous Pete Plan program. 20 minutes of steady state at low rate to build aerobic base. Focus on consistent split and pacing."
   },
   {
-    "name": "Concept2 1min On/Off (24min)",
+    "name": "Concept2 1min On/Off",
     "sections": [
       {
         "duration": 180,
@@ -3606,7 +3606,7 @@
     "level": "intermediate"
   },
   {
-    "name": "3-2-1 Stroke Rate Pyramid (30min)",
+    "name": "3-2-1 Stroke Rate Pyramid",
     "sections": [
       {
         "duration": 180,
@@ -3650,7 +3650,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Ascending Ladder 1-2-3-4-3-2-1 (29min)",
+    "name": "Ascending Ladder 1-2-3-4-3-2-1",
     "sections": [
       {
         "duration": 180,
@@ -3728,7 +3728,7 @@
     "level": "intermediate"
   },
   {
-    "name": "8x1min Speed Intervals (23min)",
+    "name": "8x1min Speed Intervals",
     "sections": [
       {
         "duration": 180,
@@ -3759,7 +3759,7 @@
     "level": "advanced"
   },
   {
-    "name": "3x12min Aerobic Build (46min)",
+    "name": "3x12min Aerobic Build",
     "sections": [
       {
         "duration": 180,
@@ -3805,7 +3805,7 @@
     "level": "intermediate"
   },
   {
-    "name": "HIIT 30/30 Sprint Blitz (22min)",
+    "name": "HIIT 30/30 Sprint Blitz",
     "sections": [
       {
         "duration": 180,
@@ -3851,7 +3851,7 @@
     "level": "advanced"
   },
   {
-    "name": "Pyramid (36min) - Gemini recommended",
+    "name": "Pyramid - Gemini recommended",
     "sections": [
       {
         "duration": 180,
@@ -3909,7 +3909,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Steady State (36min) - Gemini recommended",
+    "name": "Steady State - Gemini recommended",
     "sections": [
       {
         "duration": 180,
@@ -3939,7 +3939,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Power Intervals (36min) - Gemini recommended",
+    "name": "Power Intervals - Gemini recommended",
     "sections": [
       {
         "duration": 180,
@@ -3970,7 +3970,7 @@
     "level": "advanced"
   },
   {
-    "name": "Interval 6x2 (23min) - Gemini recommended",
+    "name": "Interval 6x2 - Gemini recommended",
     "sections": [
       {
         "duration": 120,
@@ -4001,7 +4001,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Quick Power 20 (24min) - created by Gemini",
+    "name": "Quick Power 20 - created by Gemini",
     "sections": [
       {
         "duration": 120,
@@ -4032,7 +4032,7 @@
     "level": "advanced"
   },
   {
-    "name": "High-Low Split (25min) - created by Gemini",
+    "name": "High-Low Split - created by Gemini",
     "sections": [
       {
         "duration": 120,
@@ -4090,7 +4090,7 @@
     "level": "advanced"
   },
   {
-    "name": "Lunch Break Tabata (16min) - created by Gemini",
+    "name": "Lunch Break Tabata - created by Gemini",
     "sections": [
       {
         "duration": 120,
@@ -4121,7 +4121,7 @@
     "level": "advanced"
   },
   {
-    "name": "Fat-Oxidation (41min) - created by Gemini",
+    "name": "Fat-Oxidation - created by Gemini",
     "sections": [
       {
         "duration": 180,
@@ -4151,7 +4151,7 @@
     "level": "intermediate"
   },
   {
-    "name": "Power Endurance (35min) - created by Gemini",
+    "name": "Power Endurance - created by Gemini",
     "sections": [
       {
         "duration": 300,
@@ -4198,7 +4198,7 @@
     "level": "advanced"
   },
   {
-    "name": "The Step-Up 40 (46min) - created by Gemini",
+    "name": "The Step-Up 40 - created by Gemini",
     "sections": [
       {
         "duration": 180,
@@ -4249,7 +4249,7 @@
     "level": "advanced"
   },
   {
-    "name": "Metabolic Wave (36min) - created by Gemini",
+    "name": "Metabolic Wave - created by Gemini",
     "sections": [
       {
         "duration": 180,
@@ -4280,7 +4280,7 @@
     "level": "advanced"
   },
   {
-    "name": "Endurance Hour (60min) - created by Gemini",
+    "name": "Endurance Hour - created by Gemini",
     "sections": [
       {
         "duration": 300,
@@ -4310,7 +4310,7 @@
     "level": "intermediate"
   },
   {
-    "name": "5000m Simulation (26min) - created by Gemini",
+    "name": "5000m Simulation - created by Gemini",
     "sections": [
       {
         "duration": 300,
@@ -4340,7 +4340,7 @@
     "level": "advanced"
   },
   {
-    "name": "Threshold 45 (51min) - created by Gemini",
+    "name": "Threshold 45 - created by Gemini",
     "sections": [
       {
         "duration": 180,
@@ -4371,7 +4371,7 @@
     "level": "advanced"
   },
   {
-    "name": "The Long Slow Burn (75min) - created by Gemini",
+    "name": "The Long Slow Burn - created by Gemini",
     "sections": [
       {
         "duration": 300,
