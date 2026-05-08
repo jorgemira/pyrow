@@ -1649,6 +1649,37 @@
     "level": "intermediate"
   },
   {
+    "name": "Intermediate - Pete Plan - Speed",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 30,
+        "tension": 5,
+        "drills": [],
+        "repeats": 8,
+        "rest_after": 90
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Eight 2-minute speed intervals at 30 spm with 90-second rest. Approximates Pete Plan 500m rep sessions adapted for time-based rowing. Keep tension low — the stroke rate carries the intensity.",
+    "level": "intermediate"
+  },
+  {
     "name": "Intermediate - 10x90s On/Off",
     "sections": [
       {
@@ -3978,6 +4009,68 @@
       }
     ],
     "description": "Heavy pulls at variable rates to force muscle recruitment.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Pete Plan - Long Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 3,
+        "rest_after": 150
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Three 10-minute endurance intervals at 24 spm with 2.5-minute rest. Approximates Pete Plan 2000m pieces. Long enough to build real aerobic capacity, short enough to row harder than pure steady state.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Pete Plan - AT",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 420,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 4,
+        "rest_after": 180
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Four 7-minute threshold pieces at 26 spm with 3-minute rest. Pete Plan anaerobic threshold work adapted for time-based rowing. Sustained effort that builds lactate threshold and aerobic power.",
     "level": "advanced"
   },
   {
