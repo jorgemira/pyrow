@@ -3299,14 +3299,8 @@
         "stroke_rate": 32,
         "tension": 8,
         "drills": [],
-        "repeats": 1
-      },
-      {
-        "duration": 240,
-        "stroke_rate": 32,
-        "tension": 8,
-        "drills": [],
-        "repeats": 1
+        "repeats": 1,
+        "rest_after": 240
       },
       {
         "duration": 180,
@@ -3337,7 +3331,7 @@
         "repeats": 1
       }
     ],
-    "description": "Aggressive rate pyramid peaking at 30+ spm. Develops top-end speed and rapid rate changes.",
+    "description": "Aggressive rate pyramid peaking at 32 spm, with a 4-minute recovery break at the top before descending. Develops top-end speed without stacking two max efforts back-to-back.",
     "level": "advanced"
   },
   {
