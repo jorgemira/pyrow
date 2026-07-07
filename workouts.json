@@ -3285,14 +3285,16 @@
         "stroke_rate": 24,
         "tension": 6,
         "drills": [],
-        "repeats": 1
+        "repeats": 1,
+        "rest_after": 60
       },
       {
         "duration": 180,
         "stroke_rate": 28,
         "tension": 7,
         "drills": [],
-        "repeats": 1
+        "repeats": 1,
+        "rest_after": 90
       },
       {
         "duration": 240,
@@ -3300,21 +3302,23 @@
         "tension": 8,
         "drills": [],
         "repeats": 1,
-        "rest_after": 240
+        "rest_after": 120
       },
       {
         "duration": 180,
         "stroke_rate": 28,
         "tension": 7,
         "drills": [],
-        "repeats": 1
+        "repeats": 1,
+        "rest_after": 90
       },
       {
         "duration": 120,
         "stroke_rate": 24,
         "tension": 6,
         "drills": [],
-        "repeats": 1
+        "repeats": 1,
+        "rest_after": 60
       },
       {
         "duration": 120,
@@ -3331,7 +3335,7 @@
         "repeats": 1
       }
     ],
-    "description": "Aggressive rate pyramid peaking at 32 spm, with a 4-minute recovery break at the top before descending. Develops top-end speed without stacking two max efforts back-to-back.",
+    "description": "Rate pyramid peaking once at 32 spm/T8, with recovery breaks scattered between every step (half the preceding work duration) instead of one lump rest. Develops top-end speed with built-in recovery throughout.",
     "level": "advanced"
   },
   {
