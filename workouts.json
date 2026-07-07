@@ -3477,10 +3477,44 @@
       {
         "duration": 180,
         "stroke_rate": 20,
-        "tension": 4,
+        "tension": 3,
         "drills": [],
-        "repeats": 5,
-        "rest_after": 180
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 20,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
       },
       {
         "duration": 180,
@@ -3491,7 +3525,7 @@
         "section_type": "cooldown"
       }
     ],
-    "description": "Fluctuating between aerobic and anaerobic work. High HR variability.",
+    "description": "Alternates low-intensity aerobic segments (20 spm) with high-intensity anaerobic surges (28 spm) every 3 minutes. Creates genuine metabolic and heart-rate swings instead of a flat effort.",
     "level": "advanced"
   },
   {
@@ -3804,7 +3838,7 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced - Tabata Style - Medium",
+    "name": "Advanced - Power Bursts - Medium",
     "sections": [
       {
         "duration": 180,
@@ -3961,7 +3995,7 @@
         "repeats": 1
       }
     ],
-    "description": "Tabata-inspired 20s on / 10s off bursts. Pushes anaerobic capacity with minimal recovery windows.",
+    "description": "Ten rounds of 60-second max-effort bursts at 32 spm and top tension, with 2-minute recovery between. Long recovery windows let you go all-out each round.",
     "level": "advanced"
   },
   {
@@ -4475,9 +4509,9 @@
         "section_type": "warmup"
       },
       {
-        "duration": 3000,
-        "stroke_rate": 20,
-        "tension": 4,
+        "duration": 3900,
+        "stroke_rate": 22,
+        "tension": 5,
         "drills": [],
         "repeats": 1
       },
@@ -4490,7 +4524,554 @@
         "section_type": "cooldown"
       }
     ],
-    "description": "Long steady-state session simulating marathon rowing pace. Builds deep aerobic endurance and mental resilience for extended efforts.",
+    "description": "The ultimate long steady-state test: 65 minutes at 22 spm and moderate-high tension. Direct continuation of the Intermediate Long Slow Burn, dialed up in rate and resistance for marathon-distance mental and physical preparation.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Stroke Rate Wave",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Higher-rate continuation of the Intermediate Stroke Rate Wave: oscillates between 24 and 32 spm across eleven 3-minute segments instead of 20-28 spm. Trains rapid, controlled rate transitions at race-adjacent intensity.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Ascending Ladder 1-2-3-4-5-4-3-2-1",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 30
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 90
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 300,
+        "stroke_rate": 32,
+        "tension": 8,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 150
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 90
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Extends the Intermediate Ascending Ladder 1-2-3-4-3-2-1 with a fifth rung, peaking at 5 minutes at 32 spm/T8 before descending. Rest is always half the preceding work interval: a longer, harder symmetric ladder for advanced pacing and mental toughness.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - 3-2-1 Stroke Rate Pyramid",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 4,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 4
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Higher-rate continuation of the Intermediate 3-2-1 Stroke Rate Pyramid: same 3/2/1-minute block structure repeated 4 times, but climbing to 24/28/32 spm instead of 22/25/28. Reinforces rate-change discipline at advanced intensity.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Balanced 10x2:30",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 150,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 10,
+        "rest_after": 30
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Balanced 10x2:30: same ten 2:30 work intervals and 30-second transitions, raised from 24 spm/T4 to 28 spm/T6 for real threshold stress at the same volume.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - 3x12min Threshold Build",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 120
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate 3x12min Aerobic Build: same three 12-minute blocks and 2-minute rest, climbing 24-26-28 spm instead of 20-22-24. Threshold-adjacent effort held over 36 minutes of work.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Concept2 1min On/Off",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 12,
+        "rest_after": 60
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Concept2 1min On/Off: same equal-ratio work/rest format, raised from 28 spm to 32 spm with two extra rounds for greater sustained on/off capacity.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Ratings Ladder",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 120,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 32,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Advanced continuation of the Intermediate Ratings Ladder: the same three-loop descending 4-3-2-1-minute structure ending in a sprint, but climbing to 24-32 spm instead of 20-28 spm. Rate control and repeatability under fatigue.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Steady State Tempo",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 1200,
+        "stroke_rate": 28,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Steady State - Medium: 20 minutes at 28 spm and moderate-high tension instead of 30 minutes at 24 spm. A tighter, harder tempo piece for days you only have half an hour.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - 4x4min Threshold",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 4,
+        "rest_after": 120
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate 4x4min Aerobic: same four 4-minute work blocks and 2-minute rest, raised from 22 spm/T4 to 26 spm/T6 for genuine threshold stress in the same 28-minute window.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Two Tens",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Concept2 Two Tens: same two 10-minute pieces and 3-minute rest between, raised from 22-24 spm to 26-28 spm and much higher tension. Endurance and pacing under real load, in under 30 minutes.",
     "level": "advanced"
   }
 ]
