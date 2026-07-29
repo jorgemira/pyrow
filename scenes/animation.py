@@ -64,6 +64,23 @@ class _Button:
         surface.blit(txt, txt.get_rect(center=self.rect.center))
 
 
+def _top_right(window: pygame.window.Window, monitor_size: tuple[int, int]) -> tuple[int, int]:
+    """Return the top-right corner of the primary monitor, in desktop coordinates.
+
+    SDL reports monitor sizes but not their origins, so the origin is derived by asking SDL to
+    centre the window on the primary monitor and working backwards from where it landed. The
+    primary monitor is not always at desktop x=0, so its size alone is not enough to place a
+    window against its right edge.
+    """
+    monitor_w, monitor_h = monitor_size
+    win_w, win_h = window.size
+    window.position = pygame.WINDOWPOS_CENTERED
+    centered_x, centered_y = window.position
+    origin_x = centered_x - (monitor_w - win_w) // 2
+    origin_y = centered_y - (monitor_h - win_h) // 2
+    return origin_x + monitor_w - win_w, origin_y
+
+
 class AnimationScene(Scene):
     def __init__(self, manager, workout: Workout | None = None):
         super().__init__(manager)
@@ -78,7 +95,7 @@ class AnimationScene(Scene):
         self.window = pygame.window.Window("PyRow", size=(self.sw, self.sh))
         self.window.resizable = True
         self.window.minimum_size = (_REF_W // 2, _REF_H // 2)
-        self.window.position = ((monitor_w - self.sw) // 2, 30)
+        self.window.position = _top_right(self.window, (monitor_w, monitor_h))
         self.window.always_on_top = True
 
         # Sounds
