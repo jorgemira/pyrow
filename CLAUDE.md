@@ -27,7 +27,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - `animations/base.py` — DrillProfile, DRILL_PROFILES, get_position(), pause/transition math
 - `animations/styles.py` — RowingFigureV2Animation, body_positions(), part coloring
 - `ui/workout_editor.py` — customtkinter workout editor dialog
-- `workouts.json` — workout library (60 workouts)
+- `workouts.json` — workout library (84 workouts)
 
 ## Key Patterns
 
@@ -46,9 +46,11 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Stop confirmation**: clicking Stop/Escape pauses the workout and shows a modal confirmation dialog; Yes confirms, No dismisses but keeps paused
 - **Progress bars below figure**: section and total progress bars are stacked below the animation area in `_bar_rect`, separate from the side panel
 - **Seekable progress bars**: click-and-drag on either bar to scrub; `WorkoutPlayer.seek_section()` and `seek_total()` handle positioning; tooltip shows target time (total bar also shows section label)
-- **Upcoming section preview**: side panel shows next section's drill, stroke rate, and duration below current section info via `WorkoutPlayer.upcoming_section`
+- **Remaining sections list**: side panel shows a scrollable "Up next" list of all remaining sections (drill, rate, tension, duration); mouse wheel scrolls, scroll resets on section change
 - **Ready prompt**: workout launches paused with a "Ready?" screen; user presses Space/Enter or clicks Start to begin; Escape returns to menu
 - **Double-click to play**: double-clicking a workout in the menu list selects and launches it
+- **Window placement**: animation window is pinned to the top-right of the primary monitor via `_top_right()`, which derives the monitor origin by centering the window and inverting the arithmetic (SDL doesn't report monitor origins)
+- **Screen sleep allowed**: `pygame.display.set_allow_screensaver(True)` in `main.py` so the display can blank/sleep despite SDL's default
 
 ## Code Style
 
@@ -61,6 +63,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 
 ## Working with Workouts
 
+- Workout names follow `Level - Name - Extra` format (e.g. "Intermediate - Pete Plan - Speed"); `workouts.json` is kept sorted by level, then duration
 - `level` field on `Workout` — Level enum (beginner/intermediate/advanced), defaults to beginner, only serialized when non-default
 - `description` field on `Workout` — optional, shown as tooltip on hover in menu
 - `section_type` and `rest_after` are only serialized when non-default (backward compat)
