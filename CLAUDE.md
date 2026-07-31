@@ -27,7 +27,7 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - `animations/base.py` — DrillProfile, DRILL_PROFILES, get_position(), pause/transition math
 - `animations/styles.py` — RowingFigureV2Animation, body_positions(), part coloring
 - `ui/workout_editor.py` — customtkinter workout editor dialog
-- `workouts.json` — workout library (84 workouts)
+- `workouts.json` — workout library (89 workouts)
 
 ## Key Patterns
 
