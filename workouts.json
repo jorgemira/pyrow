@@ -1243,6 +1243,36 @@
     "level": "intermediate"
   },
   {
+    "name": "Intermediate - Steady State - Short",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 1200,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Compact steady row: 20 minutes at 24 spm and moderate tension. The short version of Steady State - Medium for busier days.",
+    "level": "intermediate"
+  },
+  {
     "name": "Intermediate - Pyramid with Rest",
     "sections": [
       {
@@ -1474,6 +1504,106 @@
     "level": "intermediate"
   },
   {
+    "name": "Intermediate - Fartlek Pickups",
+    "sections": [
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Steady 22 spm base broken by five 1-minute pickups at 26 spm, then a settled finish. A balanced everyday session mixing aerobic base with light speed work.",
+    "level": "intermediate"
+  },
+  {
     "name": "Intermediate - Pete Plan - Speed",
     "sections": [
       {
@@ -1564,6 +1694,44 @@
       }
     ],
     "description": "Five 5-minute pieces at threshold pace with 60-second rest. Develops lactate threshold and sustained power output.",
+    "level": "intermediate"
+  },
+  {
+    "name": "Intermediate - Negative Split 2x12",
+    "sections": [
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Two 12-minute pieces where the second is rowed harder than the first (22 then 24 spm). Teaches the negative-split pacing every race plan is built on.",
     "level": "intermediate"
   },
   {
@@ -3209,6 +3377,106 @@
     "level": "advanced"
   },
   {
+    "name": "Advanced - Fartlek Surges",
+    "sections": [
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 60,
+        "stroke_rate": 30,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Fartlek Pickups: 24 spm base with five 1-minute surges at 30 spm and high tension. Aerobic volume with a real anaerobic sting.",
+    "level": "advanced"
+  },
+  {
     "name": "Advanced - 12x30s Max Effort",
     "sections": [
       {
@@ -3237,6 +3505,44 @@
       }
     ],
     "description": "Twelve 30-second bursts at maximum effort with generous 2-minute rest. Develops peak power and sprint repeatability.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Negative Split 2x12",
+    "sections": [
+      {
+        "duration": 240,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 240,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Negative Split 2x12: the same two 12-minute pieces raised to 26 then 28 spm at high tension. Finishing faster when tired is the whole point.",
     "level": "advanced"
   },
   {
