@@ -999,7 +999,7 @@
     "name": "Intermediate - 30/30 Intervals",
     "sections": [
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 18,
         "tension": 3,
         "drills": [],
@@ -1015,7 +1015,7 @@
         "rest_after": 30
       },
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 16,
         "tension": 3,
         "drills": [],
@@ -1507,7 +1507,7 @@
     "name": "Intermediate - Fartlek Pickups",
     "sections": [
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 18,
         "tension": 3,
         "drills": [],
@@ -1592,7 +1592,7 @@
         "repeats": 1
       },
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 16,
         "tension": 3,
         "drills": [],
@@ -1632,6 +1632,44 @@
       }
     ],
     "description": "Eight 2-minute speed intervals at 30 spm with 90-second rest. Approximates Pete Plan 500m rep sessions adapted for time-based rowing. Keep tension low — the stroke rate carries the intensity.",
+    "level": "intermediate"
+  },
+  {
+    "name": "Intermediate - Negative Split 2x12",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 22,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 24,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Two 12-minute pieces where the second is rowed harder than the first (22 then 24 spm). Teaches the negative-split pacing every race plan is built on.",
     "level": "intermediate"
   },
   {
@@ -1694,44 +1732,6 @@
       }
     ],
     "description": "Five 5-minute pieces at threshold pace with 60-second rest. Develops lactate threshold and sustained power output.",
-    "level": "intermediate"
-  },
-  {
-    "name": "Intermediate - Negative Split 2x12",
-    "sections": [
-      {
-        "duration": 240,
-        "stroke_rate": 18,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "warmup"
-      },
-      {
-        "duration": 720,
-        "stroke_rate": 22,
-        "tension": 4,
-        "drills": [],
-        "repeats": 1,
-        "rest_after": 180
-      },
-      {
-        "duration": 720,
-        "stroke_rate": 24,
-        "tension": 5,
-        "drills": [],
-        "repeats": 1
-      },
-      {
-        "duration": 240,
-        "stroke_rate": 16,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "cooldown"
-      }
-    ],
-    "description": "Two 12-minute pieces where the second is rowed harder than the first (22 then 24 spm). Teaches the negative-split pacing every race plan is built on.",
     "level": "intermediate"
   },
   {
@@ -3380,7 +3380,7 @@
     "name": "Advanced - Fartlek Surges",
     "sections": [
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 18,
         "tension": 3,
         "drills": [],
@@ -3465,7 +3465,7 @@
         "repeats": 1
       },
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 16,
         "tension": 3,
         "drills": [],
@@ -3474,6 +3474,91 @@
       }
     ],
     "description": "Continuation of the Intermediate Fartlek Pickups: 24 spm base with five 1-minute surges at 30 spm and high tension. Aerobic volume with a real anaerobic sting.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Negative Split 2x12",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 26,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 180
+      },
+      {
+        "duration": 720,
+        "stroke_rate": 28,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Continuation of the Intermediate Negative Split 2x12: the same two 12-minute pieces raised to 26 then 28 spm at high tension. Finishing faster when tired is the whole point.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Power Endurance - Gemini",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 4,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 26,
+        "tension": 5,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 480,
+        "stroke_rate": 22,
+        "tension": 7,
+        "drills": [],
+        "repeats": 1,
+        "rest_after": 60
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Heavy pulls at variable rates to force muscle recruitment.",
     "level": "advanced"
   },
   {
@@ -3505,44 +3590,6 @@
       }
     ],
     "description": "Twelve 30-second bursts at maximum effort with generous 2-minute rest. Develops peak power and sprint repeatability.",
-    "level": "advanced"
-  },
-  {
-    "name": "Advanced - Negative Split 2x12",
-    "sections": [
-      {
-        "duration": 240,
-        "stroke_rate": 18,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "warmup"
-      },
-      {
-        "duration": 720,
-        "stroke_rate": 26,
-        "tension": 6,
-        "drills": [],
-        "repeats": 1,
-        "rest_after": 180
-      },
-      {
-        "duration": 720,
-        "stroke_rate": 28,
-        "tension": 7,
-        "drills": [],
-        "repeats": 1
-      },
-      {
-        "duration": 240,
-        "stroke_rate": 16,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "cooldown"
-      }
-    ],
-    "description": "Continuation of the Intermediate Negative Split 2x12: the same two 12-minute pieces raised to 26 then 28 spm at high tension. Finishing faster when tired is the whole point.",
     "level": "advanced"
   },
   {
@@ -4027,53 +4074,6 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced - Power Endurance - Gemini",
-    "sections": [
-      {
-        "duration": 300,
-        "stroke_rate": 18,
-        "tension": 4,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "warmup"
-      },
-      {
-        "duration": 480,
-        "stroke_rate": 24,
-        "tension": 6,
-        "drills": [],
-        "repeats": 1,
-        "rest_after": 60
-      },
-      {
-        "duration": 480,
-        "stroke_rate": 26,
-        "tension": 5,
-        "drills": [],
-        "repeats": 1,
-        "rest_after": 60
-      },
-      {
-        "duration": 480,
-        "stroke_rate": 22,
-        "tension": 7,
-        "drills": [],
-        "repeats": 1,
-        "rest_after": 60
-      },
-      {
-        "duration": 300,
-        "stroke_rate": 16,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "cooldown"
-      }
-    ],
-    "description": "Heavy pulls at variable rates to force muscle recruitment.",
-    "level": "advanced"
-  },
-  {
     "name": "Advanced - Ratings Ladder",
     "sections": [
       {
@@ -4183,41 +4183,10 @@
     "level": "advanced"
   },
   {
-    "name": "Advanced - Pete Plan - Long Intervals",
-    "sections": [
-      {
-        "duration": 180,
-        "stroke_rate": 18,
-        "tension": 3,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "warmup"
-      },
-      {
-        "duration": 600,
-        "stroke_rate": 24,
-        "tension": 6,
-        "drills": [],
-        "repeats": 3,
-        "rest_after": 150
-      },
-      {
-        "duration": 180,
-        "stroke_rate": 16,
-        "tension": 2,
-        "drills": [],
-        "repeats": 1,
-        "section_type": "cooldown"
-      }
-    ],
-    "description": "Three 10-minute endurance intervals at 24 spm with 2.5-minute rest. Approximates Pete Plan 2000m pieces. Long enough to build real aerobic capacity, short enough to row harder than pure steady state.",
-    "level": "advanced"
-  },
-  {
     "name": "Advanced - Waterfall 12-10-8",
     "sections": [
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 18,
         "tension": 3,
         "drills": [],
@@ -4248,7 +4217,7 @@
         "repeats": 1
       },
       {
-        "duration": 240,
+        "duration": 180,
         "stroke_rate": 16,
         "tension": 3,
         "drills": [],
@@ -4257,6 +4226,37 @@
       }
     ],
     "description": "The classic Concept2 waterfall: 12, 10, and 8-minute pieces at rising stroke rates with 2-minute rests. The shrinking pieces let you push the pace as fatigue builds.",
+    "level": "advanced"
+  },
+  {
+    "name": "Advanced - Pete Plan - Long Intervals",
+    "sections": [
+      {
+        "duration": 180,
+        "stroke_rate": 18,
+        "tension": 3,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "warmup"
+      },
+      {
+        "duration": 600,
+        "stroke_rate": 24,
+        "tension": 6,
+        "drills": [],
+        "repeats": 3,
+        "rest_after": 150
+      },
+      {
+        "duration": 180,
+        "stroke_rate": 16,
+        "tension": 2,
+        "drills": [],
+        "repeats": 1,
+        "section_type": "cooldown"
+      }
+    ],
+    "description": "Three 10-minute endurance intervals at 24 spm with 2.5-minute rest. Approximates Pete Plan 2000m pieces. Long enough to build real aerobic capacity, short enough to row harder than pure steady state.",
     "level": "advanced"
   },
   {
