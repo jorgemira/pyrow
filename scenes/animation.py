@@ -317,6 +317,9 @@ class AnimationScene(Scene):
             return
         self._apply_drag_seek()
         self._dragging_bar = None
+        if self._was_playing_before_drag:
+            self._was_playing_before_drag = False
+            self._player.play()
 
     def _update_drag_time(self, mx: int):
         assert self._dragging_bar is not None
