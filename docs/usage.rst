@@ -19,12 +19,13 @@ The application opens with a customtkinter menu that lists all available
 workouts loaded from ``workouts.json``. From the menu you can:
 
 - **Select a workout** from the scrollable list — hover for ~1 second to see a
-  description tooltip
-- **Choose an animation style** — "Rowing Figure V2" (windowed) is the default;
-  other styles render as a thin borderless strip at the top of the screen
-- **Play** the selected workout to launch the animation scene
+  description tooltip, or use the arrow keys
+- **Filter** by level and by duration range
+- **Play** the selected workout to launch the animation scene — click Play,
+  double-click the row, or press Enter
 - **Edit** or **create** workouts using the built-in editor
 - **Delete** workouts you no longer need
+- **Quit** with the Exit button or Escape
 
 Workout Editor
 --------------
@@ -50,13 +51,15 @@ from your rowing machine. The left panel shows:
 
 Controls:
 
-========= =========================================
-Key       Action
-========= =========================================
-Space     Play / Pause
-Escape    Return to menu
-Left/Right  Previous / Next section
-M         Mute / Unmute transition sounds
-========= =========================================
+========== =============================================
+Key        Action
+========== =============================================
+Space      Play / Pause (starts the workout when ready)
+Escape     Stop, after a confirmation prompt
+Left/Right Previous / Next section
+M          Mute / Unmute transition sounds
+========== =============================================
 
-On-screen buttons mirror the keyboard controls.
+On-screen buttons mirror the keyboard controls. Both progress bars can be
+clicked or dragged to scrub; the tooltip shows the target time, and the total
+bar also names the section you are scrubbing to.

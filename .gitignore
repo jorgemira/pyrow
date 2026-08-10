@@ -34,3 +34,5 @@ Thumbs.db
 .worktrees/
 .claude/
 docs/plans/
+docs/_build/
+workouts.json.tmp

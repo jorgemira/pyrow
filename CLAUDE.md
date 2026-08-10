@@ -13,21 +13,24 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Lint**: `uv run ruff check --fix .`
 - **Format**: `uv run ruff format .`
 - **Type check**: `uv run ty check`
+- **Test**: `uv run pytest`
 - **All checks** (what pre-commit runs): `prek run --all-files`
 - **Build docs**: `cd docs && uv run sphinx-build . _build`
 
 ## Architecture
 
 - `main.py` — entry point, initializes pygame and launches SceneManager
-- `models/workout.py` — data model: Workout, Section, SectionType, DrillEntry, DrillType, Level
-- `workout_player.py` — state machine for timed workout playback
-- `workout_store.py` — JSON persistence for workouts
+- `models/workout.py` — data model: Workout, Section, SectionType, DrillEntry, DrillType, Level, format_mmss()
+- `workout_player.py` — PlayerState enum and the state machine for timed workout playback
+- `workout_store.py` — JSON persistence for workouts (atomic writes)
 - `scenes/menu.py` — customtkinter menu with filters and workout list
 - `scenes/animation.py` — pygame animation scene (Rowing Figure V2 only)
 - `animations/base.py` — DrillProfile, DRILL_PROFILES, get_position(), pause/transition math
 - `animations/styles.py` — RowingFigureV2Animation, body_positions(), part coloring
 - `ui/workout_editor.py` — customtkinter workout editor dialog
+- `ui/dialogs.py` — themed modal confirm/warning dialogs (replaces tkinter.messagebox)
 - `workouts.json` — workout library (116 workouts)
+- `tests/` — pytest suite mirroring the modules above; `tests/conftest.py` holds the GUI fixtures
 
 ## Key Patterns
 
@@ -51,6 +54,22 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Double-click to play**: double-clicking a workout in the menu list selects and launches it
 - **Window placement**: animation window is pinned to the top-right of the primary monitor via `_top_right()`, which derives the monitor origin by centering the window and inverting the arithmetic (SDL doesn't report monitor origins)
 - **Screen sleep allowed**: `pygame.display.set_allow_screensaver(True)` in `main.py` so the display can blank/sleep despite SDL's default
+
+## Testing
+
+- Run with `uv run pytest`; the suite is also a pre-commit hook, so keep it fast
+- `tests/conftest.py` forces SDL's dummy video/audio drivers, so `AnimationScene` builds, renders
+  and is asserted on headlessly — no display or sound card needed
+- tkinter has no headless mode, so the `scenes/menu.py`, `ui/dialogs.py` and `ui/workout_editor.py`
+  tests map real windows. They are made override-redirect and placed at `+6000+2000` so they stay
+  off the desktop while still being laid out (`withdraw()` would break every geometry assertion,
+  and `-alpha 0` is silently ignored by some Tk builds). They skip when there is no display; CI
+  runs them under `xvfb-run`
+- The menu fixture is module-scoped with a per-test reset, because building a Tk root plus its
+  widgets costs ~1s. It uses a synthetic library, never the shipped `workouts.json`, and stubs
+  `save_workouts`
+- Verify new tests actually fail when the behaviour breaks; the existing suite was checked by
+  mutating the source and confirming each mutation was caught
 
 ## Code Style
 
