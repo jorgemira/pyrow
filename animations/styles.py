@@ -57,6 +57,7 @@ def body_positions(position, drill_type):
 
 
 _TRAIL_SECONDS = 0.2  # how long the seat ghost lingers, independent of frame rate
+_KNEE_BEND = 0.22  # how far the knee rises above a straight leg at full compression
 
 _Point = tuple[float, float]
 
@@ -96,10 +97,13 @@ class _Skeleton:
         seat_x = foot[0] + scale * 0.12 + leg_pos * scale * 0.88
         seat_y = cy + scale * 0.14
 
-        knee = (
-            (foot[0] + seat_x) / 2 + leg_pos * scale * 0.04,
-            foot[1] - scale * (0.16 + leg_pos * 0.18),
-        )
+        # The knee rides above the straight foot-to-hip line, and that bend shrinks as the legs
+        # extend, so the leg is sharply compressed at the catch and almost straight at the finish.
+        knee_x = (foot[0] + seat_x) / 2 + leg_pos * scale * 0.04
+        span = seat_x - foot[0]
+        along = (knee_x - foot[0]) / span if span else 0.5
+        straight_y = foot[1] + along * (seat_y - foot[1])
+        knee = (knee_x, straight_y - scale * _KNEE_BEND * (1.0 - leg_pos))
 
         body_angle = math.radians(-20 + body_pos * 38)
         body_len = scale * 0.52
