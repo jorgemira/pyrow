@@ -1,8 +1,18 @@
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
+from enum import StrEnum
 
 from models.workout import DrillType, Section, SectionType, Workout
+
+
+class PlayerState(StrEnum):
+    """Playback states. A str enum so comparisons and debug output stay readable."""
+
+    stopped = "stopped"
+    playing = "playing"
+    paused = "paused"
+    finished = "finished"
 
 
 class WorkoutPlayer:
@@ -11,7 +21,6 @@ class WorkoutPlayer:
     def __init__(self, workout: Workout):
         self.workout = workout
         self._sections: list[Section] = workout.flatten_sections()
-
         # Pre-compute adjusted cycle times so each section has whole strokes.
         # This ensures the figure is always at catch (phase 0.0) at section boundaries.
         self._section_cycle_times: list[float] = []
@@ -25,7 +34,7 @@ class WorkoutPlayer:
                 self._section_stroke_counts.append(count)
                 self._section_cycle_times.append(sec.duration / count)
 
-        self.state: str = "stopped"  # stopped | playing | paused | finished
+        self.state: PlayerState = PlayerState.stopped
         self.section_idx: int = 0
         self.section_elapsed: float = 0.0
         self.total_elapsed: float = 0.0
@@ -44,7 +53,17 @@ class WorkoutPlayer:
     # ── Properties ───────────────────────────────────────────────
 
     @property
-    def current_section(self):
+    def sections(self) -> Sequence[Section]:
+        """The flattened playback sections, in order."""
+        return self._sections
+
+    @property
+    def remaining_count(self) -> int:
+        """How many sections come after the current one."""
+        return len(self._sections) - self.section_idx - 1
+
+    @property
+    def current_section(self) -> Section:
         return self._sections[self.section_idx]
 
     @property
@@ -102,20 +121,13 @@ class WorkoutPlayer:
 
     @property
     def section_label(self) -> str:
+        """Human-readable position, e.g. Section 3/12, annotated when not plain work."""
         n = len(self._sections)
         label = f"Section {self.section_idx + 1}/{n}"
         st = self.current_section.section_type
         if st != SectionType.work:
             label += f" ({st.label})"
         return label
-
-    @property
-    def upcoming_section(self) -> Section | None:
-        """Return the next section, or None if this is the last."""
-        nxt = self.section_idx + 1
-        if nxt < len(self._sections):
-            return self._sections[nxt]
-        return None
 
     def section_label_at(self, total_time: float) -> str:
         """Return the section label for an absolute time in the workout."""
@@ -135,33 +147,28 @@ class WorkoutPlayer:
     # ── Controls ─────────────────────────────────────────────────
 
     def play(self):
-        if self.state in ("stopped", "finished"):
+        """Start or resume. Starting from stopped or finished rewinds to the first section."""
+        if self.state in (PlayerState.stopped, PlayerState.finished):
             self.section_idx = 0
             self.section_elapsed = 0.0
             self.total_elapsed = 0.0
             self._warning_triggered = False
             self.warning_active = False
-        self.state = "playing"
+        self.state = PlayerState.playing
 
     def pause(self):
-        if self.state == "playing":
-            self.state = "paused"
+        if self.state == PlayerState.playing:
+            self.state = PlayerState.paused
 
     def toggle_play_pause(self):
-        if self.state == "playing":
+        """Pause if playing, otherwise play — which restarts a finished workout."""
+        if self.state == PlayerState.playing:
             self.pause()
-        elif self.state in ("paused", "stopped", "finished"):
+        else:
             self.play()
 
-    def stop(self):
-        self.state = "stopped"
-        self.section_idx = 0
-        self.section_elapsed = 0.0
-        self.total_elapsed = 0.0
-        self.warning_active = False
-        self._warning_triggered = False
-
     def next_section(self):
+        """Jump to the start of the next section, if any, and announce the transition."""
         if self.section_idx < len(self._sections) - 1:
             self.section_idx += 1
             self.section_elapsed = 0.0
@@ -170,6 +177,7 @@ class WorkoutPlayer:
             self.on_transition()
 
     def prev_section(self):
+        """Jump to the start of the previous section, if any, and announce the transition."""
         if self.section_idx > 0:
             self.section_idx -= 1
             self.section_elapsed = 0.0
@@ -207,7 +215,12 @@ class WorkoutPlayer:
     # ── Update ───────────────────────────────────────────────────
 
     def update(self, dt: float):
-        if self.state != "playing":
+        """Advance playback by *dt* seconds.
+
+        Advances at most one section per call, which is safe because the scene clamps dt well
+        below any section length. Fires the warning and transition callbacks as they fall due.
+        """
+        if self.state != PlayerState.playing:
             return
 
         self.section_elapsed += dt
@@ -235,7 +248,7 @@ class WorkoutPlayer:
                 self._warning_triggered = False
                 self.on_transition()
             else:
-                self.state = "finished"
+                self.state = PlayerState.finished
                 self.section_elapsed = self.current_section.duration
 
     def _build_warning_text(self):
@@ -246,7 +259,7 @@ class WorkoutPlayer:
                 self.warning_text = f"Rest: {ns.duration}s"
             else:
                 prefix = f"{ns.section_type.label}: " if ns.section_type != SectionType.work else ""
-                drill_name = ns.drills[0].drill_type.value.replace("_", " ").title() if ns.drills else "Full Stroke"
-                self.warning_text = f"Next: {prefix}{drill_name} @ {ns.stroke_rate}spm T{ns.tension}"
+                drill = ns.drills[0].drill_type if ns.drills else DrillType.none
+                self.warning_text = f"Next: {prefix}{drill.display_label} @ {ns.stroke_rate}spm T{ns.tension}"
         else:
             self.warning_text = "Workout ending!"
