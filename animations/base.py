@@ -120,8 +120,6 @@ def _paused_motion(phase: float, pause_at: float) -> float:
 class BaseAnimation(ABC):
     """Base class for visual pacer animations."""
 
-    name: str = ""
-
     def update(self, dt: float, position: float, profile: DrillProfile) -> None:  # noqa: B027
         """Update internal animation state. Override if the style has trailing/particles."""
 

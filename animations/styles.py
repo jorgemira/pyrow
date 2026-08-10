@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import math
+from dataclasses import dataclass
 
 import pygame
 
@@ -55,43 +56,50 @@ def body_positions(position, drill_type):
     return {"legs": position, "body": position, "arms": position}
 
 
-class RowingFigureV2Animation(BaseAnimation):
-    name = "Rowing Figure V2"
+_TRAIL_SECONDS = 0.2  # how long the seat ghost lingers, independent of frame rate
 
-    def __init__(self):
-        self._trail: list[float] = []
+_Point = tuple[float, float]
 
-    def update(self, dt, position, profile):
-        self._trail.append(position)
-        if len(self._trail) > 12:
-            self._trail.pop(0)
 
-    def draw(self, surface, rect, position, profile, drill_type):
-        parts = body_positions(position, drill_type)
-        leg_pos = parts["legs"]
-        body_pos = parts["body"]
-        arm_pos = parts["arms"]
+@dataclass(frozen=True)
+class _Skeleton:
+    """Where every joint, the seat and the machine sit for one stroke position."""
 
-        colors = self._part_colors(profile.color, drill_type)
+    scale: float
+    limb_width: int
+    machine_width: int
+    joint_radius: int
+    foot: _Point
+    knee: _Point
+    hip: _Point
+    shoulder: _Point
+    elbow: _Point
+    hand: _Point
+    head: _Point
+    flywheel: _Point
+    seat_x: float
+    seat_y: float
+    seat_w: int
+    seat_h: int
+    rail_left: float
+    rail_right: float
+
+    @classmethod
+    def build(cls, rect: pygame.Rect, parts: dict[str, float]) -> _Skeleton:
+        leg_pos, body_pos, arm_pos = parts["legs"], parts["body"], parts["arms"]
         scale = rect.height * 0.7
-        lw = max(int(scale * 0.065), 3)  # limb width
-        mlw = max(int(scale * 0.013), 2)  # machine line width
-        jw = max(lw // 2 + 1, 2)  # joint radius
+        limb_width = max(int(scale * 0.065), 3)
         cx = rect.centerx + scale * 0.12
         cy = rect.centery
 
-        # ── Skeleton positions ───────────────────────────────────
         foot = (cx - scale * 0.52, cy + scale * 0.34)
-        rail_left = foot[0] + scale * 0.05
-        rail_right = foot[0] + scale * 1.15
-
         seat_x = foot[0] + scale * 0.12 + leg_pos * scale * 0.88
         seat_y = cy + scale * 0.14
-        hip = (seat_x, seat_y)
 
-        knee_x = (foot[0] + seat_x) / 2 + leg_pos * scale * 0.04
-        knee_y = foot[1] - scale * (0.16 + leg_pos * 0.18)
-        knee = (knee_x, knee_y)
+        knee = (
+            (foot[0] + seat_x) / 2 + leg_pos * scale * 0.04,
+            foot[1] - scale * (0.16 + leg_pos * 0.18),
+        )
 
         body_angle = math.radians(-20 + body_pos * 38)
         body_len = scale * 0.52
@@ -100,94 +108,124 @@ class RowingFigureV2Animation(BaseAnimation):
             seat_y - body_len * math.cos(body_angle),
         )
 
-        head = (
-            shoulder[0] + scale * 0.05 * math.sin(body_angle),
-            shoulder[1] - scale * 0.15,
+        return cls(
+            scale=scale,
+            limb_width=limb_width,
+            machine_width=max(int(scale * 0.013), 2),
+            joint_radius=max(limb_width // 2 + 1, 2),
+            foot=foot,
+            knee=knee,
+            hip=(seat_x, seat_y),
+            shoulder=shoulder,
+            # Hands: extended forward at catch, pulled to chest at finish
+            elbow=(
+                shoulder[0] - (1 - arm_pos) * scale * 0.34,
+                shoulder[1] + scale * 0.02 + arm_pos * scale * 0.08,
+            ),
+            hand=(shoulder[0] - (1 - arm_pos) * scale * 0.55, shoulder[1] + scale * 0.06),
+            head=(shoulder[0] + scale * 0.05 * math.sin(body_angle), shoulder[1] - scale * 0.15),
+            flywheel=(foot[0] - scale * 0.35, cy - scale * 0.05),
+            seat_x=seat_x,
+            seat_y=seat_y,
+            seat_w=max(int(scale * 0.12), 6),
+            seat_h=max(int(scale * 0.05), 3),
+            rail_left=foot[0] + scale * 0.05,
+            rail_right=foot[0] + scale * 1.15,
         )
 
-        # Hands: extended forward at catch, pulled to chest at finish
-        hand = (
-            shoulder[0] - (1 - arm_pos) * scale * 0.55,
-            shoulder[1] + scale * 0.06,
-        )
 
-        elbow = (
-            shoulder[0] - (1 - arm_pos) * scale * 0.34,
-            shoulder[1] + scale * 0.02 + arm_pos * scale * 0.08,
-        )
+class RowingFigureV2Animation(BaseAnimation):
+    def __init__(self):
+        self._trail: list[float] = []
+        self._ghost: pygame.Surface | None = None
+        self._shadow: pygame.Surface | None = None
 
-        # ── Machine ─────────────────────────────────────────────
-        flywheel_cx = foot[0] - scale * 0.35
-        flywheel_cy = cy - scale * 0.05
+    def update(self, dt, position, profile):
+        """Record the seat position so the motion trail can be drawn."""
+        # Length is derived from dt so the trail looks the same at any frame rate.
+        max_len = max(1, round(_TRAIL_SECONDS / dt)) if dt > 0 else 12
+        self._trail.append(position)
+        del self._trail[: max(0, len(self._trail) - max_len)]
 
-        # Rail
+    def draw(self, surface, rect, position, profile, drill_type):
+        """Draw the machine, the seat trail and the rower for one stroke position."""
+        skeleton = _Skeleton.build(rect, body_positions(position, drill_type))
+        colors = self._part_colors(profile.color, drill_type)
+
+        self._draw_machine(surface, skeleton)
+        self._draw_trail(surface, skeleton, profile.color, drill_type)
+        self._draw_shadow(surface, skeleton)
+        self._draw_figure(surface, skeleton, colors)
+
+    @staticmethod
+    def _draw_machine(surface, sk: _Skeleton) -> None:
+        scale, mlw = sk.scale, sk.machine_width
+        rail_y = int(sk.seat_y + scale * 0.08)
+        pygame.draw.line(surface, _MACHINE_DARK, (int(sk.rail_left), rail_y), (int(sk.rail_right), rail_y), mlw)
+
+        # Foot plate (angled)
+        fp_x = int(sk.foot[0] - scale * 0.02)
         pygame.draw.line(
             surface,
-            _MACHINE_DARK,
-            (int(rail_left), int(seat_y + scale * 0.08)),
-            (int(rail_right), int(seat_y + scale * 0.08)),
+            _MACHINE_MID,
+            (fp_x, int(sk.foot[1] - scale * 0.35)),
+            (fp_x, int(sk.foot[1] + scale * 0.04)),
             mlw,
         )
 
-        # Foot plate (angled)
-        fp_x = int(foot[0] - scale * 0.02)
-        fp_top = int(foot[1] - scale * 0.35)
-        fp_bot = int(foot[1] + scale * 0.04)
-        pygame.draw.line(surface, _MACHINE_MID, (fp_x, fp_top), (fp_x, fp_bot), mlw)
-
-        # Flywheel housing
+        # Flywheel housing and wheel
         fw_size = int(scale * 0.18)
-        fw_rect = pygame.Rect(int(flywheel_cx - fw_size), int(flywheel_cy - fw_size), fw_size * 2, fw_size * 2)
+        fw_rect = pygame.Rect(int(sk.flywheel[0] - fw_size), int(sk.flywheel[1] - fw_size), fw_size * 2, fw_size * 2)
         pygame.draw.rect(surface, _MACHINE_DARK, fw_rect, border_radius=4)
         pygame.draw.rect(surface, _MACHINE_MID, fw_rect, mlw, border_radius=4)
-        # Flywheel circle
-        pygame.draw.circle(surface, _MACHINE_LIGHT, (int(flywheel_cx), int(flywheel_cy)), int(scale * 0.1), mlw)
+        pygame.draw.circle(surface, _MACHINE_LIGHT, (int(sk.flywheel[0]), int(sk.flywheel[1])), int(scale * 0.1), mlw)
 
         # Chain from flywheel to handle
-        pygame.draw.line(surface, _CHAIN_COLOR, (int(flywheel_cx), int(flywheel_cy)), (int(hand[0]), int(hand[1])), mlw)
-
-        # Seat (on rail)
-        seat_w = max(int(scale * 0.12), 6)
-        seat_h = max(int(scale * 0.05), 3)
-        pygame.draw.rect(
-            surface, _MACHINE_LIGHT, (int(seat_x - seat_w // 2), int(seat_y + 1), seat_w, seat_h), border_radius=2
+        pygame.draw.line(
+            surface, _CHAIN_COLOR, (int(sk.flywheel[0]), int(sk.flywheel[1])), (int(sk.hand[0]), int(sk.hand[1])), mlw
         )
 
-        # ── Seat trail (motion ghost) ────────────────────────────
+        # Seat (on rail)
+        pygame.draw.rect(
+            surface,
+            _MACHINE_LIGHT,
+            (int(sk.seat_x - sk.seat_w // 2), int(sk.seat_y + 1), sk.seat_w, sk.seat_h),
+            border_radius=2,
+        )
+
+    def _draw_trail(self, surface, sk: _Skeleton, color, drill_type) -> None:
+        """Ghost the seat's recent positions. One surface is reused for every ghost."""
+        if self._ghost is None or self._ghost.get_size() != (sk.seat_w, sk.seat_h):
+            self._ghost = pygame.Surface((sk.seat_w, sk.seat_h), pygame.SRCALPHA)
+        r, g, b = color
         for i, trail_pos in enumerate(self._trail):
             alpha_frac = (i + 1) / (len(self._trail) + 1) * 0.3
-            t_parts = body_positions(trail_pos, drill_type)
-            t_seat_x = foot[0] + scale * 0.12 + t_parts["legs"] * scale * 0.88
-            r, g, b = profile.color
-            ghost = pygame.Surface((seat_w, seat_h), pygame.SRCALPHA)
-            ghost.fill((r, g, b, int(alpha_frac * 180)))
-            surface.blit(ghost, (int(t_seat_x - seat_w // 2), int(seat_y + 1)))
+            legs = body_positions(trail_pos, drill_type)["legs"]
+            t_seat_x = sk.foot[0] + sk.scale * 0.12 + legs * sk.scale * 0.88
+            self._ghost.fill((r, g, b, int(alpha_frac * 180)))
+            surface.blit(self._ghost, (int(t_seat_x - sk.seat_w // 2), int(sk.seat_y + 1)))
 
-        # ── Shadow ───────────────────────────────────────────────
-        shadow_y = int(seat_y + scale * 0.12)
-        shadow_w = int(scale * 0.7)
-        shadow = pygame.Surface((shadow_w, 4), pygame.SRCALPHA)
-        shadow.fill((0, 0, 0, 25))
-        surface.blit(shadow, (int(seat_x - shadow_w // 2), shadow_y))
+    def _draw_shadow(self, surface, sk: _Skeleton) -> None:
+        shadow_w = int(sk.scale * 0.7)
+        if self._shadow is None or self._shadow.get_width() != shadow_w:
+            self._shadow = pygame.Surface((shadow_w, 4), pygame.SRCALPHA)
+            self._shadow.fill((0, 0, 0, 25))
+        surface.blit(self._shadow, (int(sk.seat_x - shadow_w // 2), int(sk.seat_y + sk.scale * 0.12)))
 
-        # ── Figure ───────────────────────────────────────────────
-        # Legs
-        _limb(surface, foot, knee, colors["legs"], lw)
-        _limb(surface, knee, hip, colors["legs"], lw)
+    @staticmethod
+    def _draw_figure(surface, sk: _Skeleton, colors) -> None:
+        lw, jw, scale = sk.limb_width, sk.joint_radius, sk.scale
 
-        # Torso
-        _limb(surface, hip, shoulder, colors["body"], lw)
-
-        # Arms
-        _limb(surface, shoulder, elbow, colors["arms"], lw)
-        _limb(surface, elbow, hand, colors["arms"], lw)
+        _limb(surface, sk.foot, sk.knee, colors["legs"], lw)
+        _limb(surface, sk.knee, sk.hip, colors["legs"], lw)
+        _limb(surface, sk.hip, sk.shoulder, colors["body"], lw)
+        _limb(surface, sk.shoulder, sk.elbow, colors["arms"], lw)
+        _limb(surface, sk.elbow, sk.hand, colors["arms"], lw)
 
         # Joints (brighter accents)
-        for pos, group in [(knee, "legs"), (hip, "body"), (shoulder, "body"), (elbow, "arms")]:
+        for pos, group in [(sk.knee, "legs"), (sk.hip, "body"), (sk.shoulder, "body"), (sk.elbow, "arms")]:
             _joint(surface, pos, _bright(colors[group], 30), jw)
-
-        # Foot anchor
-        _joint(surface, foot, colors["legs"], jw)
+        _joint(surface, sk.foot, colors["legs"], jw)
 
         # Handle grip
         grip_w = max(int(scale * 0.06), 3)
@@ -195,15 +233,15 @@ class RowingFigureV2Animation(BaseAnimation):
         pygame.draw.rect(
             surface,
             _MACHINE_LIGHT,
-            (int(hand[0] - grip_w // 2), int(hand[1] - grip_h // 2), grip_w, grip_h),
+            (int(sk.hand[0] - grip_w // 2), int(sk.hand[1] - grip_h // 2), grip_w, grip_h),
             border_radius=1,
         )
 
-        # Head
+        # Head, with a highlight ring
         head_r = max(int(scale * 0.075), 4)
-        pygame.draw.circle(surface, colors["body"], (int(head[0]), int(head[1])), head_r)
-        # Head highlight
-        pygame.draw.circle(surface, _bright(colors["body"], 50), (int(head[0]), int(head[1])), head_r, 1)
+        head = (int(sk.head[0]), int(sk.head[1]))
+        pygame.draw.circle(surface, colors["body"], head, head_r)
+        pygame.draw.circle(surface, _bright(colors["body"], 50), head, head_r, 1)
 
     @staticmethod
     def _part_colors(color, drill_type):
