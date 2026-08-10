@@ -4,6 +4,12 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 
+def format_mmss(seconds: float) -> str:
+    """Format a duration as ``M:SS``."""
+    minutes, secs = divmod(int(seconds), 60)
+    return f"{minutes}:{secs:02d}"
+
+
 class Level(Enum):
     beginner = "beginner"
     intermediate = "intermediate"
@@ -41,6 +47,11 @@ class DrillType(Enum):
     def label(self) -> str:
         return self.value.replace("_", " ").title()
 
+    @property
+    def display_label(self) -> str:
+        """Name shown to the rower — the absence of a drill is a full stroke, not "None"."""
+        return "Full Stroke" if self is DrillType.none else self.label
+
 
 @dataclass
 class DrillEntry:
@@ -69,8 +80,7 @@ class Section:
     rest_after: int = 0  # seconds of rest auto-inserted after this section
 
     def summary(self) -> str:
-        mins, secs = divmod(self.duration, 60)
-        time_str = f"{mins}:{secs:02d}"
+        time_str = format_mmss(self.duration)
         drill_names = ", ".join(d.drill_type.label for d in self.drills) or "No drills"
         prefix = f"[{self.section_type.label}] " if self.section_type != SectionType.work else ""
         repeat_str = f" x{self.repeats}" if self.repeats > 1 else ""
@@ -136,9 +146,7 @@ class Workout:
     @property
     def total_duration_str(self) -> str:
         mins, secs = divmod(self.total_duration, 60)
-        if secs:
-            return f"{mins}:{secs:02d}"
-        return f"{mins}min"
+        return format_mmss(self.total_duration) if secs else f"{mins}min"
 
     def to_dict(self) -> dict:
         d: dict = {
