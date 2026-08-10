@@ -26,6 +26,7 @@ class WorkoutPlayer:
                 f'Workout "{workout.name}" has no playable sections '
                 f"({len(workout.sections)} defined). Every section needs repeats >= 1."
             )
+
         # Pre-compute adjusted cycle times so each section has whole strokes.
         # This ensures the figure is always at catch (phase 0.0) at section boundaries.
         self._section_cycle_times: list[float] = []
@@ -195,6 +196,7 @@ class WorkoutPlayer:
         self.section_elapsed = max(0.0, min(elapsed, self.current_section.duration))
         self._sync_total_elapsed()
         self._reset_warning()
+        self._unfinish()
 
     def seek_total(self, total_time: float):
         """Seek to an absolute time in the workout, switching sections as needed."""
@@ -208,6 +210,16 @@ class WorkoutPlayer:
             accumulated += sec.duration
         self._sync_total_elapsed()
         self._reset_warning()
+        self._unfinish()
+
+    def _unfinish(self) -> None:
+        """Leave the finished state after seeking back into the workout.
+
+        Without this, play() would treat the resume as a fresh start and rewind to zero, silently
+        discarding the scrub the user just made.
+        """
+        if self.state == PlayerState.finished and self.total_elapsed < self.total_duration:
+            self.state = PlayerState.paused
 
     def _reset_warning(self):
         self.warning_active = False
