@@ -21,6 +21,11 @@ class WorkoutPlayer:
     def __init__(self, workout: Workout):
         self.workout = workout
         self._sections: list[Section] = workout.flatten_sections()
+        if not self._sections:
+            raise ValueError(
+                f'Workout "{workout.name}" has no playable sections '
+                f"({len(workout.sections)} defined). Every section needs repeats >= 1."
+            )
         # Pre-compute adjusted cycle times so each section has whole strokes.
         # This ensures the figure is always at catch (phase 0.0) at section boundaries.
         self._section_cycle_times: list[float] = []
