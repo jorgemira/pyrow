@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import copy
-from tkinter import messagebox
 
 import customtkinter as ctk
 
 from models.workout import DrillEntry, DrillType, Level, Section, SectionType, Workout
+from ui.dialogs import show_warning
 
 _DRILL_OPTIONS = [d.label for d in DrillType]
 _DRILL_BY_LABEL = {d.label: d for d in DrillType}
@@ -16,6 +16,9 @@ _LEVEL_BY_LABEL = {lv.label: lv for lv in Level}
 
 _REF_W = 550
 _REF_H = 690
+
+_NEUTRAL = "#555555"
+_NEUTRAL_HOVER = "#666666"
 
 
 class WorkoutEditorDialog(ctk.CTkToplevel):
@@ -91,130 +94,141 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
 
     # ── UI construction ──────────────────────────────────────────
 
-    def _build_ui(self):
-        pad = {"padx": 10, "pady": (4, 0)}
-        f13 = self._font(13)
-        f12 = self._font(12)
+    _PAD = {"padx": 10, "pady": (4, 0)}
 
-        # Track widgets for font scaling
+    # Widget factories: every widget is registered so _apply_fonts() can rescale it.
+
+    def _label(self, parent, text, **kw) -> ctk.CTkLabel:
+        widget = ctk.CTkLabel(parent, text=text, font=self._font(13), **kw)
+        self._label_widgets.append(widget)
+        return widget
+
+    def _button(self, parent, text, **kw) -> ctk.CTkButton:
+        widget = ctk.CTkButton(parent, text=text, font=self._font(13), **kw)
+        self._button_widgets.append(widget)
+        return widget
+
+    def _entry(self, parent, **kw) -> ctk.CTkEntry:
+        widget = ctk.CTkEntry(parent, font=self._font(12), **kw)
+        self._entry_widgets.append(widget)
+        return widget
+
+    def _menu(self, parent, **kw) -> ctk.CTkOptionMenu:
+        widget = ctk.CTkOptionMenu(parent, font=self._font(12), **kw)
+        self._menu_widgets.append(widget)
+        return widget
+
+    def _build_ui(self):
+        """Assemble the dialog: workout fields, the section list, its detail pane and Save/Cancel."""
         self._label_widgets: list[ctk.CTkLabel] = []
         self._button_widgets: list[ctk.CTkButton] = []
         self._entry_widgets: list[ctk.CTkEntry] = []
         self._menu_widgets: list[ctk.CTkOptionMenu] = []
 
-        def label(parent, text, **kw):
-            lbl = ctk.CTkLabel(parent, text=text, font=f13, **kw)
-            self._label_widgets.append(lbl)
-            return lbl
+        self._build_workout_fields()
+        self._build_section_list()
+        self._build_section_detail()
+        self._build_save_row()
+        self._set_detail_state("disabled")
 
-        def button(parent, text, **kw):
-            btn = ctk.CTkButton(parent, text=text, font=f13, **kw)
-            self._button_widgets.append(btn)
-            return btn
-
-        def entry(parent, **kw):
-            ent = ctk.CTkEntry(parent, font=f12, **kw)
-            self._entry_widgets.append(ent)
-            return ent
-
-        def menu(parent, **kw):
-            m = ctk.CTkOptionMenu(parent, font=f12, **kw)
-            self._menu_widgets.append(m)
-            return m
-
-        # Name
-        label(self, text="Workout Name").pack(anchor="w", **pad)
-        self._name_entry = entry(self)
+    def _build_workout_fields(self):
+        pad = self._PAD
+        self._label(self, text="Workout Name").pack(anchor="w", **pad)
+        self._name_entry = self._entry(self)
         self._name_entry.insert(0, self.workout.name)
         self._name_entry.pack(fill="x", **pad)
 
-        # Description
-        label(self, text="Description").pack(anchor="w", **pad)
-        self._desc_entry = entry(self, placeholder_text="Optional short description")
+        self._label(self, text="Description").pack(anchor="w", **pad)
+        self._desc_entry = self._entry(self, placeholder_text="Optional short description")
         self._desc_entry.insert(0, self.workout.description)
         self._desc_entry.pack(fill="x", **pad)
 
-        # Level
         level_row = ctk.CTkFrame(self, fg_color="transparent")
         level_row.pack(fill="x", **pad)
-        label(level_row, text="Level").pack(side="left")
-        self._level_menu = menu(level_row, values=_LEVEL_OPTIONS, width=140)
+        self._label(level_row, text="Level").pack(side="left")
+        self._level_menu = self._menu(level_row, values=_LEVEL_OPTIONS, width=140)
         self._level_menu.set(self.workout.level.label)
         self._level_menu.pack(side="left", padx=(8, 0))
 
-        # ── Section list ─────────────────────────────────────────
-        label(self, text="Sections").pack(anchor="w", **pad)
+    def _build_section_list(self):
+        pad = self._PAD
+        self._label(self, text="Sections").pack(anchor="w", **pad)
         self._section_frame = ctk.CTkScrollableFrame(self, height=120)
         self._section_frame.pack(fill="both", expand=True, **pad)
 
         btn_row = ctk.CTkFrame(self, fg_color="transparent")
         btn_row.pack(fill="x", **pad)
-        button(btn_row, text="Add Section", width=100, command=self._add_section).pack(side="left", padx=(0, 4))
-        self._remove_sec_btn = button(btn_row, text="Remove", width=80, command=self._remove_section, state="disabled")
+        self._button(btn_row, text="Add Section", width=100, command=self._add_section).pack(side="left", padx=(0, 4))
+        self._remove_sec_btn = self._button(
+            btn_row, text="Remove", width=80, command=self._remove_section, state="disabled"
+        )
         self._remove_sec_btn.pack(side="left", padx=(0, 4))
-        self._up_btn = button(btn_row, text="\u25b2", width=36, command=self._move_section_up, state="disabled")
+        self._up_btn = self._button(btn_row, text="\u25b2", width=36, command=self._move_section_up, state="disabled")
         self._up_btn.pack(side="left", padx=(0, 4))
-        self._down_btn = button(btn_row, text="\u25bc", width=36, command=self._move_section_down, state="disabled")
+        self._down_btn = self._button(
+            btn_row, text="\u25bc", width=36, command=self._move_section_down, state="disabled"
+        )
         self._down_btn.pack(side="left")
 
-        # ── Section detail area ──────────────────────────────────
+    def _build_section_detail(self):
         self._detail_frame = ctk.CTkFrame(self)
-        self._detail_frame.pack(fill="both", expand=True, **pad)
+        self._detail_frame.pack(fill="both", expand=True, **self._PAD)
 
         row1 = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
         row1.pack(fill="x", padx=6, pady=(6, 0))
-        label(row1, text="Duration (sec)").pack(side="left")
-        self._dur_entry = entry(row1, width=80)
+        self._label(row1, text="Duration (sec)").pack(side="left")
+        self._dur_entry = self._entry(row1, width=80)
         self._dur_entry.pack(side="left", padx=(4, 12))
-        label(row1, text="Stroke Rate").pack(side="left")
-        self._sr_entry = entry(row1, width=80)
+        self._label(row1, text="Stroke Rate").pack(side="left")
+        self._sr_entry = self._entry(row1, width=80)
         self._sr_entry.pack(side="left", padx=(4, 12))
-        label(row1, text="Tension (1-8)").pack(side="left")
-        self._tension_entry = entry(row1, width=50)
+        self._label(row1, text="Tension (1-8)").pack(side="left")
+        self._tension_entry = self._entry(row1, width=50)
         self._tension_entry.pack(side="left", padx=(4, 12))
-        label(row1, text="Repeats").pack(side="left")
-        self._rep_entry = entry(row1, width=60)
+        self._label(row1, text="Repeats").pack(side="left")
+        self._rep_entry = self._entry(row1, width=60)
         self._rep_entry.pack(side="left", padx=(4, 0))
 
         row2 = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
         row2.pack(fill="x", padx=6, pady=(6, 0))
-        label(row2, text="Section Type").pack(side="left")
-        self._type_menu = menu(row2, values=_SECTION_TYPE_OPTIONS, width=120)
+        self._label(row2, text="Section Type").pack(side="left")
+        self._type_menu = self._menu(row2, values=_SECTION_TYPE_OPTIONS, width=120)
         self._type_menu.pack(side="left", padx=(4, 12))
-        label(row2, text="Rest After (s)").pack(side="left")
-        self._rest_after_entry = entry(row2, width=60)
+        self._label(row2, text="Rest After (s)").pack(side="left")
+        self._rest_after_entry = self._entry(row2, width=60)
         self._rest_after_entry.pack(side="left", padx=(4, 0))
 
-        label(self._detail_frame, text="Drills").pack(anchor="w", padx=6, pady=(6, 0))
+        self._build_drill_controls()
+
+    def _build_drill_controls(self):
+        self._label(self._detail_frame, text="Drills").pack(anchor="w", padx=6, pady=(6, 0))
         self._drill_frame = ctk.CTkScrollableFrame(self._detail_frame, height=80)
         self._drill_frame.pack(fill="x", padx=6)
 
         drill_btn_row = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
         drill_btn_row.pack(fill="x", padx=6, pady=(4, 0))
-        button(drill_btn_row, text="Add Drill", width=90, command=self._add_drill).pack(side="left", padx=(0, 4))
-        self._remove_drill_btn = button(
+        self._button(drill_btn_row, text="Add Drill", width=90, command=self._add_drill).pack(side="left", padx=(0, 4))
+        self._remove_drill_btn = self._button(
             drill_btn_row, text="Remove Drill", width=100, command=self._remove_drill, state="disabled"
         )
         self._remove_drill_btn.pack(side="left")
 
         drill_edit_row = ctk.CTkFrame(self._detail_frame, fg_color="transparent")
         drill_edit_row.pack(fill="x", padx=6, pady=(4, 0))
-        label(drill_edit_row, text="Type").pack(side="left")
-        self._drill_type_menu = menu(drill_edit_row, values=_DRILL_OPTIONS, width=160)
+        self._label(drill_edit_row, text="Type").pack(side="left")
+        self._drill_type_menu = self._menu(drill_edit_row, values=_DRILL_OPTIONS, width=160)
         self._drill_type_menu.pack(side="left", padx=(4, 12))
-        label(drill_edit_row, text="Count").pack(side="left")
-        self._drill_count_entry = entry(drill_edit_row, width=60)
+        self._label(drill_edit_row, text="Count").pack(side="left")
+        self._drill_count_entry = self._entry(drill_edit_row, width=60)
         self._drill_count_entry.pack(side="left", padx=(4, 0))
 
-        # ── Save / Cancel ────────────────────────────────────────
+    def _build_save_row(self):
         bottom = ctk.CTkFrame(self, fg_color="transparent")
         bottom.pack(fill="x", padx=10, pady=10)
-        button(bottom, text="Cancel", fg_color="#555", hover_color="#666", width=100, command=self._on_cancel).pack(
-            side="right", padx=(4, 0)
-        )
-        button(bottom, text="Save", width=100, command=self._on_save).pack(side="right")
-
-        self._set_detail_state("disabled")
+        self._button(
+            bottom, text="Cancel", fg_color=_NEUTRAL, hover_color=_NEUTRAL_HOVER, width=100, command=self._on_cancel
+        ).pack(side="right", padx=(4, 0))
+        self._button(bottom, text="Save", width=100, command=self._on_save).pack(side="right")
 
     # ── Section list management ──────────────────────────────────
 
@@ -320,11 +334,11 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
             return
         sec = self.workout.sections[self._selected_section_idx]
         try:
-            sec.duration = int(self._dur_entry.get())
+            sec.duration = max(1, int(self._dur_entry.get()))
         except ValueError:
             pass
         try:
-            sec.stroke_rate = int(self._sr_entry.get())
+            sec.stroke_rate = max(1, int(self._sr_entry.get()))
         except ValueError:
             pass
         try:
@@ -332,7 +346,7 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         except ValueError:
             pass
         try:
-            sec.repeats = int(self._rep_entry.get())
+            sec.repeats = max(1, int(self._rep_entry.get()))
         except ValueError:
             pass
         type_label = self._type_menu.get()
@@ -447,7 +461,10 @@ class WorkoutEditorDialog(ctk.CTkToplevel):
         self._commit_section_edits()
         name = self._name_entry.get().strip()
         if not name:
-            messagebox.showwarning("Validation", "Workout name cannot be empty.", parent=self)
+            show_warning(self, "Validation", "Workout name cannot be empty.")
+            return
+        if not self.workout.sections:
+            show_warning(self, "Validation", "Add at least one section before saving.")
             return
         self.workout.name = name
         self.workout.description = self._desc_entry.get().strip()
