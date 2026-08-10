@@ -10,11 +10,11 @@ Module Overview
 
     pyrow/
     ├── main.py              # Entry point — initializes pygame, launches SceneManager
-    ├── workout_player.py    # State machine for timed workout playback
-    ├── workout_store.py     # JSON persistence for workouts
+    ├── workout_player.py    # PlayerState and the state machine for timed playback
+    ├── workout_store.py     # JSON persistence for workouts (atomic writes)
     ├── workouts.json        # Default workout library
     ├── models/
-    │   └── workout.py       # Data model: Workout, Section, SectionType, DrillEntry
+    │   └── workout.py       # Data model: Workout, Section, SectionType, DrillEntry, Level
     ├── scenes/
     │   ├── base.py          # Abstract Scene class
     │   ├── manager.py       # SceneManager — runs the pygame event loop
@@ -23,8 +23,10 @@ Module Overview
     ├── animations/
     │   ├── base.py          # DrillProfile, BaseAnimation, position math
     │   └── styles.py        # Concrete animation renderers
-    └── ui/
-        └── workout_editor.py  # Section editor dialog (customtkinter)
+    ├── ui/
+    │   ├── workout_editor.py  # Section editor dialog (customtkinter)
+    │   └── dialogs.py         # Themed modal confirm/warning dialogs
+    └── tests/               # pytest suite; conftest.py holds the headless GUI fixtures
 
 Data Model
 ----------
