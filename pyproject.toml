@@ -2,6 +2,11 @@
 name = "pyrow"
 version = "0.1.0"
 description = "Visual rowing workout pacer with animated stroke guidance"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "JorgeMira" },
+]
 requires-python = ">=3.14"
 dependencies = [
     "customtkinter>=5.2.2",
