@@ -24,8 +24,9 @@ DRILL_PROFILES: dict[DrillType, DrillProfile] = {
     DrillType.hips_and_legs: DrillProfile(0.7, 0.3, None, (80, 230, 160)),
     DrillType.legs_only: DrillProfile(0.3, 0.7, None, (80, 255, 80)),
     DrillType.mid_slide: DrillProfile(0.6, 0.2, 0.5, (180, 130, 255)),
-    DrillType.pause_at_back: DrillProfile(1.0, 0.0, 0.0, (255, 120, 120)),
-    DrillType.pause_at_front: DrillProfile(1.0, 0.0, 1.0, (120, 160, 255)),
+    # Erg terminology: backstops is the finish (legs down, body back), frontstops is the catch.
+    DrillType.pause_at_back: DrillProfile(1.0, 0.0, 1.0, (255, 120, 120)),
+    DrillType.pause_at_front: DrillProfile(1.0, 0.0, 0.0, (120, 160, 255)),
     DrillType.pause_arms_away: DrillProfile(1.0, 0.0, 0.82, (255, 170, 100)),
     DrillType.pause_body_over: DrillProfile(1.0, 0.0, 0.6, (220, 140, 180)),
 }

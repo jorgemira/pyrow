@@ -127,8 +127,8 @@ them one per stroke.
 | Hips And Legs | body, legs | Arms dimmed |
 | Legs Only | legs | Arms and body dimmed |
 | Mid Slide | arms, body, legs | Restricted slide range, holding at mid-slide |
-| Pause At Back | arms, body, legs | Holds at the catch |
-| Pause At Front | arms, body, legs | Holds at the finish |
+| Pause At Back | arms, body, legs | Holds at the finish (backstops) |
+| Pause At Front | arms, body, legs | Holds at the catch (frontstops) |
 | Pause Arms Away | arms, body, legs | Holds on the recovery with the arms extended |
 | Pause Body Over | arms, body, legs | Holds on the recovery with the body pivoted over |
 

@@ -95,14 +95,16 @@ class TestPauseMotion:
 
         assert get_position(0.34, profile) == pytest.approx(1.0)
 
-    def test_pause_at_front_dwells_at_the_finish(self):
-        profile = DRILL_PROFILES[DrillType.pause_at_front]
+    def test_pause_at_back_dwells_at_the_finish(self):
+        """Backstops is the finish — legs down, body back, handle drawn in."""
+        profile = DRILL_PROFILES[DrillType.pause_at_back]
 
         assert is_in_pause(0.35, profile)
         assert get_position(0.35, profile) == pytest.approx(1.0)
 
-    def test_pause_at_back_dwells_at_the_catch(self):
-        profile = DRILL_PROFILES[DrillType.pause_at_back]
+    def test_pause_at_front_dwells_at_the_catch(self):
+        """Frontstops is the catch — legs compressed, body forward, arms extended."""
+        profile = DRILL_PROFILES[DrillType.pause_at_front]
 
         assert is_in_pause(0.99, profile)
         assert get_position(0.99, profile) == pytest.approx(0.0)
