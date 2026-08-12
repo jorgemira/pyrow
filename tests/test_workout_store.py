@@ -96,7 +96,7 @@ def test_a_failed_save_leaves_the_previous_library_intact(store, monkeypatch):
             raise RuntimeError("boom")
 
     with pytest.raises(RuntimeError):
-        save_workouts([Unserialisable()])  # type: ignore[list-item]
+        save_workouts([Unserialisable()])  # ty: ignore[invalid-argument-type]
 
     assert store.read_text(encoding="utf-8") == original, "the old library must survive a failed write"
 

@@ -138,7 +138,7 @@ def _menu_scene_shared():
 
         scene = menu_module.MenuScene(StubManager())
         scene.enter()
-        scene.saved = saved  # type: ignore[attr-defined]
+        scene.saved = saved  # ty: ignore[unresolved-attribute]
         scene._root.geometry(OFFSCREEN)
         scene._root.update_idletasks()
         yield scene

@@ -34,6 +34,11 @@ type _Bar = Literal["section", "total"]
 _REF_W = 820
 _REF_H = 400
 
+# Smallest comfortably legible size; the scale never shrinks text below it
+_MIN_FONT_PX = 12
+# Absolute floor, used only when even _MIN_FONT_PX overflows a very narrow panel
+_FLOOR_FONT_PX = 8
+
 
 _beep_cache: dict[tuple[float, int, float], pygame.mixer.Sound] = {}
 
@@ -195,14 +200,18 @@ class AnimationScene(Scene):
         """Scale a reference pixel value to current window size."""
         return max(1, int(px * self._scale))
 
-    def _font(self, size: int, bold: bool = False) -> pygame.font.Font:
-        """Return a scaled font, built once per layout."""
-        key = (size, bold)
+    def _font_px(self, px: int, bold: bool = False) -> pygame.font.Font:
+        """Build (and cache) a font at an absolute pixel size."""
+        key = (px, bold)
         font = self._font_cache.get(key)
         if font is None:
-            font = pygame.font.SysFont("", max(12, self._s(size)), bold=bold)
+            font = pygame.font.SysFont("", px, bold=bold)
             self._font_cache[key] = font
         return font
+
+    def _font(self, size: int, bold: bool = False) -> pygame.font.Font:
+        """Return a scaled font, built once per layout."""
+        return self._font_px(max(_MIN_FONT_PX, self._s(size)), bold)
 
     def _font_fitting(self, text: str, max_w: int, largest: int, bold: bool = False) -> pygame.font.Font:
         """Return the largest font from *largest* downwards whose rendering of *text* fits *max_w*.
@@ -211,12 +220,20 @@ class AnimationScene(Scene):
         fixed size would either overflow the panel or waste space on short names.
         """
         size = largest
-        while size > 12:
+        while size > _MIN_FONT_PX:
             font = self._font(size, bold)
             if font.size(text)[0] <= max_w:
                 return font
             size -= max(2, size // 8)
-        return self._font(12, bold)
+
+        # On a narrow panel the scaled minimum can still overflow, and the exact width depends on
+        # the font metrics SDL_ttf happens to ship. Shrink past it rather than hand back a font
+        # that provably does not fit and let the caller paint over the divider.
+        for px in range(_MIN_FONT_PX, _FLOOR_FONT_PX - 1, -1):
+            font = self._font_px(px, bold)
+            if font.size(text)[0] <= max_w:
+                return font
+        return self._font_px(_FLOOR_FONT_PX, bold)
 
     def _rebuild_layout(self):
         """Recompute all size-dependent resources (fonts, rects, buttons)."""
