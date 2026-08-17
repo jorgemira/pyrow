@@ -20,6 +20,7 @@ always-on-top window, so you can keep it beside the erg monitor and just follow 
 - [The workout library](#the-workout-library)
 - [Workout file format](#workout-file-format)
 - [How it works](#how-it-works)
+- [Logs](#logs)
 - [Development](#development)
 - [Project layout](#project-layout)
 - [Troubleshooting](#troubleshooting)
@@ -252,7 +253,8 @@ audit on every push and pull request.
 ## Project layout
 
 ```
-main.py              entry point — initialises pygame, launches the menu
+main.py              entry point — sets up logging, initialises pygame, launches the menu
+diagnostics.py       rotating file logging, crash handlers, session banner
 models/workout.py    Workout, Section, DrillEntry and the enums
 workout_player.py    playback state machine
 workout_store.py     JSON persistence (atomic writes)
@@ -262,6 +264,20 @@ ui/                  workout editor and themed modal dialogs
 tests/               pytest suite; conftest.py holds the GUI fixtures
 workouts.json        the workout library
 docs/                Sphinx documentation
+```
+
+## Logs
+
+PyRow logs to `~/.local/state/pyrow/pyrow.log` (or `$XDG_STATE_HOME/pyrow/`, or wherever
+`PYROW_LOG_DIR` points), rotating at 1&nbsp;MB with three backups. Each run opens with a banner —
+Python, pygame and SDL versions, the display layout — and ends with either `session ended cleanly`
+or `session ended after a failure`, so "did it crash?" is answerable without having watched it.
+Uncaught exceptions are written there with their traceback, including from background threads.
+
+```bash
+tail -f ~/.local/state/pyrow/pyrow.log            # follow a running session
+grep -n "session ended after a failure" ~/.local/state/pyrow/pyrow.log
+PYROW_LOG_LEVEL=DEBUG uv run python main.py        # more detail, still bounded
 ```
 
 ## Troubleshooting

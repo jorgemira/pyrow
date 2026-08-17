@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import array
+import logging
 import math
 from collections.abc import Callable
 from pathlib import Path
@@ -22,6 +23,8 @@ TEXT_COLOR = (220, 220, 220)
 DIM_TEXT = (150, 150, 150)
 WARNING_BG = (50, 40, 20)
 WARNING_BORDER = (255, 200, 60)
+
+_log = logging.getLogger("pyrow.pacer")
 
 _REST_PROFILE = DrillProfile(1.0, 0.0, None, (140, 200, 255))
 
@@ -162,6 +165,13 @@ class AnimationScene(Scene):
 
         # Animation
         self._animation = RowingFigureV2Animation()
+
+        _log.info(
+            'workout "%s": %d sections, %s total',
+            self.workout.name,
+            len(self._player.sections),
+            format_mmss(self._player.total_duration),
+        )
 
         # Confirmation dialog state
         self._confirm_stop_active = False
@@ -408,6 +418,7 @@ class AnimationScene(Scene):
     def _start_workout(self):
         self._ready_prompt = False
         self._player.play()
+        _log.info("playback started")
 
     def _build_confirm_dialog(self):
         s = self._s
@@ -441,6 +452,7 @@ class AnimationScene(Scene):
     def _confirm_stop_yes(self):
         from scenes.menu import MenuScene
 
+        _log.info("stopped by the user at %s", format_mmss(self._player.total_elapsed))
         self._confirm_stop_active = False
         self.manager.switch_to(MenuScene(self.manager))
 

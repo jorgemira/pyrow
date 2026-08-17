@@ -19,7 +19,8 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 
 ## Architecture
 
-- `main.py` — entry point, initializes pygame and launches SceneManager
+- `main.py` — entry point: sets up logging, initializes pygame, launches SceneManager
+- `diagnostics.py` — rotating file logging, crash handlers, the session banner
 - `models/workout.py` — data model: Workout, Section, SectionType, DrillEntry, DrillType, Level, format_mmss()
 - `workout_player.py` — PlayerState enum and the state machine for timed workout playback
 - `workout_store.py` — JSON persistence for workouts (atomic writes)
@@ -55,6 +56,21 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - **Window placement**: animation window is pinned to the top-right of the primary monitor via `_top_right()`, which derives the monitor origin by centering the window and inverting the arithmetic (SDL doesn't report monitor origins)
 - **Screen sleep allowed**: `pygame.display.set_allow_screensaver(True)` in `main.py` so the display can blank/sleep despite SDL's default
 
+## Logging
+
+- Logs go to `$PYROW_LOG_DIR`, else `$XDG_STATE_HOME/pyrow`, else `~/.local/state/pyrow/pyrow.log`.
+  State, not cache: a log worth having after a crash is not disposable. Rotates at 1MB x 3 backups
+- `PYROW_LOG_LEVEL=DEBUG` for detail; default INFO
+- **Every session ends with `session ended cleanly` or `session ended after a failure`** — one
+  ambiguous "ended" line cannot answer the first question you ask of a log. Neither line present
+  means it was killed or lost power
+- Tracebacks are logged exactly once, by the `sys.excepthook`/`threading.excepthook` handlers.
+  `main.py` names the exception type without `exc_info` so it does not duplicate them
+- The banner records what cannot be reconstructed later: versions, displays, and `code deployed`
+  (the newest `*.py` mtime), since the app is not packaged and is often copied without its `.git`
+- Logged at INFO: scene transitions, the workout and its length, playback start, a user-initiated
+  stop. Section transitions are deliberately *not* logged — 40 lines per workout is noise
+
 ## Testing
 
 - Run with `uv run pytest`; the suite is also a pre-commit hook, so keep it fast
@@ -68,6 +84,8 @@ It displays animated stroke guidance as an always-on-top overlay while rowing.
 - The menu fixture is module-scoped with a per-test reset, because building a Tk root plus its
   widgets costs ~1s. It uses a synthetic library, never the shipped `workouts.json`, and stubs
   `save_workouts`
+- `_isolated_logs` in `conftest.py` points `PYROW_LOG_DIR` at `tmp_path` and strips handlers
+  afterwards, so no test writes to the real log or leaves a handler pointed at a deleted file
 - Verify new tests actually fail when the behaviour breaks; the existing suite was checked by
   mutating the source and confirming each mutation was caught
 

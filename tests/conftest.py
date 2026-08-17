@@ -111,6 +111,24 @@ def sample_library():
     ]
 
 
+@pytest.fixture(autouse=True)
+def _isolated_logs(monkeypatch, tmp_path):
+    """Never write to the real log directory, and never leave handlers behind.
+
+    setup_logging() reconfigures the root logger, so without the teardown one test's handlers would
+    still be attached — and writing to a closed temporary file — during the next.
+    """
+    import logging
+
+    monkeypatch.setenv("PYROW_LOG_DIR", str(tmp_path / "logs"))
+    before = list(logging.getLogger().handlers)
+    yield
+    root = logging.getLogger()
+    for handler in [h for h in root.handlers if h not in before]:
+        root.removeHandler(handler)
+        handler.close()
+
+
 @pytest.fixture(scope="session", autouse=True)
 def _pygame_session():
     import pygame

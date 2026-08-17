@@ -80,3 +80,15 @@ and colors. ``get_position()`` converts the stroke phase into a normalized
 body position. Concrete ``BaseAnimation`` subclasses render the position onto
 the pygame surface — styles include stick figures, progress bars, and particle
 effects.
+
+Logging
+-------
+
+``diagnostics.py`` configures a rotating log under ``$XDG_STATE_HOME/pyrow``
+and installs ``sys.excepthook`` and ``threading.excepthook`` so uncaught
+exceptions are written there with their tracebacks before the process dies.
+Each run opens with a banner of the things that cannot be reconstructed
+afterwards — versions, display layout, and the newest source mtime as a
+stand-in for a version — and ends with either ``session ended cleanly`` or
+``session ended after a failure``, which is the first question anyone asks of
+a log they were not present for.

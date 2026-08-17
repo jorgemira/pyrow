@@ -1,10 +1,14 @@
 from __future__ import annotations
 
+import logging
+
 import pygame
 
 from scenes.base import Scene
 
 FPS = 60
+
+_log = logging.getLogger("pyrow.scenes")
 
 
 class SceneManager:
@@ -52,9 +56,11 @@ class SceneManager:
         pending = self._pending_scene
         assert pending is not None
         if self.current_scene:
+            _log.info("leaving %s", type(self.current_scene).__name__)
             self.current_scene.exit()
         self.current_scene = pending
         self._pending_scene = None
+        _log.info("entering %s", type(pending).__name__)
         pending.enter()
 
     def _run_frame(self, scene: Scene, window: pygame.window.Window) -> None:
